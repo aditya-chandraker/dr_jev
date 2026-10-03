@@ -3,544 +3,191 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dr. Jev — Clinical Intake Helper</title>
+  <title>Patient Interview Helper</title>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --ink: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --accent: #0284c7;
-      --accent-hover: #0369a1;
-      --danger: #dc2626;
-      --danger-bg: #fef2f2;
-      --danger-border: #fecaca;
-      --warning: #d97706;
-      --warning-bg: #fffbeb;
-      --warning-border: #fef3c7;
-      --success: #16a34a;
-      --success-bg: #f0fdf4;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--ink);
-      background-color: var(--bg);
-      line-height: 1.5;
-    }
-
-    header {
-      background: #0f172a;
-      color: #fff;
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .header-title { font-weight: 700; font-size: 1.15rem; }
-    .header-sub { font-size: 0.8rem; color: #94a3b8; margin-top: 2px; }
-    .header-actions { display: flex; gap: 10px; align-items: center; }
-
-    .wrap {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .panel-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fafafa;
-    }
-    .panel-header h2 { font-size: 1.05rem; font-weight: 700; }
-    .panel-body { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    label { font-size: 0.82rem; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
-    input, textarea {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 12px;
-      font: inherit;
-      font-size: 0.92rem;
-      background: #fff;
-      color: var(--ink);
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-    }
-    textarea { min-height: 90px; resize: vertical; }
-
-    .btn {
-      border: 0;
-      border-radius: 8px;
-      padding: 9px 14px;
-      font-weight: 600;
-      font-size: 0.88rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-hover); }
-    .btn-secondary { background: #e2e8f0; color: #1e293b; }
-    .btn-secondary:hover { background: #cbd5e1; }
-    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); }
-    .btn-ghost:hover { background: #f1f5f9; color: var(--ink); }
-
-    .scenarios-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    .scenario-btn {
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      color: #334155;
-      cursor: pointer;
-    }
-    .scenario-btn:hover { background: #e2e8f0; border-color: #94a3b8; }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 8px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-    .pill-blue { background: #e0f2fe; color: #0369a1; }
-    .pill-amber { background: var(--warning-bg); color: var(--warning); border: 1px solid var(--warning-border); }
-    .pill-red { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); }
-    .pill-gray { background: #f1f5f9; color: #475569; }
-    .pill-green { background: var(--success-bg); color: var(--success); }
-
-    .stack { display: flex; flex-direction: column; gap: 12px; }
-
-    /* CARD STYLES FOR THE 3 QUESTIONS */
-    .q-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .q-card:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      transform: translateY(-1px);
-    }
-    .q-card.red-flag {
-      border-color: var(--danger-border);
-      background: var(--danger-bg);
-    }
-    .q-card.drilldown {
-      border-color: var(--warning-border);
-      background: #fffdf5;
-    }
-    .q-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .q-text { font-size: 0.98rem; font-weight: 700; color: var(--ink); line-height: 1.4; }
-    .q-rationale { font-size: 0.83rem; color: var(--muted); border-left: 2px solid var(--border); padding-left: 8px; }
-    .q-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-
-    /* CHAT STREAM */
-    .chat-box {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #f8fafc;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 240px;
-      overflow-y: auto;
-    }
-    .bubble { padding: 9px 12px; border-radius: 10px; font-size: 0.88rem; }
-    .bubble.patient { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); }
-    .bubble.asked { background: #eff6ff; border: 1px solid #bfdbfe; border-left: 3px solid var(--accent-hover); }
-
-    .hidden { display: none !important; }
-
-    @media (max-width: 900px) {
-      .wrap { grid-template-columns: 1fr; }
-    }
+    :root { color-scheme: light; --bg: #f6f4ef; --panel: #fff; --ink: #1d1b19; --muted: #6c655d; --accent: #0f766e; --danger: #b42318; --border: #d9d2c7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: linear-gradient(180deg, #faf7f2 0%, var(--bg) 100%); }
+    header { position: sticky; top: 0; z-index: 5; background: #111827; color: #fff; padding: 12px 16px; font-weight: 600; }
+    .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; padding: 16px; max-width: 1400px; margin: 0 auto; }
+    .banner { background: #fff3cd; border: 1px solid #e6c15f; color: #6b4f00; padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; font-weight: 600; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 8px 30px rgba(17, 24, 39, 0.05); }
+    .panel h2 { margin: 0; padding: 16px 16px 0; font-size: 1.05rem; }
+    .panel-body { padding: 16px; }
+    textarea, input { width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 12px; font: inherit; background: #fff; }
+    textarea { min-height: 110px; resize: vertical; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    button { border: 0; border-radius: 999px; padding: 10px 14px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
+    button.secondary { background: #374151; }
+    button.ghost { background: #fff; color: var(--ink); border: 1px solid var(--border); }
+    .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+    .stat { font-size: 0.9rem; color: var(--muted); }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { background: #eef2f7; border: 1px solid #d6dde7; border-radius: 999px; padding: 6px 10px; font-size: 0.85rem; }
+    .stack { display: grid; gap: 12px; }
+    .card { border: 1px solid var(--border); border-radius: 14px; padding: 12px; background: #fff; }
+    .card.red { border-color: #f3b4ad; background: #fff7f6; }
+    .card .meta { display: flex; gap: 8px; flex-wrap: wrap; font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; }
+    .pill.red { background: #fee4e2; color: var(--danger); }
+    .pill.gray { background: #eef2f7; color: #334155; }
+    .pill.green { background: #dcfce7; color: #166534; }
+    .asked-list { display: grid; gap: 8px; margin-top: 12px; }
+    .asked-item { border-left: 3px solid #c7d2fe; padding-left: 10px; color: #334155; }
+    .muted { color: var(--muted); }
+    .badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-size: 0.85rem; }
+    .hidden { display: none; }
+    @media (max-width: 960px) { .wrap { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
-  <header>
-    <div>
-      <div class="header-title">Dr. Jev — Clinical Intake Helper</div>
-      <div class="header-sub">Multi-System Question Bank & Dynamic Level 2 Characterization</div>
-    </div>
-    <div class="header-actions">
-      <span id="session-display" style="font-family:monospace; font-size:0.8rem; color:#cbd5e1;"></span>
-      <button id="btn-view-audit" class="btn btn-ghost" style="color:#fff; border-color:#475569;">📊 SQLite Audit Log</button>
-      <button id="btn-reset" class="btn btn-secondary">🔄 New Patient</button>
-    </div>
-  </header>
-
+  <header>Patient Interview Helper MVP</header>
   <main class="wrap">
-    <!-- LEFT PANEL: PATIENT INTERVIEW -->
     <section class="panel">
-      <div class="panel-header">
-        <h2>Patient Interview</h2>
-        <span id="patient-count" class="pill pill-gray">0 statements</span>
-      </div>
+      <h2>Interview</h2>
       <div class="panel-body">
-        <div class="form-row">
-          <label>Age <input id="age" type="number" value="54" /></label>
-          <label>Sex <input id="sex" type="text" value="Female" /></label>
+        <div class="banner">Training tool. Not medical advice. Do not enter real patient information.</div>
+        <div class="grid">
+          <label>Age <input id="age" type="number" min="0" placeholder="58" /></label>
+          <label>Sex <input id="sex" type="text" placeholder="male" /></label>
         </div>
-
-        <div>
-          <label style="margin-bottom:8px;">Quick Test Scenarios:</label>
-          <div class="scenarios-row">
-            <button class="scenario-btn" type="button" onclick="loadTest('normal')">✓ All Normal</button>
-            <button class="scenario-btn" type="button" onclick="loadTest('urinary')">💧 Burning / Weak Stream</button>
-            <button class="scenario-btn" type="button" onclick="loadTest('retention')">🚨 Retention Emergency</button>
-            <button class="scenario-btn" type="button" onclick="loadTest('cough')">🫁 Cough & Phlegm</button>
-            <button class="scenario-btn" type="button" onclick="loadTest('eye')">👁️ Blurry Vision</button>
-            <button class="scenario-btn" type="button" onclick="loadTest('tooth')">🦷 Tooth Pain</button>
-          </div>
+        <label for="statement"><strong>Patient statement</strong></label>
+        <textarea id="statement" placeholder="Type what the simulated patient says..."></textarea>
+        <div class="toolbar">
+          <button id="send">Add statement</button>
+          <button id="demo" class="ghost" type="button">Load demo</button>
+          <span id="latency" class="badge">-- ms</span>
+          <span id="status" class="stat">Ready</span>
         </div>
-
-        <label for="statement">Patient Statement / Response:
-          <textarea id="statement" placeholder="Type what patient says, or enter 'No problems' to screen normally..."></textarea>
-        </label>
-
-        <div style="display:flex; gap:10px;">
-          <button id="btn-normal" class="btn btn-ghost" type="button" style="border-color:var(--success); color:var(--success);">
-            ✓ Patient Says: "No problems / Normal"
-          </button>
-          <button id="btn-send" class="btn btn-primary" style="flex:1;">
-            Submit Statement
-          </button>
+        <div style="margin-top:16px;">
+          <div class="row" style="justify-content:space-between;"><strong>Patient statements</strong><span id="count" class="stat">0</span></div>
+          <div id="statements" class="stack" style="margin-top:10px;"></div>
         </div>
-
-        <div>
-          <div style="font-size:0.82rem; font-weight:700; color:var(--muted); margin-bottom:6px;">Dialogue & Asked Questions:</div>
-          <div id="chat-history" class="chat-box">
-            <div style="color:var(--muted); text-align:center; padding:16px; font-size:0.85rem;">
-              Enter a statement or pick a test scenario above to start the interview.
-            </div>
-          </div>
+        <div style="margin-top:16px;">
+          <div class="row" style="justify-content:space-between;"><strong>Asked</strong><span class="stat">Moves selected items out of suggestions</span></div>
+          <div id="asked" class="asked-list"></div>
         </div>
       </div>
     </section>
 
-    <!-- RIGHT PANEL: THREE SUGGESTED QUESTIONS -->
     <section class="panel">
-      <div class="panel-header">
-        <h2>Suggested Next Questions</h2>
-        <span id="active-status-badge" class="pill pill-blue">Level 1: General Screening</span>
-      </div>
+      <h2>Suggested next questions</h2>
       <div class="panel-body">
-        
-        <!-- RED FLAG EMERGENCY BANNER IF TRIGGERED -->
-        <div id="red-flag-banner" class="q-card red-flag hidden">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <strong style="color:var(--danger); font-size:0.95rem;">🚨 RED FLAG EMERGENCY SCREEN</strong>
-            <span class="pill pill-red">URGENT</span>
-          </div>
-          <div id="rf-text" class="q-text" style="color:var(--danger);"></div>
-          <div id="rf-rationale" class="q-rationale"></div>
-          <div style="display:flex; justify-content:flex-end; margin-top:6px;">
-            <button id="btn-ask-rf" class="btn btn-primary" style="background:var(--danger);">Asked Red Flag</button>
-          </div>
-        </div>
-
-        <!-- PROTOCOL COMPLETED BANNER -->
-        <div id="completed-card" class="q-card hidden" style="border-color:var(--success); background:var(--success-bg);">
-          <strong style="color:var(--success); font-size:1rem;">🎉 Complete History Finished</strong>
-          <div style="font-size:0.85rem; color:var(--muted);">All clinical systems and indicated drill-downs have been successfully conducted.</div>
-        </div>
-
-        <!-- THE THREE SUGGESTED QUESTIONS LIST -->
-        <div id="questions-list" class="stack">
-          <!-- Populated dynamically with top 3 questions -->
-        </div>
-
+        <div id="low-confidence" class="card hidden"><strong>Not sure yet, here is a standard checklist.</strong><div class="muted" style="margin-top:6px;">The model is below the confidence threshold or unavailable.</div></div>
+        <div id="red-flags" class="stack"></div>
+        <div id="suggestions" class="stack" style="margin-top:12px;"></div>
       </div>
     </section>
   </main>
 
-  <!-- AUDIT LOG MODAL -->
-  <div id="audit-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center; padding:20px;">
-    <div style="background:#fff; border-radius:12px; width:100%; max-width:750px; max-height:85vh; display:flex; flex-direction:column; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #e2e8f0; padding-bottom:10px;">
-        <strong style="font-size:1.05rem;">📊 SQLite Audit Log (patient_sessions)</strong>
-        <button id="btn-close-audit" class="btn btn-ghost" style="padding:4px 8px;">✕</button>
-      </div>
-      <div style="overflow-y:auto; flex:1;">
-        <table style="width:100%; border-collapse:collapse; font-size:0.83rem;">
-          <thead>
-            <tr style="text-align:left; border-bottom:2px solid #e2e8f0; color:#64748b;">
-              <th style="padding:8px;">Time</th>
-              <th style="padding:8px;">Question ID</th>
-              <th style="padding:8px;">Patient Response</th>
-              <th style="padding:8px;">Jev Conf</th>
-            </tr>
-          </thead>
-          <tbody id="audit-rows"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
   <script>
-    const state = {
-      sessionId: 'sess_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now().toString().slice(-4),
-      statements: [],
-      asked: [],
-      currentResponse: null
-    };
-
+    const state = { patient_statements: [], demographics: {}, asked: [], response: null, pending: null };
     const els = {
-      sessionDisplay: document.getElementById('session-display'),
-      statement: document.getElementById('statement'),
-      btnSend: document.getElementById('btn-send'),
-      btnNormal: document.getElementById('btn-normal'),
-      btnReset: document.getElementById('btn-reset'),
-      btnViewAudit: document.getElementById('btn-view-audit'),
-      btnCloseAudit: document.getElementById('btn-close-audit'),
-      auditModal: document.getElementById('audit-modal'),
-      auditRows: document.getElementById('audit-rows'),
-      chatHistory: document.getElementById('chat-history'),
-      patientCount: document.getElementById('patient-count'),
-      activeStatusBadge: document.getElementById('active-status-badge'),
-      redFlagBanner: document.getElementById('red-flag-banner'),
-      rfText: document.getElementById('rf-text'),
-      rfRationale: document.getElementById('rf-rationale'),
-      btnAskRf: document.getElementById('btn-ask-rf'),
-      completedCard: document.getElementById('completed-card'),
-      questionsList: document.getElementById('questions-list'),
+      age: document.getElementById('age'), sex: document.getElementById('sex'), statement: document.getElementById('statement'),
+      send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
+      status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
+      asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence')
     };
 
-    function init() {
-      els.sessionDisplay.textContent = state.sessionId;
-      routeEncounter();
+    function syncDemographics() {
+      const age = Number(els.age.value);
+      state.demographics = {};
+      if (!Number.isNaN(age) && age > 0) state.demographics.age = age;
+      if (els.sex.value.trim()) state.demographics.sex = els.sex.value.trim();
     }
 
-    function renderChat() {
-      if (state.statements.length === 0 && state.asked.length === 0) {
-        els.chatHistory.innerHTML = '<div style="color:var(--muted); text-align:center; padding:16px; font-size:0.85rem;">Enter a statement or pick a test scenario above to start the interview.</div>';
-        els.patientCount.textContent = '0 statements';
-        return;
-      }
-      let html = '';
-      const total = Math.max(state.statements.length, state.asked.length);
-      for (let i = 0; i < total; i++) {
-        if (state.statements[i]) {
-          html += `<div class="bubble patient"><strong>Patient:</strong> ${escapeHtml(state.statements[i])}</div>`;
-        }
-        if (state.asked[i]) {
-          html += `<div class="bubble asked"><strong>Asked:</strong> ${escapeHtml(state.asked[i].text || state.asked[i])}</div>`;
-        }
-      }
-      els.chatHistory.innerHTML = html;
-      els.patientCount.textContent = `${state.statements.length} statements`;
-      els.chatHistory.scrollTop = els.chatHistory.scrollHeight;
+    function renderStatements() {
+      els.count.textContent = `${state.patient_statements.length} statements`;
+      els.statements.innerHTML = state.patient_statements.map((text) => `<div class="card"><strong>Patient:</strong> ${escapeHtml(text)}</div>`).join('');
     }
 
-    function renderThreeQuestions(data) {
-      state.currentResponse = data;
-      
-      // Update Mode Badge
-      if (data.drilldown_active || data.current_level === '2_Characterization') {
-        els.activeStatusBadge.textContent = `⚠️ Level 2 Characterization: ${capitalize(data.current_system)}`;
-        els.activeStatusBadge.className = 'pill pill-amber';
-      } else {
-        els.activeStatusBadge.textContent = `Level 1: General Screening (${capitalize(data.current_system)})`;
-        els.activeStatusBadge.className = 'pill pill-blue';
-      }
+    function renderAsked() {
+      els.asked.innerHTML = state.asked.map((item) => `<div class="card asked-item"><strong>${escapeHtml(item.question || item.id)}</strong><div class="muted">${escapeHtml(item.answer || '')}</div></div>`).join('');
+    }
 
-      if (data.completed) {
-        els.completedCard.classList.remove('hidden');
-        els.questionsList.innerHTML = '';
-        els.redFlagBanner.classList.add('hidden');
-        return;
-      }
-      els.completedCard.classList.add('hidden');
+    function renderSuggestions(payload) {
+      const redFlags = payload?.red_flags || [];
+      const suggestions = payload?.suggestions || [];
+      els.lowConfidence.classList.toggle('hidden', !payload?.low_confidence);
+      els.redFlags.innerHTML = redFlags.map(renderCard).join('');
+      els.suggestions.innerHTML = suggestions.map(renderCard).join('');
+      els.latency.textContent = `${payload?.latency_ms ?? '--'} ms`;
+      els.status.textContent = payload?.degraded ? 'Degraded mode' : payload?.low_confidence ? 'Low confidence' : 'Live suggestions';
+    }
 
-      // Check Red Flag
-      if (data.is_red_flag && data.red_flags && data.red_flags.length > 0) {
-        const rf = data.red_flags[0];
-        els.redFlagBanner.classList.remove('hidden');
-        els.rfText.textContent = rf.text;
-        els.rfRationale.textContent = `Rationale: ${rf.rationale || 'Emergency red flag screen'}`;
-        els.btnAskRf.onclick = () => askQuestion(rf);
-      } else {
-        els.redFlagBanner.classList.add('hidden');
-      }
-
-      // Render the Three Questions
-      const questions = data.questions || (data.next_question ? [data.next_question] : []);
-      if (questions.length === 0) {
-        els.questionsList.innerHTML = '<div style="color:var(--muted); text-align:center; padding:16px;">No further questions for this system.</div>';
-        return;
-      }
-
-      els.questionsList.innerHTML = questions.map((q, idx) => {
-        const isL2 = q.level === '2_Characterization';
-        const cardClass = isL2 ? 'q-card drilldown' : 'q-card';
-        const levelLabel = isL2 ? 'Level 2' : 'Level 1';
-        const levelPill = isL2 ? 'pill-amber' : 'pill-blue';
-        const score = (q.confidence || data.confidence || 0.85).toFixed(2);
-
-        return `
-          <div class="${cardClass}">
-            <div class="q-header">
-              <span class="q-text">${escapeHtml(q.text)}</span>
-              <span class="pill ${levelPill}">${levelLabel}</span>
-            </div>
-            <div class="q-rationale">Purpose: ${escapeHtml(q.rationale || 'Clinical intake evaluation')}</div>
-            <div class="q-meta">
-              <div style="display:flex; gap:6px;">
-                <span class="pill pill-gray">${capitalize(q.system)}</span>
-                <span class="pill pill-gray">${escapeHtml(q.jev_primitive || 'Choice')}</span>
-                <span class="pill pill-green">Conf: ${score}</span>
-              </div>
-              <button class="btn btn-secondary" style="padding:6px 12px; font-size:0.8rem;" onclick='askQuestion(${JSON.stringify(q)})'>
-                ✓ Asked it
-              </button>
-            </div>
+    function renderCard(item) {
+      const red = item.is_red_flag ? 'red' : '';
+      const label = item.label || (item.is_red_flag ? 'Red flag' : 'Suggestion');
+      const score = Number(item.score || 0).toFixed(2);
+      const confidence = Number(item.confidence || 0).toFixed(2);
+      return `
+        <div class="card ${red}">
+          <div class="row" style="justify-content:space-between; align-items:flex-start; gap:12px;">
+            <strong>${escapeHtml(item.text)}</strong>
+            <span class="pill ${item.is_red_flag ? 'red' : 'gray'}">${escapeHtml(label)}</span>
           </div>
-        `;
-      }).join('');
+          <div class="muted" style="margin-top:8px;">${escapeHtml(item.rationale)}</div>
+          <div class="meta">
+            <span class="pill gray">area: ${escapeHtml(item.area)}</span>
+            <span class="pill gray">score: ${score}</span>
+            <span class="pill ${confidence < 0.35 ? 'red' : 'green'}">confidence: ${confidence}</span>
+            <button class="secondary" type="button" onclick='markAsked(${JSON.stringify(item.question_id)})'>Asked it</button>
+          </div>
+        </div>`;
     }
 
-    async function routeEncounter(lastResponse = null) {
-      const historyStr = state.statements.join('. ');
-      const payload = {
-        session_id: state.sessionId,
-        chat_history: historyStr || "Initial clinical presentation",
-        current_system: state.currentResponse ? state.currentResponse.current_system : null,
-        patient_response: lastResponse
-      };
+    async function requestSuggestions() {
+      syncDemographics();
+      const response = await fetch('/api/suggest', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(state)
+      });
+      const payload = await response.json();
+      state.response = payload;
+      renderSuggestions(payload);
+    }
 
-      try {
-        const res = await fetch('/api/route', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error('API routing failed');
-        const data = await res.json();
-        renderThreeQuestions(data);
-      } catch (err) {
+    function scheduleRequest() {
+      if (state.pending) clearTimeout(state.pending);
+      state.pending = setTimeout(() => requestSuggestions().catch(err => {
+        els.status.textContent = 'Request failed';
         console.error(err);
-      }
+      }), 250);
     }
 
-    function addStatement(customText = null) {
-      const text = customText || els.statement.value.trim();
+    function addStatement() {
+      const text = els.statement.value.trim();
       if (!text) return;
-      state.statements.push(text);
+      state.patient_statements.push(text);
       els.statement.value = '';
-      renderChat();
-      routeEncounter(text);
+      renderStatements();
+      scheduleRequest();
     }
 
-    function askQuestion(q) {
-      state.asked.push(q);
-      renderChat();
-      els.statement.placeholder = `Type what patient says to: "${q.text.slice(0, 30)}..."`;
-      els.statement.focus();
-      routeEncounter(`Asked: ${q.text}`);
+    async function markAsked(questionId) {
+      const existing = state.response?.suggestions?.concat(state.response?.red_flags || []).find(item => item.question_id === questionId);
+      state.asked.push({ id: questionId, question: existing?.text || questionId, answer: '' });
+      renderAsked();
+      await requestSuggestions().catch(err => console.error(err));
     }
 
-    async function viewAudit() {
-      els.auditModal.style.display = 'flex';
-      try {
-        const res = await fetch(`/api/sessions/${state.sessionId}`);
-        const data = await res.json();
-        const logs = data.logs || [];
-        if (logs.length === 0) {
-          els.auditRows.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:16px; color:#94a3b8;">No records logged yet.</td></tr>';
-          return;
-        }
-        els.auditRows.innerHTML = logs.map(r => `
-          <tr style="border-bottom:1px solid #f1f5f9;">
-            <td style="padding:8px; color:#64748b;">${new Date(r.timestamp).toLocaleTimeString()}</td>
-            <td style="padding:8px; font-family:monospace; color:#0284c7;">${escapeHtml(r.question_asked_id || '')}</td>
-            <td style="padding:8px;">${escapeHtml(r.patient_response || '')}</td>
-            <td style="padding:8px;"><span class="pill pill-green">${Number(r.jev_confidence_score).toFixed(2)}</span></td>
-          </tr>
-        `).join('');
-      } catch (err) {
-        console.error(err);
-      }
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
     }
 
-    function loadTest(type) {
-      if (type === 'normal') els.statement.value = "No problems, everything feels completely normal.";
-      else if (type === 'urinary') els.statement.value = "It burns when I urinate and my stream is weak and slow.";
-      else if (type === 'retention') els.statement.value = "I cannot pee at all and my bladder is painfully distended!";
-      else if (type === 'cough') els.statement.value = "I've had a persistent productive cough with thick yellow phlegm.";
-      else if (type === 'eye') els.statement.value = "My vision in my right eye has become blurry with flashes of light.";
-      else if (type === 'tooth') els.statement.value = "I have throbbing pain in my upper molar and my gum is swollen.";
-      addStatement();
-    }
-
-    function reset() {
-      state.sessionId = 'sess_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now().toString().slice(-4);
-      state.statements = [];
-      state.asked = [];
-      state.currentResponse = null;
-      els.sessionDisplay.textContent = state.sessionId;
-      renderChat();
-      routeEncounter();
-    }
-
-    function capitalize(s) {
-      if (!s) return '';
-      return s.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    }
-
-    function escapeHtml(str) {
-      return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
-    }
-
-    els.btnSend.addEventListener('click', () => addStatement());
-    els.btnNormal.addEventListener('click', () => addStatement("No problems, everything is normal there."));
-    els.btnReset.addEventListener('click', reset);
-    els.btnViewAudit.addEventListener('click', viewAudit);
-    els.btnCloseAudit.addEventListener('click', () => els.auditModal.style.display = 'none');
-    els.statement.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
+    els.send.addEventListener('click', addStatement);
+    els.statement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
         addStatement();
       }
     });
-
-    init();
+    els.demo.addEventListener('click', () => {
+      els.statement.value = "I'm having trouble peeing";
+      addStatement();
+    });
+    renderStatements();
+    renderAsked();
   </script>
 </body>
 </html>
