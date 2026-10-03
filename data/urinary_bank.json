@@ -1,0 +1,285 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_trouble_peeing",
+      "text": "What does 'trouble peeing' mean for you: hesitancy, weak stream, burning, frequency, urgency, incontinence, or unable to pass urine?",
+      "area": "clarification",
+      "rationale": "Clarifying the symptom pattern guides the next branch of the interview.",
+      "tags": ["clarification", "voiding", "storage"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_unable_to_void",
+      "text": "Are you unable to pass urine at all, or only passing a small amount with a full painful bladder?",
+      "area": "retention",
+      "rationale": "Inability to void can signal acute urinary retention and needs urgent attention.",
+      "tags": ["retention", "voiding"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weak_stream",
+      "text": "Is the urine stream weak, slow, or interrupted?",
+      "area": "voiding",
+      "rationale": "A weak or interrupted stream points toward obstructive or voiding symptoms.",
+      "tags": ["weak-stream", "voiding"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hesitancy",
+      "text": "Do you have trouble starting to pee, or do you have to wait before the urine starts?",
+      "area": "voiding",
+      "rationale": "Hesitancy helps separate obstructive voiding symptoms from other urinary complaints.",
+      "tags": ["hesitancy", "voiding"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_straining",
+      "text": "Do you have to strain or push to get urine out?",
+      "area": "voiding",
+      "rationale": "Straining can suggest outlet obstruction or retention.",
+      "tags": ["straining", "voiding"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_frequency",
+      "text": "Are you peeing more often than usual during the day?",
+      "area": "storage",
+      "rationale": "Frequency can reflect infection, irritation, high urine volume, or bladder symptoms.",
+      "tags": ["frequency", "storage"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_urgency",
+      "text": "Do you get a sudden strong urge to pee that is hard to hold?",
+      "area": "storage",
+      "rationale": "Urgency helps identify bladder irritation or overactivity.",
+      "tags": ["urgency", "storage"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nocturia",
+      "text": "Are you waking up at night to pee? If so, how many times?",
+      "area": "storage",
+      "rationale": "Nocturia can suggest urinary, metabolic, fluid, or medication contributors.",
+      "tags": ["nocturia", "storage"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_incontinence",
+      "text": "Have you been leaking urine or having accidents?",
+      "area": "storage",
+      "rationale": "Incontinence changes the differential and can point to urgency, overflow, or neurogenic causes.",
+      "tags": ["incontinence", "storage"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dysuria",
+      "text": "Does it burn or hurt when you pee?",
+      "area": "infection",
+      "rationale": "Dysuria can indicate infection, irritation, or inflammation.",
+      "tags": ["dysuria", "infection"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and has it been getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and duration help distinguish acute from chronic urinary symptoms.",
+      "tags": ["duration", "timeline"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_urine_color",
+      "text": "What color is your urine? Any pink, red, or brown?",
+      "area": "hematuria",
+      "rationale": "Visible blood can point to infection, stones, trauma, or malignancy.",
+      "tags": ["hematuria", "urine-color"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_chills",
+      "text": "Have you had fever, chills, or sweats with the urinary symptoms?",
+      "area": "infection",
+      "rationale": "Systemic symptoms raise concern for infection or a more serious process.",
+      "tags": ["fever", "chills", "infection"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_flank_pain",
+      "text": "Do you have flank pain, pain in your side or back, or pain that comes in waves?",
+      "area": "pain",
+      "rationale": "Flank pain can suggest kidney involvement or a stone.",
+      "tags": ["flank-pain", "pain"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_suprapubic_pain",
+      "text": "Do you have lower belly or suprapubic pain or pressure?",
+      "area": "pain",
+      "rationale": "Suprapubic discomfort can occur with bladder irritation or retention.",
+      "tags": ["suprapubic-pain", "pain"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_discharge",
+      "text": "Any penile or vaginal discharge, itching, or sores?",
+      "area": "genital",
+      "rationale": "Discharge or sores can suggest a sexually transmitted infection or local irritation.",
+      "tags": ["discharge", "genital"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sex_history",
+      "text": "Have you had any new sexual partners or unprotected sex recently?",
+      "area": "sexual_history",
+      "rationale": "Sexual history helps assess risk for urethritis and related infections.",
+      "tags": ["sexual-history", "sti"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_instrumentation",
+      "text": "Have you had a catheter, procedure, or other recent instrumentation?",
+      "area": "procedure",
+      "rationale": "Recent instrumentation can trigger infection, irritation, or trauma.",
+      "tags": ["catheter", "procedure"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Have you started any new medicines such as anticholinergics, decongestants, opioids, or diuretics?",
+      "area": "medications",
+      "rationale": "Several medications can cause retention, frequency, or urinary changes.",
+      "tags": ["medications", "retention"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fluids_caffeine",
+      "text": "How much are you drinking, and are you using a lot of caffeine or alcohol?",
+      "area": "hydration",
+      "rationale": "Fluid and caffeine intake can drive frequency and nocturia.",
+      "tags": ["fluids", "caffeine"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bowel_function",
+      "text": "Have you been constipated or having trouble with bowel movements?",
+      "area": "bowel",
+      "rationale": "Constipation can worsen urinary symptoms or contribute to retention.",
+      "tags": ["bowel", "constipation"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bph_history",
+      "text": "Have you ever been told you have an enlarged prostate, BPH, or trouble emptying your bladder before?",
+      "area": "history",
+      "rationale": "Past voiding problems or BPH can explain current obstructive symptoms.",
+      "tags": ["bph", "history"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_stone_history",
+      "text": "Have you had kidney stones or bladder stones before?",
+      "area": "history",
+      "rationale": "Prior stones raise the chance that current pain or blood is stone-related.",
+      "tags": ["stones", "history"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_uti_history",
+      "text": "Have you had urinary tract infections before?",
+      "area": "history",
+      "rationale": "A prior UTI history changes the likelihood of recurrence.",
+      "tags": ["uti", "history"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diabetes",
+      "text": "Do you have diabetes or high blood sugar?",
+      "area": "history",
+      "rationale": "Diabetes can increase urinary frequency and infection risk.",
+      "tags": ["diabetes", "history"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy",
+      "text": "Is pregnancy possible right now?",
+      "area": "pregnancy",
+      "rationale": "Pregnancy changes the workup and urgency of urinary symptoms.",
+      "tags": ["pregnancy"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern can guide reassurance and follow-up questions.",
+      "tags": ["concern", "agenda"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_back_pain_neuro",
+      "text": "Do you have new back pain, leg weakness, numbness, or numbness in the saddle area?",
+      "area": "neuro",
+      "rationale": "Back pain with neurologic symptoms can indicate a spinal emergency.",
+      "tags": ["back-pain", "neuro", "red-flag"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sudden_severe_pain",
+      "text": "Did the pain start suddenly and become severe right away?",
+      "area": "pain",
+      "rationale": "Sudden severe pain can indicate a more urgent urinary or abdominal problem.",
+      "tags": ["severe-pain", "urgent"],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_retention",
+      "label": "Possible urinary retention",
+      "detection_instructions": "Does the patient describe being unable to pass urine, or a painful full bladder with little or no output?",
+      "prompt_question_id": "q_unable_to_void"
+    },
+    {
+      "id": "rf_visible_blood",
+      "label": "Visible blood in urine",
+      "detection_instructions": "Does the patient describe pink, red, brown, or otherwise visibly bloody urine?",
+      "prompt_question_id": "q_urine_color"
+    },
+    {
+      "id": "rf_fever_chills",
+      "label": "Fever or chills with urinary symptoms",
+      "detection_instructions": "Does the patient report fever, chills, or sweats together with urinary symptoms?",
+      "prompt_question_id": "q_fever_chills"
+    },
+    {
+      "id": "rf_flank_pain",
+      "label": "Flank pain",
+      "detection_instructions": "Does the patient report flank pain, side pain, or back pain that suggests kidney involvement?",
+      "prompt_question_id": "q_flank_pain"
+    },
+    {
+      "id": "rf_back_neuro",
+      "label": "Back pain with neurologic symptoms",
+      "detection_instructions": "Does the patient describe new back pain together with leg weakness, leg numbness, saddle numbness, or new leakage of urine?",
+      "prompt_question_id": "q_back_pain_neuro"
+    },
+    {
+      "id": "rf_sudden_severe_pain",
+      "label": "Severe sudden pain",
+      "detection_instructions": "Does the patient describe pain that started suddenly and is severe, or rapidly worsening?",
+      "prompt_question_id": "q_sudden_severe_pain"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_trouble_peeing",
+    "q_duration",
+    "q_urine_color",
+    "q_fever_chills",
+    "q_flank_pain",
+    "q_dysuria",
+    "q_frequency",
+    "q_medications"
+  ]
+}

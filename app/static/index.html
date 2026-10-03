@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patient Interview Helper</title>
+  <style>
+    :root { color-scheme: light; --bg: #f6f4ef; --panel: #fff; --ink: #1d1b19; --muted: #6c655d; --accent: #0f766e; --danger: #b42318; --border: #d9d2c7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: linear-gradient(180deg, #faf7f2 0%, var(--bg) 100%); }
+    header { position: sticky; top: 0; z-index: 5; background: #111827; color: #fff; padding: 12px 16px; font-weight: 600; }
+    .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; padding: 16px; max-width: 1400px; margin: 0 auto; }
+    .banner { background: #fff3cd; border: 1px solid #e6c15f; color: #6b4f00; padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; font-weight: 600; }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 8px 30px rgba(17, 24, 39, 0.05); }
+    .panel h2 { margin: 0; padding: 16px 16px 0; font-size: 1.05rem; }
+    .panel-body { padding: 16px; }
+    textarea, input { width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 12px; font: inherit; background: #fff; }
+    textarea { min-height: 110px; resize: vertical; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    button { border: 0; border-radius: 999px; padding: 10px 14px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
+    button.secondary { background: #374151; }
+    button.ghost { background: #fff; color: var(--ink); border: 1px solid var(--border); }
+    .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+    .stat { font-size: 0.9rem; color: var(--muted); }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { background: #eef2f7; border: 1px solid #d6dde7; border-radius: 999px; padding: 6px 10px; font-size: 0.85rem; }
+    .stack { display: grid; gap: 12px; }
+    .card { border: 1px solid var(--border); border-radius: 14px; padding: 12px; background: #fff; }
+    .card.red { border-color: #f3b4ad; background: #fff7f6; }
+    .card .meta { display: flex; gap: 8px; flex-wrap: wrap; font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 4px 8px; font-size: 0.75rem; font-weight: 700; }
+    .pill.red { background: #fee4e2; color: var(--danger); }
+    .pill.gray { background: #eef2f7; color: #334155; }
+    .pill.green { background: #dcfce7; color: #166534; }
+    .asked-list { display: grid; gap: 8px; margin-top: 12px; }
+    .asked-item { border-left: 3px solid #c7d2fe; padding-left: 10px; color: #334155; }
+    .muted { color: var(--muted); }
+    .badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-size: 0.85rem; }
+    .hidden { display: none; }
+    @media (max-width: 960px) { .wrap { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>Patient Interview Helper MVP</header>
+  <main class="wrap">
+    <section class="panel">
+      <h2>Interview</h2>
+      <div class="panel-body">
+        <div class="banner">Training tool. Not medical advice. Do not enter real patient information.</div>
+        <div class="grid">
+          <label>Age <input id="age" type="number" min="0" placeholder="58" /></label>
+          <label>Sex <input id="sex" type="text" placeholder="male" /></label>
+        </div>
+        <label for="statement"><strong>Patient statement</strong></label>
+        <textarea id="statement" placeholder="Type what the simulated patient says..."></textarea>
+        <div class="toolbar">
+          <button id="send">Add statement</button>
+          <button id="demo" class="ghost" type="button">Load demo</button>
+          <span id="latency" class="badge">-- ms</span>
+          <span id="status" class="stat">Ready</span>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="row" style="justify-content:space-between;"><strong>Patient statements</strong><span id="count" class="stat">0</span></div>
+          <div id="statements" class="stack" style="margin-top:10px;"></div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="row" style="justify-content:space-between;"><strong>Asked</strong><span class="stat">Moves selected items out of suggestions</span></div>
+          <div id="asked" class="asked-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Suggested next questions</h2>
+      <div class="panel-body">
+        <div id="low-confidence" class="card hidden"><strong>Not sure yet, here is a standard checklist.</strong><div class="muted" style="margin-top:6px;">The model is below the confidence threshold or unavailable.</div></div>
+        <div id="red-flags" class="stack"></div>
+        <div id="suggestions" class="stack" style="margin-top:12px;"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const state = { patient_statements: [], demographics: {}, asked: [], response: null, pending: null };
+    const els = {
+      age: document.getElementById('age'), sex: document.getElementById('sex'), statement: document.getElementById('statement'),
+      send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
+      status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
+      asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence')
+    };
+
+    function syncDemographics() {
+      const age = Number(els.age.value);
+      state.demographics = {};
+      if (!Number.isNaN(age) && age > 0) state.demographics.age = age;
+      if (els.sex.value.trim()) state.demographics.sex = els.sex.value.trim();
+    }
+
+    function renderStatements() {
+      els.count.textContent = `${state.patient_statements.length} statements`;
+      els.statements.innerHTML = state.patient_statements.map((text) => `<div class="card"><strong>Patient:</strong> ${escapeHtml(text)}</div>`).join('');
+    }
+
+    function renderAsked() {
+      els.asked.innerHTML = state.asked.map((item) => `<div class="card asked-item"><strong>${escapeHtml(item.question || item.id)}</strong><div class="muted">${escapeHtml(item.answer || '')}</div></div>`).join('');
+    }
+
+    function renderSuggestions(payload) {
+      const redFlags = payload?.red_flags || [];
+      const suggestions = payload?.suggestions || [];
+      els.lowConfidence.classList.toggle('hidden', !payload?.low_confidence);
+      els.redFlags.innerHTML = redFlags.map(renderCard).join('');
+      els.suggestions.innerHTML = suggestions.map(renderCard).join('');
+      els.latency.textContent = `${payload?.latency_ms ?? '--'} ms`;
+      els.status.textContent = payload?.degraded ? 'Degraded mode' : payload?.low_confidence ? 'Low confidence' : 'Live suggestions';
+    }
+
+    function renderCard(item) {
+      const red = item.is_red_flag ? 'red' : '';
+      const label = item.label || (item.is_red_flag ? 'Red flag' : 'Suggestion');
+      const score = Number(item.score || 0).toFixed(2);
+      const confidence = Number(item.confidence || 0).toFixed(2);
+      return `
+        <div class="card ${red}">
+          <div class="row" style="justify-content:space-between; align-items:flex-start; gap:12px;">
+            <strong>${escapeHtml(item.text)}</strong>
+            <span class="pill ${item.is_red_flag ? 'red' : 'gray'}">${escapeHtml(label)}</span>
+          </div>
+          <div class="muted" style="margin-top:8px;">${escapeHtml(item.rationale)}</div>
+          <div class="meta">
+            <span class="pill gray">area: ${escapeHtml(item.area)}</span>
+            <span class="pill gray">score: ${score}</span>
+            <span class="pill ${confidence < 0.35 ? 'red' : 'green'}">confidence: ${confidence}</span>
+            <button class="secondary" type="button" onclick='markAsked(${JSON.stringify(item.question_id)})'>Asked it</button>
+          </div>
+        </div>`;
+    }
+
+    async function requestSuggestions() {
+      syncDemographics();
+      const response = await fetch('/api/suggest', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(state)
+      });
+      const payload = await response.json();
+      state.response = payload;
+      renderSuggestions(payload);
+    }
+
+    function scheduleRequest() {
+      if (state.pending) clearTimeout(state.pending);
+      state.pending = setTimeout(() => requestSuggestions().catch(err => {
+        els.status.textContent = 'Request failed';
+        console.error(err);
+      }), 250);
+    }
+
+    function addStatement() {
+      const text = els.statement.value.trim();
+      if (!text) return;
+      state.patient_statements.push(text);
+      els.statement.value = '';
+      renderStatements();
+      scheduleRequest();
+    }
+
+    async function markAsked(questionId) {
+      const existing = state.response?.suggestions?.concat(state.response?.red_flags || []).find(item => item.question_id === questionId);
+      state.asked.push({ id: questionId, question: existing?.text || questionId, answer: '' });
+      renderAsked();
+      await requestSuggestions().catch(err => console.error(err));
+    }
+
+    function escapeHtml(text) {
+      return String(text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    }
+
+    els.send.addEventListener('click', addStatement);
+    els.statement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        addStatement();
+      }
+    });
+    els.demo.addEventListener('click', () => {
+      els.statement.value = "I'm having trouble peeing";
+      addStatement();
+    });
+    renderStatements();
+    renderAsked();
+  </script>
+</body>
+</html>

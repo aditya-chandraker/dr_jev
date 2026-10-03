@@ -1,0 +1,73 @@
+# Patient Interview Helper MVP
+
+Hackathon demo for clinician training and practice with simulated patients only.
+
+## What it is
+
+The app uses TypeSafe Jev to rank clinician-authored urinary-symptom questions. It never generates new question text. The backend chooses from the question bank, prioritizes red flags, and falls back to a static checklist when confidence is low.
+
+## Setup
+
+This repo is intended to run from the existing local virtual environment in `.venv`.
+
+1. Activate the virtual environment:
+
+```bash
+source .venv/bin/activate
+```
+
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Create `.env` from `.env.example` and set `TYPESAFE_API_KEY`:
+
+```bash
+cp .env.example .env
+```
+
+## Run
+
+Start the app with uvicorn while the virtual environment is active:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Open `http://127.0.0.1:8000/`.
+
+## Smoke test
+
+Run the live SDK check:
+
+```bash
+python scripts/smoke_jev.py
+```
+
+## Tests
+
+Run the fast unit suite:
+
+```bash
+pytest -m "not slow"
+```
+
+## Project layout
+
+- `app/main.py` FastAPI app and routes
+- `app/engine.py` TypeSafe query building and ranking logic
+- `app/bank.py` question bank loading and validation
+- `app/models.py` request and response models
+- `app/static/index.html` single-page UI
+- `data/urinary_bank.json` drafted question bank, red flags, and fallback checklist
+- `scripts/smoke_jev.py` live API smoke test
+- `tests/` unit and live tests
+
+## Known limitations
+
+- The question bank is AI-drafted and not clinically validated.
+- The tool is for training with simulated patients, not for real clinical decisions.
+- Jev's medical ranking quality is unvalidated. The scenario table is a smoke test, not a clinical evaluation.
+- Real use would require clinician review, evaluation against expert judgment, and privacy/regulatory review such as HIPAA and clinical decision support rules.
