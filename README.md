@@ -48,7 +48,7 @@ Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`). The "Load sy
 
 The "Patient" box searches the fictional roster in `data/patients.json` by name; picking a name fills in age, sex, and the health record. Roster entries with a `finchnode_subject` (Morgan Rivera) are read live from FinchNode; the rest are stored synthetic charts in the same one-line format. Every name and record there is fictional.
 
-To skip the simulation and load a patient who has already connected (for example through the session's hosted `url`), put their patient ID (`u_...`, the session's `subject`) in the "FinchNode patient ID" box, or set `FINCHNODE_SUBJECT` in `.env` to use it by default. The button then calls `GET /api/finchnode/patient?subject=...`, which reads that patient's records directly. With neither set, it falls back to the simulation above.
+To skip the simulation and load a patient who has already connected (for example through the session's hosted `url`), set `FINCHNODE_SUBJECT` in `.env` to their patient ID (`u_...`, the session's `subject`). The button then calls `GET /api/finchnode/patient`, which reads that patient's records directly (it also accepts `?subject=...`). With neither set, it falls back to the simulation above.
 
 Names, contact details, and exact birth dates are dropped before anything is sent to Jev. Run `python scripts/smoke_finchnode.py` for a live check.
 

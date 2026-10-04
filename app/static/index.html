@@ -57,10 +57,7 @@
           <label>Age <input id="age" type="number" min="0" placeholder="58" /></label>
           <label>Sex <input id="sex" type="text" placeholder="male" /></label>
         </div>
-        <div class="grid">
-          <label>Patient <input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
-          <label>FinchNode patient ID <input id="patient-id" type="text" placeholder="u_..." autocomplete="off" /></label>
-        </div>
+        <label>Patient <input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
         <datalist id="patient-options"></datalist>
         <label for="statement"><strong>Patient statement</strong></label>
         <textarea id="statement" placeholder="Type what the simulated patient says..."></textarea>
@@ -108,7 +105,7 @@
       send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
       status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
       asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence'),
-      loadPatient: document.getElementById('load-patient'), patientId: document.getElementById('patient-id'), patientSearch: document.getElementById('patient-search'), patientOptions: document.getElementById('patient-options'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
+      loadPatient: document.getElementById('load-patient'), patientSearch: document.getElementById('patient-search'), patientOptions: document.getElementById('patient-options'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
       record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
 
@@ -263,8 +260,7 @@
       els.loadPatient.disabled = true;
       els.status.textContent = 'Loading patient records...';
       try {
-        const subject = els.patientId.value.trim();
-        let chartResponse = await fetch(`/api/finchnode/patient?subject=${encodeURIComponent(subject)}`);
+        let chartResponse = await fetch('/api/finchnode/patient');
         const noSubject = chartResponse.status === 404
           && (await chartResponse.clone().json().catch(() => ({}))).detail?.code === 'no_subject';
         if (noSubject) {
@@ -317,7 +313,6 @@
     }
 
     function applyChart(chart) {
-      els.patientId.value = chart.subject || '';
       els.patientSearch.value = chart.name || '';
       state.health_record = chart.health_record || [];
       els.age.value = chart.demographics?.age ?? '';
