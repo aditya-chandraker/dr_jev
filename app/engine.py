@@ -50,11 +50,14 @@ def _asked_qids(asked: list[dict[str, Any]], registry: BankRegistry) -> set[str]
 
 
 def _build_state(payload: PatientInput) -> dict[str, Any]:
-    return {
+    state: dict[str, Any] = {
         "patient_statements": payload.patient_statements,
         "demographics": payload.demographics,
         "already_asked": payload.asked,
     }
+    if payload.health_record:
+        state["health_record"] = payload.health_record
+    return state
 
 
 def _chunked(items: list[Any], size: int) -> Iterable[list[Any]]:
@@ -70,13 +73,14 @@ def _dump_answer(answer: Any) -> Any:
 
 def _score_question(question: BankQuestion) -> Score:
     instructions = (
-        f"Given what the patient has said so far in `patient_statements` and what is already in `already_asked`, "
+        f"Given what the patient has said so far in `patient_statements`, their chart in `health_record` if present, "
+        f"and what is already in `already_asked`, "
         f"how useful would it be for the clinician to ask next: '{question.text}' (purpose: {question.rationale})?"
     )
     return Score(
         instructions=instructions,
         criteria=[
-            "Not useful now: already answered, or unrelated to what the patient described.",
+            "Not useful now: already answered or documented in the chart, or unrelated to what the patient described.",
             "Somewhat useful: could add context but is not a priority.",
             "Very useful now: directly narrows the likely causes or screens for something important given what was said.",
         ],

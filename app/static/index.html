@@ -57,8 +57,13 @@
         <div class="toolbar">
           <button id="send">Add statement</button>
           <button id="demo" class="ghost" type="button">Load demo</button>
+          <button id="load-patient" class="ghost" type="button">Load synthetic patient</button>
           <span id="latency" class="badge">-- ms</span>
           <span id="status" class="stat">Ready</span>
+        </div>
+        <div id="chart" class="card hidden" style="margin-top:16px;">
+          <div class="row" style="justify-content:space-between;"><strong>Health record (synthetic, FinchNode)</strong><span id="chart-source" class="stat"></span></div>
+          <div id="chart-lines" class="stack" style="margin-top:10px; gap:6px;"></div>
         </div>
         <div style="margin-top:16px;">
           <div class="row" style="justify-content:space-between;"><strong>Patient statements</strong><span id="count" class="stat">0</span></div>
@@ -82,13 +87,53 @@
   </main>
 
   <script>
-    const state = { patient_statements: [], demographics: {}, asked: [], response: null, pending: null };
+    const state = { patient_statements: [], demographics: {}, asked: [], health_record: [], response: null, pending: null };
     const els = {
       age: document.getElementById('age'), sex: document.getElementById('sex'), statement: document.getElementById('statement'),
       send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
       status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
-      asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence')
+      asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence'),
+      loadPatient: document.getElementById('load-patient'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source')
     };
+
+    async function readError(response) {
+      const body = await response.json().catch(() => ({}));
+      const detail = body.detail;
+      return typeof detail === 'string' ? detail : detail?.message || `HTTP ${response.status}`;
+    }
+
+    async function loadSyntheticPatient() {
+      els.loadPatient.disabled = true;
+      els.status.textContent = 'Connecting synthetic patient...';
+      try {
+        const created = await fetch('/api/finchnode/sessions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+        if (!created.ok) throw new Error(await readError(created));
+        const session = await created.json();
+        els.status.textContent = 'Importing synthetic records...';
+        const chartResponse = await fetch(`/api/finchnode/sessions/${encodeURIComponent(session.id)}/patient`);
+        if (!chartResponse.ok) throw new Error(await readError(chartResponse));
+        const chart = await chartResponse.json();
+        state.health_record = chart.health_record || [];
+        if (chart.demographics?.age) els.age.value = chart.demographics.age;
+        if (chart.demographics?.sex) els.sex.value = chart.demographics.sex;
+        renderChart(chart);
+        els.status.textContent = 'Synthetic patient loaded';
+        if (state.patient_statements.length) scheduleRequest();
+      } catch (err) {
+        els.status.textContent = `FinchNode: ${err.message}`;
+        console.error(err);
+      } finally {
+        els.loadPatient.disabled = false;
+      }
+    }
+
+    function renderChart(chart) {
+      els.chart.classList.remove('hidden');
+      els.chartSource.textContent = chart.organization || chart.sources.join(', ');
+      els.chartLines.innerHTML = state.health_record.length
+        ? state.health_record.map((line) => `<div class="asked-item">${escapeHtml(line)}</div>`).join('')
+        : '<div class="muted">No records were shared.</div>';
+    }
 
     function syncDemographics() {
       const age = Number(els.age.value);
@@ -186,6 +231,7 @@
       els.statement.value = "I'm having trouble peeing";
       addStatement();
     });
+    els.loadPatient.addEventListener('click', loadSyntheticPatient);
     renderStatements();
     renderAsked();
   </script>

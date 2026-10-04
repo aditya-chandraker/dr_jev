@@ -9,6 +9,23 @@ class PatientInput(BaseModel):
     patient_statements: list[str] = Field(default_factory=list)
     demographics: dict[str, Any] = Field(default_factory=dict)
     asked: list[dict[str, Any]] = Field(default_factory=list)
+    health_record: list[str] = Field(default_factory=list)
+
+
+class FinchNodeSessionRequest(BaseModel):
+    scenario: str | None = None
+    categories: list[str] | None = None
+    external_id: str | None = None
+
+
+class PatientChart(BaseModel):
+    session_id: str
+    subject: str
+    scenario: str | None = None
+    organization: str | None = None
+    demographics: dict[str, Any] = Field(default_factory=dict)
+    health_record: list[str] = Field(default_factory=list)
+    sources: list[str] = Field(default_factory=list)
 
 
 class Suggestion(BaseModel):

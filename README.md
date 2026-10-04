@@ -28,6 +28,16 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
+## FinchNode synthetic patients (optional)
+
+Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`). The "Load synthetic patient" button in the UI then:
+
+1. calls `POST /api/finchnode/sessions`, which creates a FinchNode Connect session and immediately calls the sandbox `/simulate` endpoint (scenario from `FINCHNODE_SCENARIO`, default `baseline-adult`), so no hosted login is needed;
+2. calls `GET /api/finchnode/sessions/{id}/patient`, which waits for the simulation to complete, reads the patient's records, and returns age, sex, and one-line chart facts (conditions, medications, allergies, recent labs);
+3. sends those chart facts as `health_record` with each `/api/suggest` request, so Jev can skip questions the chart already answers.
+
+Names, contact details, and exact birth dates are dropped before anything is sent to Jev. Run `python scripts/smoke_finchnode.py` for a live check.
+
 ## Run
 
 Start the app with uvicorn while the virtual environment is active:
@@ -60,6 +70,7 @@ pytest -m "not slow"
 - `app/engine.py` TypeSafe query building and ranking logic
 - `app/bank.py` question bank loading and validation
 - `app/models.py` request and response models
+- `app/finchnode.py` FinchNode sandbox client and chart summary
 - `app/static/index.html` single-page UI
 - `data/urinary_bank.json` drafted question bank, red flags, and fallback checklist
 - `scripts/smoke_jev.py` live API smoke test
