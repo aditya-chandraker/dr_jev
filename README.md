@@ -50,15 +50,14 @@ With either path, as soon as the patient answers, the UI fills the "Patient stat
 
 ## FinchNode synthetic patients (optional)
 
-Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`). The "Load patient" button in the UI then:
+Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`).
 
-1. calls `POST /api/finchnode/sessions`, which creates a FinchNode Connect session and immediately calls the sandbox `/simulate` endpoint (scenario from `FINCHNODE_SCENARIO`, default `baseline-adult`), so no hosted login is needed;
-2. calls `GET /api/finchnode/sessions/{id}/patient`, which waits for the simulation to complete, reads the patient's records, and returns age, sex, and one-line chart facts (conditions, medications, allergies, recent labs);
-3. sends those chart facts as `health_record` with each `/api/suggest` request, so Jev can skip questions the chart already answers.
+The "Patient" box searches the fictional roster in `data/patients.json` by name; picking a name fills in age, sex, and the health record, which is sent as `health_record` with each `/api/suggest` request so Jev can skip questions the chart already answers. Roster entries with a `finchnode_subject` (Morgan Rivera) are read live from FinchNode; the rest are stored synthetic charts in the same one-line format. Every name and record there is fictional.
 
-The "Patient" box searches the fictional roster in `data/patients.json` by name; picking a name fills in age, sex, and the health record. Roster entries with a `finchnode_subject` (Morgan Rivera) are read live from FinchNode; the rest are stored synthetic charts in the same one-line format. Every name and record there is fictional.
+The backend also exposes the FinchNode flows directly:
 
-To skip the simulation and load a patient who has already connected (for example through the session's hosted `url`), set `FINCHNODE_SUBJECT` in `.env` to their patient ID (`u_...`, the session's `subject`). The button then calls `GET /api/finchnode/patient`, which reads that patient's records directly (it also accepts `?subject=...`). With neither set, it falls back to the simulation above.
+- `POST /api/finchnode/sessions` creates a Connect session and immediately calls the sandbox `/simulate` endpoint (scenario from `FINCHNODE_SCENARIO`, default `baseline-adult`); `GET /api/finchnode/sessions/{id}/patient` waits for the simulation, reads the records, and returns age, sex, and one-line chart facts (conditions, medications, allergies, recent labs).
+- `GET /api/finchnode/patient?subject=u_...` reads an already-connected patient's records directly (for example one who connected through the session's hosted `url`); without `subject` it uses `FINCHNODE_SUBJECT` from `.env`.
 
 Names, contact details, and exact birth dates are dropped before anything is sent to Jev. Run `python scripts/smoke_finchnode.py` for a live check.
 

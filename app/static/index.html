@@ -66,7 +66,7 @@
         <h2><i data-lucide="clipboard-list"></i>Interview</h2>
         <div class="row">
           <button id="demo" class="ghost small" type="button"><i data-lucide="sparkles"></i>Load demo</button>
-          <button id="load-patient" class="ghost small" type="button"><i data-lucide="user-round-plus"></i>Load patient</button>
+          <span class="badge"><i data-lucide="timer"></i><span id="latency">-- ms</span></span>
         </div>
       </div>
       <div class="panel-body">
@@ -82,7 +82,6 @@
         <div class="toolbar">
           <button id="send"><i data-lucide="plus"></i>Add statement</button>
           <button id="record" class="secondary" type="button" data-icon="mic"><i data-lucide="mic"></i><span id="record-label">Record conversation</span></button>
-          <span class="badge"><i data-lucide="timer"></i><span id="latency">-- ms</span></span>
           <span id="status" class="stat">Ready</span>
         </div>
         <div id="transcript" class="card hidden" style="margin-top:16px;">
@@ -121,7 +120,7 @@
       send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
       status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
       asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence'),
-      loadPatient: document.getElementById('load-patient'), patientSearch: document.getElementById('patient-search'), patientOptions: document.getElementById('patient-options'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
+      patientSearch: document.getElementById('patient-search'), patientOptions: document.getElementById('patient-options'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
       record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
 
@@ -420,31 +419,6 @@
       return typeof detail === 'string' ? detail : detail?.message || `HTTP ${response.status}`;
     }
 
-    async function loadDefaultPatient() {
-      els.loadPatient.disabled = true;
-      els.status.textContent = 'Loading patient records...';
-      try {
-        let chartResponse = await fetch('/api/finchnode/patient');
-        const noSubject = chartResponse.status === 404
-          && (await chartResponse.clone().json().catch(() => ({}))).detail?.code === 'no_subject';
-        if (noSubject) {
-          els.status.textContent = 'Connecting patient...';
-          const created = await fetch('/api/finchnode/sessions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
-          if (!created.ok) throw new Error(await readError(created));
-          const session = await created.json();
-          els.status.textContent = 'Importing records...';
-          chartResponse = await fetch(`/api/finchnode/sessions/${encodeURIComponent(session.id)}/patient`);
-        }
-        if (!chartResponse.ok) throw new Error(await readError(chartResponse));
-        applyChart(await chartResponse.json());
-      } catch (err) {
-        els.status.textContent = `FinchNode: ${err.message}`;
-        console.error(err);
-      } finally {
-        els.loadPatient.disabled = false;
-      }
-    }
-
     let roster = [];
 
     async function loadRoster() {
@@ -607,7 +581,6 @@
       els.statement.value = "I'm having trouble peeing";
       addStatement();
     });
-    els.loadPatient.addEventListener('click', loadDefaultPatient);
     els.patientSearch.addEventListener('change', selectRosterPatient);
     loadRoster();
     refreshIcons();
