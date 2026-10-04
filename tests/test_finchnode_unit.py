@@ -141,6 +141,38 @@ def test_create_session_endpoint_triggers_simulation_immediately() -> None:
     ]
 
 
+def test_patient_by_subject_reads_records_directly(monkeypatch) -> None:
+    paths: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        paths.append(request.url.path)
+        return httpx.Response(200, json=SNAPSHOT)
+
+    monkeypatch.setattr(main, "FINCHNODE_SUBJECT", "u_fromenv")
+    with TestClient(main.app) as http:
+        main.app.state.finchnode_client = _client(handler)
+        explicit = http.get("/api/finchnode/patient", params={"subject": "u_0123456789abcdef"})
+        from_env = http.get("/api/finchnode/patient")
+
+    assert explicit.status_code == 200
+    assert explicit.json()["subject"] == "u_0123456789abcdef"
+    assert explicit.json()["session_id"] is None
+    assert "Allergy: Penicillin (rash, mild)" in explicit.json()["health_record"]
+    assert from_env.json()["subject"] == "u_fromenv"
+    assert paths == ["/api/v1/users/u_0123456789abcdef/records", "/api/v1/users/u_fromenv/records"]
+
+
+def test_patient_by_subject_requires_valid_subject(monkeypatch) -> None:
+    monkeypatch.setattr(main, "FINCHNODE_SUBJECT", "")
+    with TestClient(main.app) as http:
+        main.app.state.finchnode_client = _client(lambda request: httpx.Response(500))
+        missing = http.get("/api/finchnode/patient")
+        invalid = http.get("/api/finchnode/patient", params={"subject": "../app"})
+
+    assert (missing.status_code, missing.json()["detail"]["code"]) == (404, "no_subject")
+    assert (invalid.status_code, invalid.json()["detail"]["code"]) == (422, "invalid_subject")
+
+
 def test_build_state_includes_health_record_only_when_present() -> None:
     assert "health_record" not in _build_state(PatientInput(patient_statements=["hi"]))
     state = _build_state(PatientInput(patient_statements=["hi"], health_record=["Allergy: Penicillin"]))

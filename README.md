@@ -46,6 +46,8 @@ Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`). The "Load sy
 2. calls `GET /api/finchnode/sessions/{id}/patient`, which waits for the simulation to complete, reads the patient's records, and returns age, sex, and one-line chart facts (conditions, medications, allergies, recent labs);
 3. sends those chart facts as `health_record` with each `/api/suggest` request, so Jev can skip questions the chart already answers.
 
+To skip the simulation and load a patient who has already connected (for example through the session's hosted `url`), put their patient ID (`u_...`, the session's `subject`) in the "FinchNode patient ID" box, or set `FINCHNODE_SUBJECT` in `.env` to use it by default. The button then calls `GET /api/finchnode/patient?subject=...`, which reads that patient's records directly. With neither set, it falls back to the simulation above.
+
 Names, contact details, and exact birth dates are dropped before anything is sent to Jev. Run `python scripts/smoke_finchnode.py` for a live check.
 
 ## Run

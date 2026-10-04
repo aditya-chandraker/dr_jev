@@ -37,7 +37,7 @@ class FinchNodeSessionRequest(BaseModel):
 
 
 class PatientChart(BaseModel):
-    session_id: str
+    session_id: str | None = None
     subject: str
     scenario: str | None = None
     organization: str | None = None

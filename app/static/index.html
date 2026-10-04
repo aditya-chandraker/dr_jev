@@ -57,6 +57,7 @@
           <label>Age <input id="age" type="number" min="0" placeholder="58" /></label>
           <label>Sex <input id="sex" type="text" placeholder="male" /></label>
         </div>
+        <label>FinchNode patient ID (optional) <input id="patient-id" type="text" placeholder="u_..." autocomplete="off" /></label>
         <label for="statement"><strong>Patient statement</strong></label>
         <textarea id="statement" placeholder="Type what the simulated patient says..."></textarea>
         <div class="toolbar">
@@ -103,7 +104,7 @@
       send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
       status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
       asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence'),
-      loadPatient: document.getElementById('load-patient'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
+      loadPatient: document.getElementById('load-patient'), patientId: document.getElementById('patient-id'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
       record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
 
@@ -256,15 +257,23 @@
 
     async function loadSyntheticPatient() {
       els.loadPatient.disabled = true;
-      els.status.textContent = 'Connecting synthetic patient...';
+      els.status.textContent = 'Loading patient records...';
       try {
-        const created = await fetch('/api/finchnode/sessions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
-        if (!created.ok) throw new Error(await readError(created));
-        const session = await created.json();
-        els.status.textContent = 'Importing synthetic records...';
-        const chartResponse = await fetch(`/api/finchnode/sessions/${encodeURIComponent(session.id)}/patient`);
+        const subject = els.patientId.value.trim();
+        let chartResponse = await fetch(`/api/finchnode/patient?subject=${encodeURIComponent(subject)}`);
+        const noSubject = chartResponse.status === 404
+          && (await chartResponse.clone().json().catch(() => ({}))).detail?.code === 'no_subject';
+        if (noSubject) {
+          els.status.textContent = 'Connecting synthetic patient...';
+          const created = await fetch('/api/finchnode/sessions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+          if (!created.ok) throw new Error(await readError(created));
+          const session = await created.json();
+          els.status.textContent = 'Importing synthetic records...';
+          chartResponse = await fetch(`/api/finchnode/sessions/${encodeURIComponent(session.id)}/patient`);
+        }
         if (!chartResponse.ok) throw new Error(await readError(chartResponse));
         const chart = await chartResponse.json();
+        els.patientId.value = chart.subject;
         state.health_record = chart.health_record || [];
         if (chart.demographics?.age) els.age.value = chart.demographics.age;
         if (chart.demographics?.sex) els.sex.value = chart.demographics.sex;

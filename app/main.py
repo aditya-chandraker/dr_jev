@@ -4,15 +4,23 @@ from contextlib import asynccontextmanager
 import logging
 import os
 from pathlib import Path
+import re
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.responses import FileResponse
 from typesafe_sdk import AsyncTypeSafeClient
 
 from app.bank import Bank, BankRegistry, load_registry
 from app.engine import suggest_questions
-from app.finchnode import FINCHNODE_SCENARIO, FinchNodeClient, FinchNodeError, summarize_records
+from app.finchnode import (
+    FINCHNODE_SCENARIO,
+    FINCHNODE_SUBJECT,
+    SUBJECT_PATTERN,
+    FinchNodeClient,
+    FinchNodeError,
+    summarize_records,
+)
 from app.models import FinchNodeSessionRequest, PatientChart, PatientInput, SuggestResponse, TranscriptResponse
 from app.transcribe import MAX_AUDIO_BYTES, TranscriptionError, transcribe_encounter
 
@@ -190,6 +198,26 @@ async def api_finchnode_patient(session_id: str) -> PatientChart:
         organization=session.get("organization"),
         **summary,
     )
+
+
+@app.get("/api/finchnode/patient", response_model=PatientChart)
+async def api_finchnode_patient_by_subject(subject: str | None = Query(None)) -> PatientChart:
+    subject = (subject or "").strip() or FINCHNODE_SUBJECT
+    if not subject:
+        raise HTTPException(
+            status_code=404,
+            detail={"code": "no_subject", "message": "No patient ID given and FINCHNODE_SUBJECT is not set"},
+        )
+    if not re.fullmatch(SUBJECT_PATTERN, subject):
+        raise HTTPException(
+            status_code=422,
+            detail={"code": "invalid_subject", "message": "Patient ID should look like u_ followed by letters and digits"},
+        )
+    try:
+        snapshot = await _finchnode().get_records(subject)
+    except FinchNodeError as exc:
+        raise _finchnode_http_error(exc) from exc
+    return PatientChart(subject=subject, **summarize_records(snapshot))
 
 
 @app.get("/")

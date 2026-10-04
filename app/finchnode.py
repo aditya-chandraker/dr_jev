@@ -17,6 +17,8 @@ load_dotenv()
 LOGGER = logging.getLogger(__name__)
 FINCHNODE_BASE_URL = os.getenv("FINCHNODE_BASE_URL", "https://api.finchnode.com/api/v1")
 FINCHNODE_SCENARIO = os.getenv("FINCHNODE_SCENARIO", "baseline-adult")
+FINCHNODE_SUBJECT = os.getenv("FINCHNODE_SUBJECT", "").strip()
+SUBJECT_PATTERN = r"^u_[A-Za-z0-9]+$"
 SIMULATION_TIMEOUT_S = float(os.getenv("FINCHNODE_SIMULATION_TIMEOUT_S", "90"))
 SIMULATION_POLL_S = float(os.getenv("FINCHNODE_SIMULATION_POLL_S", "2"))
 SIMULATION_RESUME_AFTER_S = float(os.getenv("FINCHNODE_SIMULATION_RESUME_AFTER_S", "20"))
