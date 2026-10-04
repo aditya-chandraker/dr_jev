@@ -12,6 +12,24 @@ class PatientInput(BaseModel):
     health_record: list[str] = Field(default_factory=list)
 
 
+class TranscriptTurn(BaseModel):
+    speaker: str
+    text: str
+
+
+class Exchange(BaseModel):
+    question: str
+    answer: str = ""
+
+
+class TranscriptResponse(BaseModel):
+    turns: list[TranscriptTurn] = Field(default_factory=list)
+    patient_statements: list[str] = Field(default_factory=list)
+    exchanges: list[Exchange] = Field(default_factory=list)
+    model: str = ""
+    latency_ms: int = 0
+
+
 class FinchNodeSessionRequest(BaseModel):
     scenario: str | None = None
     categories: list[str] | None = None

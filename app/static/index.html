@@ -38,6 +38,10 @@
     .muted { color: var(--muted); }
     .badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-size: 0.85rem; }
     .hidden { display: none; }
+    button.recording { background: var(--danger); }
+    .turn-physician { border-left: 3px solid #93c5fd; padding-left: 10px; }
+    .turn-patient { border-left: 3px solid #86efac; padding-left: 10px; }
+    .turn-other { border-left: 3px solid #d1d5db; padding-left: 10px; color: var(--muted); }
     @media (max-width: 960px) { .wrap { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -58,8 +62,13 @@
           <button id="send">Add statement</button>
           <button id="demo" class="ghost" type="button">Load demo</button>
           <button id="load-patient" class="ghost" type="button">Load synthetic patient</button>
+          <button id="record" class="secondary" type="button">Record conversation</button>
           <span id="latency" class="badge">-- ms</span>
           <span id="status" class="stat">Ready</span>
+        </div>
+        <div id="transcript" class="card hidden" style="margin-top:16px;">
+          <div class="row" style="justify-content:space-between;"><strong>Last recording transcript</strong><span id="transcript-meta" class="stat"></span></div>
+          <div id="transcript-turns" class="stack" style="margin-top:10px; gap:6px;"></div>
         </div>
         <div id="chart" class="card hidden" style="margin-top:16px;">
           <div class="row" style="justify-content:space-between;"><strong>Health record (synthetic, FinchNode)</strong><span id="chart-source" class="stat"></span></div>
@@ -93,8 +102,109 @@
       send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
       status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
       asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence'),
-      loadPatient: document.getElementById('load-patient'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source')
+      loadPatient: document.getElementById('load-patient'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
+      record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
+
+    const MAX_RECORDING_MS = 120000;
+    const TARGET_SAMPLE_RATE = 16000;
+    const recorder = { media: null, chunks: [], stream: null, timer: null, startedAt: 0 };
+
+    async function toggleRecording() {
+      if (recorder.media) {
+        recorder.media.stop();
+        return;
+      }
+      try {
+        recorder.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      } catch (err) {
+        els.status.textContent = 'Microphone access was blocked';
+        return;
+      }
+      recorder.chunks = [];
+      recorder.media = new MediaRecorder(recorder.stream);
+      recorder.media.ondataavailable = (event) => { if (event.data.size) recorder.chunks.push(event.data); };
+      recorder.media.onstop = finishRecording;
+      recorder.media.start();
+      recorder.startedAt = Date.now();
+      els.record.classList.add('recording');
+      recorder.timer = setInterval(() => {
+        const elapsed = Date.now() - recorder.startedAt;
+        els.record.textContent = `Stop recording (${Math.floor(elapsed / 1000)}s)`;
+        if (elapsed >= MAX_RECORDING_MS) recorder.media.stop();
+      }, 250);
+      els.record.textContent = 'Stop recording (0s)';
+      els.status.textContent = 'Recording...';
+    }
+
+    async function finishRecording() {
+      clearInterval(recorder.timer);
+      recorder.stream.getTracks().forEach((track) => track.stop());
+      const blob = new Blob(recorder.chunks, { type: recorder.media.mimeType || 'audio/webm' });
+      recorder.media = null;
+      els.record.classList.remove('recording');
+      els.record.textContent = 'Record conversation';
+      els.record.disabled = true;
+      els.status.textContent = 'Transcribing...';
+      try {
+        const wav = await toWav(blob);
+        const form = new FormData();
+        form.append('audio', wav, 'encounter.wav');
+        const response = await fetch('/api/transcribe', { method: 'POST', body: form });
+        if (!response.ok) throw new Error(await readError(response));
+        applyTranscript(await response.json());
+      } catch (err) {
+        els.status.textContent = `Transcription failed: ${err.message}`;
+        console.error(err);
+      } finally {
+        els.record.disabled = false;
+      }
+    }
+
+    async function toWav(blob) {
+      const context = new AudioContext();
+      const decoded = await context.decodeAudioData(await blob.arrayBuffer());
+      await context.close();
+      const length = Math.ceil(decoded.duration * TARGET_SAMPLE_RATE);
+      const offline = new OfflineAudioContext(1, length, TARGET_SAMPLE_RATE);
+      const source = offline.createBufferSource();
+      source.buffer = decoded;
+      source.connect(offline.destination);
+      source.start();
+      const samples = (await offline.startRendering()).getChannelData(0);
+      const buffer = new ArrayBuffer(44 + samples.length * 2);
+      const view = new DataView(buffer);
+      const writeText = (offset, text) => [...text].forEach((ch, i) => view.setUint8(offset + i, ch.charCodeAt(0)));
+      writeText(0, 'RIFF'); view.setUint32(4, 36 + samples.length * 2, true); writeText(8, 'WAVE');
+      writeText(12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+      view.setUint32(24, TARGET_SAMPLE_RATE, true); view.setUint32(28, TARGET_SAMPLE_RATE * 2, true);
+      view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+      writeText(36, 'data'); view.setUint32(40, samples.length * 2, true);
+      samples.forEach((sample, i) => view.setInt16(44 + i * 2, Math.max(-1, Math.min(1, sample)) * 0x7fff, true));
+      return new Blob([buffer], { type: 'audio/wav' });
+    }
+
+    function applyTranscript(transcript) {
+      renderTranscript(transcript);
+      transcript.exchanges.forEach((exchange) => state.asked.push({ question: exchange.question, answer: exchange.answer }));
+      state.patient_statements.push(...transcript.patient_statements);
+      renderStatements();
+      renderAsked();
+      if (transcript.patient_statements.length) {
+        els.status.textContent = `Added ${transcript.patient_statements.length} patient statement(s)`;
+        scheduleRequest();
+      } else {
+        els.status.textContent = 'No patient speech detected';
+      }
+    }
+
+    function renderTranscript(transcript) {
+      els.transcript.classList.remove('hidden');
+      els.transcriptMeta.textContent = `${transcript.model} · ${transcript.latency_ms} ms`;
+      els.transcriptTurns.innerHTML = transcript.turns.length
+        ? transcript.turns.map((turn) => `<div class="turn-${escapeHtml(turn.speaker)}"><strong>${escapeHtml(turn.speaker[0].toUpperCase() + turn.speaker.slice(1))}:</strong> ${escapeHtml(turn.text)}</div>`).join('')
+        : '<div class="muted">No intelligible speech.</div>';
+    }
 
     async function readError(response) {
       const body = await response.json().catch(() => ({}));
@@ -232,6 +342,7 @@
       addStatement();
     });
     els.loadPatient.addEventListener('click', loadSyntheticPatient);
+    els.record.addEventListener('click', toggleRecording);
     renderStatements();
     renderAsked();
   </script>

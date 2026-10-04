@@ -6,14 +6,15 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from typesafe_sdk import AsyncTypeSafeClient
 
 from app.bank import Bank, BankRegistry, load_registry
 from app.engine import suggest_questions
 from app.finchnode import FINCHNODE_SCENARIO, FinchNodeClient, FinchNodeError, summarize_records
-from app.models import FinchNodeSessionRequest, PatientChart, PatientInput, SuggestResponse
+from app.models import FinchNodeSessionRequest, PatientChart, PatientInput, SuggestResponse, TranscriptResponse
+from app.transcribe import MAX_AUDIO_BYTES, TranscriptionError, transcribe_encounter
 
 
 load_dotenv()
@@ -119,6 +120,23 @@ async def api_suggest(payload: PatientInput) -> SuggestResponse:
         response.low_confidence,
     )
     return response
+
+
+@app.post("/api/transcribe", response_model=TranscriptResponse)
+async def api_transcribe(audio: UploadFile = File(...)) -> TranscriptResponse:
+    data = await audio.read(MAX_AUDIO_BYTES + 1)
+    try:
+        transcript = await transcribe_encounter(data, audio.content_type)
+    except TranscriptionError as exc:
+        raise HTTPException(status_code=exc.status or 502, detail=exc.message) from exc
+    logging.info(
+        "Transcribed %d bytes into %d turns (%d patient) in %sms",
+        len(data),
+        len(transcript.turns),
+        len(transcript.patient_statements),
+        transcript.latency_ms,
+    )
+    return transcript
 
 
 def _finchnode() -> FinchNodeClient:
