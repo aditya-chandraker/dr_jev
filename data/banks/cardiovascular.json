@@ -1,0 +1,318 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_heart",
+      "text": "What is the main problem: chest pain, palpitations, shortness of breath, leg swelling, dizziness, or fainting?",
+      "area": "clarification",
+      "rationale": "Clarifying the main complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "cardiac"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_chest_pain_character",
+      "text": "How would you describe the chest pain: pressure, squeezing, sharp, burning, or tearing?",
+      "area": "chest-pain",
+      "rationale": "Quality of pain helps separate ischemic, pleuritic, and aortic causes.",
+      "tags": [
+        "chest-pain",
+        "character"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_chest_pain_ongoing",
+      "text": "Is the chest pain happening right now, or has it lasted more than 15 to 20 minutes?",
+      "area": "chest-pain",
+      "rationale": "Ongoing or prolonged pain raises concern for acute coronary syndrome.",
+      "tags": [
+        "chest-pain",
+        "acs",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_radiation",
+      "text": "Does the pain spread to your arm, jaw, neck, or back?",
+      "area": "chest-pain",
+      "rationale": "Radiation to arm, jaw, or back increases likelihood of cardiac or aortic causes.",
+      "tags": [
+        "radiation",
+        "acs"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_exertional",
+      "text": "Does it come on with exertion or stress and ease with rest?",
+      "area": "chest-pain",
+      "rationale": "Exertional pattern suggests angina.",
+      "tags": [
+        "angina",
+        "exertion"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_associated_symptoms",
+      "text": "Do you also have sweating, nausea, shortness of breath, or lightheadedness with it?",
+      "area": "chest-pain",
+      "rationale": "Associated autonomic symptoms raise concern for myocardial infarction.",
+      "tags": [
+        "diaphoresis",
+        "acs"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tearing_back",
+      "text": "Did you feel a sudden tearing pain in your chest or back?",
+      "area": "aortic",
+      "rationale": "This suggests aortic dissection.",
+      "tags": [
+        "dissection",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_palpitations",
+      "text": "Do you feel your heart racing, pounding, skipping beats, or fluttering? How long do episodes last?",
+      "area": "rhythm",
+      "rationale": "Pattern and duration help identify arrhythmia.",
+      "tags": [
+        "palpitations",
+        "arrhythmia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_syncope",
+      "text": "Have you fainted or nearly fainted? Was there any warning, and did it happen during exertion?",
+      "area": "syncope",
+      "rationale": "Exertional or unexplained syncope can indicate dangerous arrhythmia or structural disease.",
+      "tags": [
+        "syncope",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dizziness",
+      "text": "Do you feel lightheaded or dizzy, especially when standing up?",
+      "area": "dizziness",
+      "rationale": "Orthostatic dizziness suggests hypovolemia or autonomic causes.",
+      "tags": [
+        "dizziness",
+        "orthostatic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sob",
+      "text": "Are you short of breath with activity or at rest, and has that changed recently?",
+      "area": "dyspnea",
+      "rationale": "Dyspnea may reflect heart failure, ischemia, or arrhythmia.",
+      "tags": [
+        "dyspnea",
+        "heart-failure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_orthopnea_pnd",
+      "text": "Do you need extra pillows to sleep, or wake up at night gasping for breath?",
+      "area": "heart-failure",
+      "rationale": "These are classic symptoms of heart failure.",
+      "tags": [
+        "orthopnea",
+        "pnd"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_leg_swelling",
+      "text": "Do you have swelling in your legs or ankles? One leg or both?",
+      "area": "edema",
+      "rationale": "Bilateral edema suggests heart failure, while unilateral suggests DVT.",
+      "tags": [
+        "edema",
+        "dvt"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_claudication",
+      "text": "Do you get calf or leg pain when walking that goes away with rest?",
+      "area": "vascular",
+      "rationale": "Claudication suggests peripheral artery disease.",
+      "tags": [
+        "claudication",
+        "pad"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_risk_factors",
+      "text": "Do you have high blood pressure, high cholesterol, diabetes, or smoke?",
+      "area": "risk-factors",
+      "rationale": "These are the major modifiable risk factors for coronary disease.",
+      "tags": [
+        "hypertension",
+        "cholesterol",
+        "diabetes",
+        "smoking"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cardiac_history",
+      "text": "Have you had a heart attack, stent, bypass, heart failure, valve disease, or an abnormal rhythm?",
+      "area": "history",
+      "rationale": "Known cardiac disease heavily affects risk.",
+      "tags": [
+        "cardiac-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_history",
+      "text": "Has any close relative had a heart attack, sudden death, or heart disease before age 55 to 60?",
+      "area": "history",
+      "rationale": "Premature family history raises risk for coronary and inherited heart disease.",
+      "tags": [
+        "family-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_stimulants",
+      "text": "Do you use cocaine, amphetamines, energy drinks, or large amounts of caffeine?",
+      "area": "triggers",
+      "rationale": "Stimulants can cause arrhythmias and coronary spasm.",
+      "tags": [
+        "stimulants",
+        "cocaine"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "What heart or blood pressure medicines do you take, and have you missed doses or started anything new?",
+      "area": "medications",
+      "rationale": "Medication changes or non-adherence can explain symptoms.",
+      "tags": [
+        "medications",
+        "adherence"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_recent_illness_travel",
+      "text": "Have you had a recent infection, surgery, long trip, or period of immobility?",
+      "area": "risk-factors",
+      "rationale": "These raise risk of myocarditis, pericarditis, or pulmonary embolism.",
+      "tags": [
+        "travel",
+        "surgery",
+        "pe"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pleuritic_positional",
+      "text": "Is the pain sharper when lying flat, breathing in, or better leaning forward?",
+      "area": "chest-pain",
+      "rationale": "This pattern suggests pericarditis.",
+      "tags": [
+        "pericarditis",
+        "positional"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_home_bp",
+      "text": "Have you checked your blood pressure or heart rate at home? What were the readings?",
+      "area": "vitals",
+      "rationale": "Home readings add objective context.",
+      "tags": [
+        "blood-pressure",
+        "vitals"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_exercise_tolerance",
+      "text": "How far can you walk or how many stairs can you climb before you have to stop, and has that changed?",
+      "area": "function",
+      "rationale": "Functional capacity tracks severity and trend.",
+      "tags": [
+        "exercise-tolerance"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_ongoing_chest_pain",
+      "label": "Ongoing or prolonged chest pain",
+      "detection_instructions": "Does the patient report chest pressure or pain happening now or lasting over 15 to 20 minutes?",
+      "prompt_question_id": "q_chest_pain_ongoing"
+    },
+    {
+      "id": "rf_acs_features",
+      "label": "Chest pain with sweating, nausea, or breathlessness",
+      "detection_instructions": "Does the patient report chest pain with sweating, nausea, shortness of breath, or spreading to the arm or jaw?",
+      "prompt_question_id": "q_associated_symptoms"
+    },
+    {
+      "id": "rf_dissection",
+      "label": "Sudden tearing chest or back pain",
+      "detection_instructions": "Does the patient describe sudden severe tearing pain in the chest or back?",
+      "prompt_question_id": "q_tearing_back"
+    },
+    {
+      "id": "rf_syncope",
+      "label": "Fainting or near-fainting",
+      "detection_instructions": "Does the patient report fainting, especially with exertion, palpitations, or no warning?",
+      "prompt_question_id": "q_syncope"
+    },
+    {
+      "id": "rf_pe_features",
+      "label": "Possible pulmonary embolism",
+      "detection_instructions": "Does the patient report sudden shortness of breath or pleuritic pain with calf swelling, recent surgery, or long travel?",
+      "prompt_question_id": "q_recent_illness_travel"
+    },
+    {
+      "id": "rf_severe_dyspnea",
+      "label": "Severe shortness of breath",
+      "detection_instructions": "Does the patient report severe breathlessness at rest or waking gasping at night?",
+      "prompt_question_id": "q_orthopnea_pnd"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_heart",
+    "q_chest_pain_character",
+    "q_chest_pain_ongoing",
+    "q_palpitations",
+    "q_syncope",
+    "q_sob",
+    "q_risk_factors",
+    "q_medications"
+  ]
+}

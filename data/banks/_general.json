@@ -1,0 +1,55 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_main_complaint",
+      "text": "What is the main problem that brought you in today, and where in your body are you feeling it?",
+      "area": "clarification",
+      "rationale": "Identifying the main complaint and body region lets the system choose the right follow-up question set.",
+      "tags": ["clarification", "general"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and has it been getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and trajectory help distinguish acute from chronic problems.",
+      "tags": ["duration", "timeline"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_severity",
+      "text": "On a scale of 0 to 10, how bad is it, and is it affecting your sleep or daily activities?",
+      "area": "severity",
+      "rationale": "Severity and functional impact guide urgency.",
+      "tags": ["severity", "function"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_associated_symptoms",
+      "text": "Have you had any other symptoms along with it, such as fever, weight loss, fatigue, or feeling generally unwell?",
+      "area": "associated",
+      "rationale": "Associated and constitutional symptoms help flag systemic illness.",
+      "tags": ["associated", "constitutional"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Are you taking any medicines or supplements, and have you started anything new recently?",
+      "area": "medications",
+      "rationale": "Medications are a common cause of new symptoms.",
+      "tags": ["medications"],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": ["concern", "agenda"],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [],
+  "fallback_checklist": ["q_clarify_main_complaint", "q_duration", "q_severity", "q_associated_symptoms"]
+}

@@ -1,0 +1,353 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_msk",
+      "text": "Which joint, bone, or muscle is bothering you, and what is the main problem: pain, swelling, stiffness, weakness, or trouble moving it?",
+      "area": "clarification",
+      "rationale": "Clarifying the location and main complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "msk"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_injury",
+      "text": "Did this start after an injury, fall, or twisting movement? What happened?",
+      "area": "trauma",
+      "rationale": "Mechanism of injury guides fracture and ligament assessment.",
+      "tags": [
+        "trauma",
+        "mechanism"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weight_bearing",
+      "text": "Can you put weight on the leg or use the arm normally, or is it too painful?",
+      "area": "function",
+      "rationale": "Inability to bear weight or use the limb after injury suggests fracture or severe sprain.",
+      "tags": [
+        "weight-bearing",
+        "function",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_deformity",
+      "text": "Does the limb look misshapen, or did you hear or feel a pop or snap?",
+      "area": "trauma",
+      "rationale": "Visible deformity or a pop points to fracture, dislocation, or tendon/ligament rupture.",
+      "tags": [
+        "deformity",
+        "fracture",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and course distinguish acute injury from chronic or inflammatory conditions.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain_character",
+      "text": "How would you describe the pain: sharp, aching, burning, throbbing? What makes it better or worse?",
+      "area": "pain",
+      "rationale": "Pain quality and triggers help separate mechanical from inflammatory or neuropathic pain.",
+      "tags": [
+        "pain",
+        "character"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_swelling_warmth",
+      "text": "Is the area swollen, red, or warm to the touch?",
+      "area": "inflammation",
+      "rationale": "Swelling with warmth and redness suggests inflammation or infection.",
+      "tags": [
+        "swelling",
+        "warmth"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hot_joint_fever",
+      "text": "Is one joint hot, swollen, and very painful, and have you had fever or chills?",
+      "area": "infection",
+      "rationale": "A hot swollen joint with fever may be septic arthritis, which needs urgent treatment.",
+      "tags": [
+        "septic-arthritis",
+        "fever",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_morning_stiffness",
+      "text": "Are you stiff in the morning, and for how long does the stiffness last?",
+      "area": "inflammatory",
+      "rationale": "Prolonged morning stiffness (over 30 to 60 minutes) suggests inflammatory arthritis.",
+      "tags": [
+        "stiffness",
+        "inflammatory"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_multiple_joints",
+      "text": "Are other joints affected, and does the pain move from joint to joint or affect both sides?",
+      "area": "pattern",
+      "rationale": "Joint distribution helps separate osteoarthritis, rheumatoid arthritis, gout, and viral causes.",
+      "tags": [
+        "polyarthritis",
+        "pattern"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_locking_instability",
+      "text": "Does the joint lock, catch, or give way?",
+      "area": "mechanical",
+      "rationale": "Mechanical symptoms suggest meniscal tear, loose body, or ligament injury.",
+      "tags": [
+        "locking",
+        "instability"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_numbness_weakness",
+      "text": "Do you have numbness, tingling, or weakness in the arm or leg?",
+      "area": "neurologic",
+      "rationale": "Neurologic symptoms may indicate nerve root or peripheral nerve involvement.",
+      "tags": [
+        "numbness",
+        "weakness",
+        "neuro"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cauda_equina",
+      "text": "Do you have numbness between your legs or around the saddle area, new trouble controlling urine or stool, or both legs weak?",
+      "area": "neurologic",
+      "rationale": "These are signs of cauda equina syndrome, a surgical emergency.",
+      "tags": [
+        "cauda-equina",
+        "back-pain",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_night_rest_pain",
+      "text": "Does the pain wake you at night or stay present when you are resting?",
+      "area": "pain",
+      "rationale": "Constant night or rest pain raises concern for infection, tumor, or inflammation.",
+      "tags": [
+        "night-pain",
+        "rest-pain"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weight_cancer",
+      "text": "Have you had unintended weight loss, or a history of cancer?",
+      "area": "constitutional",
+      "rationale": "Back or bone pain with cancer history or weight loss raises concern for metastasis.",
+      "tags": [
+        "weight-loss",
+        "cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_limb_perfusion",
+      "text": "Is the limb cold, pale, or numb, or have you lost the pulse or color in it?",
+      "area": "vascular",
+      "rationale": "A pulseless, pale, or cold limb suggests vascular compromise.",
+      "tags": [
+        "vascular",
+        "perfusion",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_calf_swelling",
+      "text": "Is one calf swollen, tender, or warm?",
+      "area": "thromboembolism",
+      "rationale": "Unilateral calf findings raise concern for deep vein thrombosis.",
+      "tags": [
+        "dvt",
+        "calf"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_overuse",
+      "text": "Have you recently changed your exercise, work tasks, or repetitive activities?",
+      "area": "overuse",
+      "rationale": "Overuse and training errors are common causes of tendinopathy and stress injury.",
+      "tags": [
+        "overuse",
+        "activity"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_prior_injury",
+      "text": "Have you injured or had surgery on this area before?",
+      "area": "history",
+      "rationale": "Prior injury raises the chance of recurrence or degenerative change.",
+      "tags": [
+        "history",
+        "injury"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_rash_eye_gut",
+      "text": "Do you have a rash, psoriasis, red or painful eyes, or bowel symptoms like diarrhea?",
+      "area": "systemic",
+      "rationale": "Extra-articular features suggest spondyloarthritis or reactive arthritis.",
+      "tags": [
+        "psoriasis",
+        "uveitis",
+        "systemic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_autoimmune",
+      "text": "Does anyone in your family have rheumatoid arthritis, lupus, psoriasis, or gout?",
+      "area": "history",
+      "rationale": "Family history raises likelihood of autoimmune or crystal arthritis.",
+      "tags": [
+        "family-history",
+        "autoimmune"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take steroids, statins, fluoroquinolone antibiotics, or diuretics, or have you started anything new?",
+      "area": "medications",
+      "rationale": "These medicines are linked to tendon injury, myopathy, or gout flares.",
+      "tags": [
+        "medications",
+        "tendon"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_falls_bone_health",
+      "text": "Have you had falls, fractures from minor injury, or been told you have osteoporosis?",
+      "area": "bone-health",
+      "rationale": "Fragility fractures suggest low bone density.",
+      "tags": [
+        "falls",
+        "osteoporosis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_treatments_tried",
+      "text": "What have you tried so far, such as rest, ice, pain relievers, or physical therapy, and did it help?",
+      "area": "management",
+      "rationale": "Prior response to treatment informs next steps.",
+      "tags": [
+        "treatment",
+        "response"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function_work",
+      "text": "How is this affecting your sleep, work, or daily activities?",
+      "area": "function",
+      "rationale": "Functional impact guides urgency and treatment planning.",
+      "tags": [
+        "function",
+        "impact"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_cant_bear_weight",
+      "label": "Cannot bear weight or use limb after injury",
+      "detection_instructions": "Does the patient report they cannot put weight on the limb or use it after an injury?",
+      "prompt_question_id": "q_weight_bearing"
+    },
+    {
+      "id": "rf_deformity",
+      "label": "Visible deformity or audible pop",
+      "detection_instructions": "Does the patient describe a deformed limb, or hearing or feeling a snap or pop at injury?",
+      "prompt_question_id": "q_deformity"
+    },
+    {
+      "id": "rf_septic_joint",
+      "label": "Hot swollen joint with fever",
+      "detection_instructions": "Does the patient describe a single hot, swollen, painful joint together with fever or chills?",
+      "prompt_question_id": "q_hot_joint_fever"
+    },
+    {
+      "id": "rf_cauda_equina",
+      "label": "Back pain with saddle numbness or bladder/bowel change",
+      "detection_instructions": "Does the patient report saddle numbness, new loss of bladder or bowel control, or progressive leg weakness?",
+      "prompt_question_id": "q_cauda_equina"
+    },
+    {
+      "id": "rf_limb_ischemia",
+      "label": "Cold, pale, or pulseless limb",
+      "detection_instructions": "Does the patient describe a limb that is cold, pale, blue, or has lost sensation or pulse?",
+      "prompt_question_id": "q_limb_perfusion"
+    },
+    {
+      "id": "rf_cancer_pain",
+      "label": "Night pain with cancer history or weight loss",
+      "detection_instructions": "Does the patient report pain that wakes them at night or is constant, with weight loss or a history of cancer?",
+      "prompt_question_id": "q_weight_cancer"
+    },
+    {
+      "id": "rf_progressive_weakness",
+      "label": "New or worsening weakness",
+      "detection_instructions": "Does the patient report arm or leg weakness that is new or getting worse?",
+      "prompt_question_id": "q_numbness_weakness"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_msk",
+    "q_injury",
+    "q_duration",
+    "q_weight_bearing",
+    "q_swelling_warmth",
+    "q_numbness_weakness",
+    "q_night_rest_pain",
+    "q_medications"
+  ]
+}

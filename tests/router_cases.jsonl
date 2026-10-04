@@ -1,0 +1,30 @@
+{"statements":["I've had a cough for three weeks and I get winded climbing stairs"],"acceptable_primary":["respiratory"],"expect_red_flags_any_of":[],"notes":"basic respiratory"}
+{"statements":["It burns when I pee and I'm going every hour"],"acceptable_primary":["urinary"],"expect_red_flags_any_of":[],"notes":"basic urinary"}
+{"statements":["My tooth hurts and my cheek is swollen"],"acceptable_primary":["oral"],"expect_red_flags_any_of":["oral:rf_swelling_fever","oral:rf_deep_infection"],"notes":"dental abscess, swelling"}
+{"statements":["I twisted my ankle playing soccer and can't put weight on it"],"acceptable_primary":["musculoskeletal"],"expect_red_flags_any_of":["musculoskeletal:rf_cant_bear_weight"],"notes":"injury red flag"}
+{"statements":["I have the worst headache of my life and it came on suddenly"],"acceptable_primary":["head_neck","neurological"],"expect_red_flags_any_of":["head_neck:rf_thunderclap"],"notes":"thunderclap; either routing ok"}
+{"statements":["I've been vomiting blood since this morning"],"acceptable_primary":["digestive"],"expect_red_flags_any_of":["digestive:rf_upper_gi_bleed"],"notes":"GI bleed"}
+{"statements":["I have crushing chest pressure spreading to my left arm and I'm sweating"],"acceptable_primary":["cardiovascular"],"expect_red_flags_any_of":["cardiovascular:rf_ongoing_chest_pain","cardiovascular:rf_acs_features"],"notes":"ACS"}
+{"statements":["My left arm and face feel weak and my speech is slurred"],"acceptable_primary":["neurological"],"expect_red_flags_any_of":["neurological:rf_stroke_signs"],"notes":"stroke"}
+{"statements":["I have an itchy red rash on my arms since starting a new antibiotic"],"acceptable_primary":["dermatological"],"expect_red_flags_any_of":[],"notes":"drug rash"}
+{"statements":["I've had a sore throat for 5 days, it's hard to swallow and my voice sounds muffled"],"acceptable_primary":["head_neck"],"expect_red_flags_any_of":["head_neck:rf_airway"],"notes":"throat/airway"}
+{"statements":["I'm having trouble peeing and my lower belly hurts"],"acceptable_primary":["urinary"],"expect_red_flags_any_of":["urinary:rf_retention"],"notes":"retention"}
+{"statements":["I feel off"],"acceptable_primary":[],"expect_red_flags_any_of":[],"notes":"unclear"}
+{"statements":["I haven't been feeling well lately"],"acceptable_primary":[],"expect_red_flags_any_of":[],"notes":"unclear"}
+{"statements":["I have chest pain and I also can't pee"],"acceptable_primary":["cardiovascular","urinary"],"expect_red_flags_any_of":[],"notes":"multi-domain; both banks should be active"}
+{"statements":["My lower back hurts, I'm numb between my legs and I'm leaking urine"],"acceptable_primary":["musculoskeletal","urinary","neurological"],"expect_red_flags_any_of":["musculoskeletal:rf_cauda_equina","neurological:rf_cord_compression"],"notes":"cauda equina"}
+{"statements":["I get stomach pain after eating and a lot of heartburn"],"acceptable_primary":["digestive"],"expect_red_flags_any_of":[],"notes":"basic digestive"}
+{"statements":["I wheeze and my chest feels tight at night"],"acceptable_primary":["respiratory"],"expect_red_flags_any_of":[],"notes":"asthma-like"}
+{"statements":["My knee is swollen and hot and I have a fever"],"acceptable_primary":["musculoskeletal"],"expect_red_flags_any_of":["musculoskeletal:rf_septic_joint"],"notes":"septic joint"}
+{"statements":["I've had ear pain and muffled hearing for two days"],"acceptable_primary":["head_neck"],"expect_red_flags_any_of":[],"notes":"ear"}
+{"statements":["My gums bleed whenever I brush"],"acceptable_primary":["oral"],"expect_red_flags_any_of":[],"notes":"basic oral"}
+{"statements":["I get dizzy and the room spins when I roll over in bed"],"acceptable_primary":["neurological"],"expect_red_flags_any_of":[],"notes":"vertigo"}
+{"statements":["A mole on my back changed shape and bleeds"],"acceptable_primary":["dermatological"],"expect_red_flags_any_of":["dermatological:rf_changing_mole"],"notes":"mole"}
+{"statements":["I have hives all over and my lips are swelling and it's hard to breathe"],"acceptable_primary":["dermatological","respiratory","oral"],"expect_red_flags_any_of":["dermatological:rf_anaphylaxis","respiratory:rf_severe_dyspnea","oral:rf_airway_swelling"],"notes":"anaphylaxis, cross-bank red flag"}
+{"statements":["I'm short of breath and my right calf is swollen after a long flight"],"acceptable_primary":["respiratory","cardiovascular"],"expect_red_flags_any_of":["respiratory:rf_pleuritic_dvt","cardiovascular:rf_pe_features"],"notes":"possible PE"}
+{"statements":["I have blood in my urine and pain in my side"],"acceptable_primary":["urinary"],"expect_red_flags_any_of":["urinary:rf_visible_blood","urinary:rf_flank_pain"],"notes":"hematuria + flank pain"}
+{"statements":["My back hurts"],"acceptable_primary":["musculoskeletal"],"expect_red_flags_any_of":[],"notes":"vague but routable"}
+{"statements":["I have a headache","also I have a fever and my neck is stiff"],"acceptable_primary":["head_neck","neurological"],"expect_red_flags_any_of":["head_neck:rf_meningitis","neurological:rf_meningitis"],"notes":"multi-turn; red flag appears on turn 2"}
+{"statements":["What's the weather like today?"],"acceptable_primary":[],"expect_red_flags_any_of":[],"notes":"non-medical; must route unclear"}
+{"statements":["I've had diarrhea for 3 days and I'm very thirsty and dizzy when I stand"],"acceptable_primary":["digestive"],"expect_red_flags_any_of":["digestive:rf_dehydration"],"notes":"dehydration"}
+{"statements":["My tongue is swollen and I'm having trouble breathing"],"acceptable_primary":["oral","respiratory","dermatological"],"expect_red_flags_any_of":["oral:rf_airway_swelling"],"notes":"airway swelling"}

@@ -1,0 +1,339 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_gi",
+      "text": "What is the main digestive problem: belly pain, nausea or vomiting, diarrhea, constipation, heartburn, trouble swallowing, or blood in stool?",
+      "area": "clarification",
+      "rationale": "Clarifying the main complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "gi"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain_location",
+      "text": "Where is the belly pain, and does it move or spread anywhere, such as to your back or shoulder?",
+      "area": "pain",
+      "rationale": "Location and radiation narrow the differential.",
+      "tags": [
+        "abdominal-pain",
+        "location"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain_onset_severity",
+      "text": "Did the pain start suddenly, how severe is it from 0 to 10, and is it constant or does it come in waves?",
+      "area": "pain",
+      "rationale": "Sudden severe pain suggests perforation, obstruction, ischemia, or colic.",
+      "tags": [
+        "severe-pain",
+        "onset",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_rigid_abdomen",
+      "text": "Is your belly hard, very tender to touch, or painful with any movement or bumps in the car?",
+      "area": "pain",
+      "rationale": "Peritoneal signs suggest perforation or peritonitis.",
+      "tags": [
+        "peritonitis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_meals",
+      "text": "Is the pain related to eating, such as better or worse after meals?",
+      "area": "pain",
+      "rationale": "Relationship to meals helps separate ulcer, gallbladder, and mesenteric causes.",
+      "tags": [
+        "meals",
+        "ulcer",
+        "gallbladder"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nausea_vomiting",
+      "text": "Do you have nausea or vomiting? How often, and what does the vomit look like?",
+      "area": "symptoms",
+      "rationale": "Vomiting pattern and content provide diagnostic clues.",
+      "tags": [
+        "vomiting",
+        "nausea"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hematemesis",
+      "text": "Have you vomited blood or material that looks like coffee grounds?",
+      "area": "bleeding",
+      "rationale": "This indicates upper GI bleeding requiring urgent evaluation.",
+      "tags": [
+        "hematemesis",
+        "gi-bleed",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_melena",
+      "text": "Have you had black, tarry, sticky stools?",
+      "area": "bleeding",
+      "rationale": "Melena indicates upper GI bleeding.",
+      "tags": [
+        "melena",
+        "gi-bleed",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_rectal_blood",
+      "text": "Have you seen red blood in or on your stool, or on the toilet paper? How much?",
+      "area": "bleeding",
+      "rationale": "Hematochezia can be from hemorrhoids, colitis, diverticulosis, or colorectal cancer.",
+      "tags": [
+        "hematochezia",
+        "gi-bleed"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diarrhea",
+      "text": "Do you have diarrhea? How many loose stools a day, and for how long?",
+      "area": "bowel",
+      "rationale": "Frequency and duration separate infectious, inflammatory, and functional causes.",
+      "tags": [
+        "diarrhea",
+        "duration"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_constipation_gas",
+      "text": "When was your last bowel movement, and are you still passing gas?",
+      "area": "bowel",
+      "rationale": "Inability to pass stool or gas with distension and vomiting suggests obstruction.",
+      "tags": [
+        "obstruction",
+        "constipation",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_distension",
+      "text": "Is your belly swollen or bloated?",
+      "area": "bowel",
+      "rationale": "Distension supports obstruction, ascites, or functional disease.",
+      "tags": [
+        "distension",
+        "bloating"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_heartburn",
+      "text": "Do you have heartburn or acid coming up, especially after meals or lying down?",
+      "area": "upper-gi",
+      "rationale": "Reflux symptoms support GERD.",
+      "tags": [
+        "gerd",
+        "heartburn"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dysphagia_weight",
+      "text": "Do you have trouble swallowing, food sticking, or unintended weight loss?",
+      "area": "upper-gi",
+      "rationale": "Dysphagia with weight loss raises concern for esophageal or gastric cancer.",
+      "tags": [
+        "dysphagia",
+        "weight-loss",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_jaundice",
+      "text": "Have your skin or eyes turned yellow, or has your urine become dark and stool pale?",
+      "area": "hepatobiliary",
+      "rationale": "Jaundice suggests liver, gallbladder, or bile duct disease.",
+      "tags": [
+        "jaundice",
+        "hepatobiliary"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_chills",
+      "text": "Have you had fever or chills with the belly symptoms?",
+      "area": "infection",
+      "rationale": "Fever raises concern for appendicitis, cholangitis, diverticulitis, or infection.",
+      "tags": [
+        "fever",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dehydration",
+      "text": "Are you very thirsty, dizzy on standing, or passing very little urine?",
+      "area": "hydration",
+      "rationale": "These suggest significant dehydration.",
+      "tags": [
+        "dehydration",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_food_travel",
+      "text": "Did the symptoms start after a meal others also got sick from, restaurant food, or travel?",
+      "area": "infection",
+      "rationale": "Exposure history points to infectious gastroenteritis.",
+      "tags": [
+        "food-borne",
+        "travel"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_appetite_weight",
+      "text": "Has your appetite changed or have you lost weight without trying?",
+      "area": "constitutional",
+      "rationale": "Unintended weight loss raises concern for malignancy or inflammatory disease.",
+      "tags": [
+        "weight-loss",
+        "appetite"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nsaids_alcohol",
+      "text": "Do you take NSAIDs like ibuprofen or aspirin, or drink alcohol regularly?",
+      "area": "risk-factors",
+      "rationale": "NSAIDs and alcohol cause gastritis, ulcers, and liver and pancreatic disease.",
+      "tags": [
+        "nsaids",
+        "alcohol"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_other_medications",
+      "text": "Have you started antibiotics or any other new medicines?",
+      "area": "medications",
+      "rationale": "Medications are a common cause of GI symptoms including C. difficile risk after antibiotics.",
+      "tags": [
+        "medications",
+        "antibiotics"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_gi_history",
+      "text": "Do you have a history of ulcers, gallstones, IBD, IBS, celiac disease, or abdominal surgery?",
+      "area": "history",
+      "rationale": "Past history shapes the likely cause and risk of obstruction or recurrence.",
+      "tags": [
+        "history",
+        "surgery"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_history",
+      "text": "Does anyone in your family have colon cancer, IBD, or celiac disease?",
+      "area": "history",
+      "rationale": "Family history affects risk and workup urgency.",
+      "tags": [
+        "family-history",
+        "colon-cancer"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy",
+      "text": "Is pregnancy possible right now?",
+      "area": "pregnancy",
+      "rationale": "Pregnancy changes the differential and imaging choices, including ectopic pregnancy.",
+      "tags": [
+        "pregnancy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_upper_gi_bleed",
+      "label": "Vomiting blood or black stools",
+      "detection_instructions": "Does the patient report vomiting blood or coffee-ground material, or black tarry stools?",
+      "prompt_question_id": "q_hematemesis"
+    },
+    {
+      "id": "rf_heavy_rectal_bleed",
+      "label": "Significant rectal bleeding",
+      "detection_instructions": "Does the patient report large amounts of red blood from the rectum, or bleeding with lightheadedness?",
+      "prompt_question_id": "q_rectal_blood"
+    },
+    {
+      "id": "rf_acute_abdomen",
+      "label": "Sudden severe abdominal pain or rigid abdomen",
+      "detection_instructions": "Does the patient describe sudden severe belly pain, a hard tender belly, or pain with any movement?",
+      "prompt_question_id": "q_rigid_abdomen"
+    },
+    {
+      "id": "rf_obstruction",
+      "label": "Possible bowel obstruction",
+      "detection_instructions": "Does the patient report persistent vomiting with a swollen belly and no stool or gas passing?",
+      "prompt_question_id": "q_constipation_gas"
+    },
+    {
+      "id": "rf_jaundice_fever",
+      "label": "Jaundice with fever",
+      "detection_instructions": "Does the patient report yellow skin or eyes together with fever, chills, or right upper abdominal pain?",
+      "prompt_question_id": "q_jaundice"
+    },
+    {
+      "id": "rf_dehydration",
+      "label": "Signs of significant dehydration",
+      "detection_instructions": "Does the patient report severe thirst, dizziness on standing, or very little urine?",
+      "prompt_question_id": "q_dehydration"
+    },
+    {
+      "id": "rf_dysphagia_weight_loss",
+      "label": "Trouble swallowing with weight loss",
+      "detection_instructions": "Does the patient report progressive difficulty swallowing with unintended weight loss?",
+      "prompt_question_id": "q_dysphagia_weight"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_gi",
+    "q_pain_location",
+    "q_pain_onset_severity",
+    "q_nausea_vomiting",
+    "q_rectal_blood",
+    "q_diarrhea",
+    "q_constipation_gas",
+    "q_nsaids_alcohol"
+  ]
+}

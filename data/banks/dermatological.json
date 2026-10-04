@@ -1,0 +1,329 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_skin",
+      "text": "What is the skin problem: a rash, itch, bump, mole, wound, blisters, or something else? Where is it?",
+      "area": "clarification",
+      "rationale": "Clarifying the main skin complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "skin"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did it start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and course separate acute reactions from chronic conditions.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_location_spread",
+      "text": "Where did it begin, and has it spread to other areas?",
+      "area": "distribution",
+      "rationale": "Distribution and spread are key to rash diagnosis.",
+      "tags": [
+        "distribution",
+        "spread"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_appearance",
+      "text": "What does it look like: flat or raised, red, scaly, blistered, weeping, or crusted?",
+      "area": "morphology",
+      "rationale": "Morphology narrows the dermatologic differential.",
+      "tags": [
+        "morphology",
+        "appearance"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_itch_pain",
+      "text": "Is it itchy, painful, burning, or numb?",
+      "area": "symptoms",
+      "rationale": "Itch versus pain separates eczema, urticaria, and shingles.",
+      "tags": [
+        "itch",
+        "pain"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_unwell",
+      "text": "Do you have fever or feel generally unwell?",
+      "area": "systemic",
+      "rationale": "Systemic illness raises concern for serious infection or drug reaction.",
+      "tags": [
+        "fever",
+        "systemic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_spreading_redness",
+      "text": "Is a red, warm, swollen area spreading, or are there red streaks?",
+      "area": "infection",
+      "rationale": "This suggests cellulitis or lymphangitis.",
+      "tags": [
+        "cellulitis",
+        "infection",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mucosal_blisters",
+      "text": "Do you have blisters, peeling skin, or sores in your mouth, eyes, or genitals?",
+      "area": "severe-reaction",
+      "rationale": "Mucosal involvement suggests SJS/TEN or pemphigus.",
+      "tags": [
+        "sjs",
+        "mucosal",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_new_medication",
+      "text": "Have you started any new medicine, supplement, or antibiotic in the past few weeks?",
+      "area": "medications",
+      "rationale": "Drug reactions typically appear days to weeks after starting a new medicine.",
+      "tags": [
+        "drug-reaction",
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hives_swelling",
+      "text": "Do you have hives, swelling of the lips, tongue, or face, or trouble breathing?",
+      "area": "allergy",
+      "rationale": "Urticaria with angioedema or breathing difficulty can be anaphylaxis.",
+      "tags": [
+        "hives",
+        "anaphylaxis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_purpuric_rash",
+      "text": "Is the rash purple or red spots that do not fade when you press on them, especially with fever?",
+      "area": "petechiae",
+      "rationale": "Non-blanching rash with fever may indicate meningococcemia or vasculitis.",
+      "tags": [
+        "petechiae",
+        "purpura",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_shingles_pattern",
+      "text": "Is there a painful blistering rash on one side of your body, face, or near your eye?",
+      "area": "infection",
+      "rationale": "This suggests herpes zoster, and eye involvement is sight-threatening.",
+      "tags": [
+        "shingles",
+        "eye",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mole_change",
+      "text": "Has a mole or spot changed in size, shape, color, or started to bleed or itch?",
+      "area": "lesion",
+      "rationale": "Changes in a pigmented lesion raise concern for melanoma.",
+      "tags": [
+        "mole",
+        "melanoma",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nonhealing",
+      "text": "Do you have a sore or wound that has not healed in several weeks?",
+      "area": "lesion",
+      "rationale": "Non-healing lesions may be skin cancer, venous or diabetic ulcers, or infection.",
+      "tags": [
+        "non-healing",
+        "ulcer"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_new_products",
+      "text": "Have you used new soaps, cosmetics, detergents, plants, jewelry, or other products?",
+      "area": "exposures",
+      "rationale": "Contact dermatitis is triggered by new exposures.",
+      "tags": [
+        "contact-dermatitis",
+        "exposure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_infectious_contacts",
+      "text": "Does anyone around you have a similar rash, lice, scabies, or cold sores?",
+      "area": "infectious",
+      "rationale": "Close contact spread suggests scabies, impetigo, or viral infection.",
+      "tags": [
+        "contacts",
+        "scabies"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_outdoor_ticks",
+      "text": "Have you been in tall grass or woods, been bitten by a tick or insect, or had a lot of sun exposure?",
+      "area": "exposures",
+      "rationale": "These exposures raise risk of Lyme disease, rickettsial infection, and photosensitivity.",
+      "tags": [
+        "ticks",
+        "sun"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_allergy_atopy",
+      "text": "Do you have eczema, asthma, hay fever, or food or drug allergies?",
+      "area": "history",
+      "rationale": "Atopic history supports eczema or allergic causes.",
+      "tags": [
+        "atopy",
+        "allergy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_skin_history",
+      "text": "Have you had skin conditions or skin cancer before, or does anyone in your family?",
+      "area": "history",
+      "rationale": "Personal and family history shape risk and likely diagnosis.",
+      "tags": [
+        "history",
+        "family-history",
+        "skin-cancer"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diabetes_immune",
+      "text": "Do you have diabetes, poor circulation, or a weakened immune system?",
+      "area": "history",
+      "rationale": "These conditions increase risk of severe skin infection and slow healing.",
+      "tags": [
+        "diabetes",
+        "immunosuppression"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy",
+      "text": "Is pregnancy possible right now?",
+      "area": "pregnancy",
+      "rationale": "Pregnancy affects rash differential and safe treatment choices.",
+      "tags": [
+        "pregnancy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_treatments_tried",
+      "text": "What creams, medicines, or home remedies have you tried, and did they help?",
+      "area": "management",
+      "rationale": "Treatment response and prior steroid use alter appearance and next steps.",
+      "tags": [
+        "treatment",
+        "steroids"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_occupation_hobbies",
+      "text": "Does your work or hobbies involve chemicals, water, gloves, or animals?",
+      "area": "exposures",
+      "rationale": "Occupational exposures cause contact dermatitis and zoonotic infections.",
+      "tags": [
+        "occupation",
+        "exposure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_spreading_infection",
+      "label": "Rapidly spreading redness with fever",
+      "detection_instructions": "Does the patient describe a red, warm, swollen area that is spreading quickly, with red streaks or fever?",
+      "prompt_question_id": "q_spreading_redness"
+    },
+    {
+      "id": "rf_mucosal_reaction",
+      "label": "Blisters or peeling with mucosal involvement",
+      "detection_instructions": "Does the patient report blisters, peeling skin, or sores in the mouth, eyes, or genitals, especially after a new medicine?",
+      "prompt_question_id": "q_mucosal_blisters"
+    },
+    {
+      "id": "rf_anaphylaxis",
+      "label": "Hives or swelling with breathing difficulty",
+      "detection_instructions": "Does the patient report hives, facial or tongue swelling, or trouble breathing?",
+      "prompt_question_id": "q_hives_swelling"
+    },
+    {
+      "id": "rf_non_blanching_rash",
+      "label": "Non-blanching rash with fever",
+      "detection_instructions": "Does the patient describe purple or red spots that do not fade with pressure, with fever or feeling very ill?",
+      "prompt_question_id": "q_purpuric_rash"
+    },
+    {
+      "id": "rf_zoster_eye",
+      "label": "Painful blistering rash near the eye",
+      "detection_instructions": "Does the patient report a painful one-sided blistering rash on the face or near the eye?",
+      "prompt_question_id": "q_shingles_pattern"
+    },
+    {
+      "id": "rf_changing_mole",
+      "label": "Changing or bleeding mole",
+      "detection_instructions": "Does the patient report a mole or spot that has changed in size, shape, or color, or bleeds?",
+      "prompt_question_id": "q_mole_change"
+    },
+    {
+      "id": "rf_diabetic_wound",
+      "label": "Non-healing wound",
+      "detection_instructions": "Does the patient report a sore that has not healed in weeks, especially with diabetes or poor circulation?",
+      "prompt_question_id": "q_nonhealing"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_skin",
+    "q_duration",
+    "q_location_spread",
+    "q_itch_pain",
+    "q_fever_unwell",
+    "q_new_medication",
+    "q_new_products",
+    "q_treatments_tried"
+  ]
+}

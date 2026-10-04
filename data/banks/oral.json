@@ -1,0 +1,350 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_mouth_problem",
+      "text": "What is bothering you in your mouth: tooth pain, gum problems, sores, swelling, dry mouth, taste changes, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main oral complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "oral"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tooth_pain",
+      "text": "Where is the tooth pain, and is it sharp, throbbing, or triggered by hot, cold, sweet, or chewing?",
+      "area": "dental",
+      "rationale": "Pain pattern helps separate pulpitis, abscess, cracked tooth, and sensitivity.",
+      "tags": [
+        "tooth-pain",
+        "dental"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and trajectory distinguish acute infection from chronic problems.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_face_swelling",
+      "text": "Is there swelling in your face, cheek, jaw, or under your tongue?",
+      "area": "infection",
+      "rationale": "Swelling suggests a dental abscess or spreading odontogenic infection.",
+      "tags": [
+        "swelling",
+        "infection",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_swallow_open_mouth",
+      "text": "Do you have trouble opening your mouth, swallowing, or controlling saliva?",
+      "area": "airway",
+      "rationale": "Trismus, dysphagia, or drooling can signal deep space infection threatening the airway.",
+      "tags": [
+        "trismus",
+        "dysphagia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_breathing_swelling",
+      "text": "Is your tongue, lip, or throat swelling, or is it hard to breathe?",
+      "area": "airway",
+      "rationale": "Swelling with breathing difficulty may be angioedema or infection and is an emergency.",
+      "tags": [
+        "angioedema",
+        "airway",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_chills",
+      "text": "Have you had fever, chills, or felt generally unwell?",
+      "area": "infection",
+      "rationale": "Systemic symptoms indicate spreading infection.",
+      "tags": [
+        "fever",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_gum_bleeding",
+      "text": "Do your gums bleed, look swollen or red, or have they been pulling away from your teeth?",
+      "area": "gums",
+      "rationale": "These are signs of gingivitis or periodontitis.",
+      "tags": [
+        "gums",
+        "periodontal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mouth_sores",
+      "text": "Do you have any sores or ulcers in your mouth? How many, and do they come and go?",
+      "area": "lesions",
+      "rationale": "Recurrent aphthae differ from persistent ulcers or systemic disease.",
+      "tags": [
+        "ulcer",
+        "lesion"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nonhealing",
+      "text": "Has any sore, lump, or patch in your mouth lasted longer than two to three weeks?",
+      "area": "lesions",
+      "rationale": "Non-healing lesions raise concern for oral cancer and need biopsy evaluation.",
+      "tags": [
+        "non-healing",
+        "cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_white_red_patches",
+      "text": "Have you noticed white or red patches on your tongue, cheeks, or gums that don't wipe off?",
+      "area": "lesions",
+      "rationale": "Leukoplakia and erythroplakia are premalignant lesions.",
+      "tags": [
+        "leukoplakia",
+        "erythroplakia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tongue_changes",
+      "text": "Has your tongue changed in color, texture, or sensation, or does it burn?",
+      "area": "tongue",
+      "rationale": "Tongue changes may reflect candidiasis, nutritional deficiency, or burning mouth syndrome.",
+      "tags": [
+        "tongue",
+        "burning"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_numbness",
+      "text": "Do you have numbness or tingling in your lip, chin, tongue, or face?",
+      "area": "neurologic",
+      "rationale": "Persistent numbness can indicate nerve involvement from infection, trauma, or tumor.",
+      "tags": [
+        "numbness",
+        "nerve",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dry_mouth",
+      "text": "Is your mouth dry, or do you have trouble chewing or swallowing dry food?",
+      "area": "salivary",
+      "rationale": "Xerostomia raises caries risk and may relate to medications or Sjogren's disease.",
+      "tags": [
+        "dry-mouth",
+        "salivary"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_taste_breath",
+      "text": "Do you have a bad taste, bad breath, or pus draining in your mouth?",
+      "area": "infection",
+      "rationale": "These suggest dental or gum infection or sinus drainage.",
+      "tags": [
+        "halitosis",
+        "taste"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trauma",
+      "text": "Did you injure your mouth, teeth, or jaw recently? Is any tooth loose, chipped, or knocked out?",
+      "area": "trauma",
+      "rationale": "Dental trauma timing affects whether an avulsed tooth can be saved.",
+      "tags": [
+        "trauma",
+        "avulsion"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_recent_procedure",
+      "text": "Have you had a recent tooth extraction, filling, or other dental procedure?",
+      "area": "procedure",
+      "rationale": "Recent procedures raise risk of dry socket, infection, or bleeding.",
+      "tags": [
+        "procedure",
+        "dental"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bleeding",
+      "text": "Is there bleeding that won't stop after pressure, or bleeding without a clear cause?",
+      "area": "bleeding",
+      "rationale": "Persistent oral bleeding may reflect anticoagulation or a bleeding disorder.",
+      "tags": [
+        "bleeding",
+        "anticoagulant"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_jaw_pain",
+      "text": "Do you have jaw pain, clicking, or locking, or grind your teeth at night?",
+      "area": "tmj",
+      "rationale": "Jaw symptoms point toward temporomandibular disorder or bruxism.",
+      "tags": [
+        "jaw",
+        "tmj"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tobacco_alcohol",
+      "text": "Do you smoke, vape, chew tobacco, or drink alcohol regularly?",
+      "area": "risk-factors",
+      "rationale": "Tobacco and alcohol are the main risk factors for oral cancer.",
+      "tags": [
+        "tobacco",
+        "alcohol",
+        "risk-factor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_neck_lump",
+      "text": "Have you noticed any lumps in your neck or under your jaw?",
+      "area": "lymph",
+      "rationale": "Neck nodes can accompany oral infection or malignancy.",
+      "tags": [
+        "neck-lump",
+        "lymph"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weight_eating",
+      "text": "Have you lost weight, or has it become hard to eat because of the pain?",
+      "area": "constitutional",
+      "rationale": "Weight loss or poor intake raises urgency and concern for malignancy.",
+      "tags": [
+        "weight-loss",
+        "intake"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take blood thinners, bisphosphonates, steroid inhalers, or medicines that dry your mouth?",
+      "area": "medications",
+      "rationale": "Several drugs affect bleeding, healing, jaw health, or saliva.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diabetes_immune",
+      "text": "Do you have diabetes or a weakened immune system?",
+      "area": "history",
+      "rationale": "These conditions worsen oral infections and slow healing.",
+      "tags": [
+        "diabetes",
+        "immunosuppression"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dental_care",
+      "text": "When did you last see a dentist, and how often do you brush and floss?",
+      "area": "hygiene",
+      "rationale": "Care history helps frame the likelihood of preventable disease.",
+      "tags": [
+        "hygiene",
+        "dental-care"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_airway_swelling",
+      "label": "Lip, tongue, or throat swelling with breathing difficulty",
+      "detection_instructions": "Does the patient report swelling of the tongue, lips, or throat, or trouble breathing?",
+      "prompt_question_id": "q_breathing_swelling"
+    },
+    {
+      "id": "rf_deep_infection",
+      "label": "Facial swelling with trouble swallowing or opening mouth",
+      "detection_instructions": "Does the patient report facial or neck swelling together with difficulty swallowing, drooling, or being unable to open the mouth?",
+      "prompt_question_id": "q_swallow_open_mouth"
+    },
+    {
+      "id": "rf_swelling_fever",
+      "label": "Facial swelling with fever",
+      "detection_instructions": "Does the patient report facial or jaw swelling with fever, chills, or feeling very unwell?",
+      "prompt_question_id": "q_face_swelling"
+    },
+    {
+      "id": "rf_nonhealing_lesion",
+      "label": "Mouth lesion lasting more than 2 to 3 weeks",
+      "detection_instructions": "Does the patient describe a sore, lump, or patch in the mouth that has not healed in more than two to three weeks?",
+      "prompt_question_id": "q_nonhealing"
+    },
+    {
+      "id": "rf_numbness",
+      "label": "Numbness of lip, chin, or tongue",
+      "detection_instructions": "Does the patient report persistent numbness or tingling of the lip, chin, tongue, or face?",
+      "prompt_question_id": "q_numbness"
+    },
+    {
+      "id": "rf_uncontrolled_bleeding",
+      "label": "Bleeding that will not stop",
+      "detection_instructions": "Does the patient describe oral bleeding that continues despite pressure, particularly on blood thinners?",
+      "prompt_question_id": "q_bleeding"
+    },
+    {
+      "id": "rf_avulsed_tooth",
+      "label": "Knocked-out tooth",
+      "detection_instructions": "Does the patient report a tooth that was knocked out or badly displaced in the last few hours?",
+      "prompt_question_id": "q_trauma"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_mouth_problem",
+    "q_duration",
+    "q_tooth_pain",
+    "q_face_swelling",
+    "q_fever_chills",
+    "q_nonhealing",
+    "q_tobacco_alcohol",
+    "q_medications"
+  ]
+}

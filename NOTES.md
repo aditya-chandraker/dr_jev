@@ -21,6 +21,8 @@ Draft notes for the TypeSafe MVP.
 - A smoke request with one `Noul`, one `Choice`, and one `Score` returned grouped answers under `response.nouls`, `response.choices`, `response.scores`, and `response.answers`.
 - The smoke request reported `request_id`, `model`, and `usage` metadata on the response object.
 - The live API accepted 50, 100, 200, and 400 questions in a single request in this environment.
+- The current default `MAX_QUESTIONS_PER_REQUEST` is `400`, so the MVP sends the whole urinary bank in one call unless overridden.
+- The smoke script now checks for the grouped response fields `nouls`, `choices`, `scores`, and `answers`, then prints the grouped keys explicitly.
 
 ## Live test summary
 

@@ -1,0 +1,337 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_neuro",
+      "text": "What is the main problem: dizziness, weakness, numbness, trouble speaking, vision changes, seizures, memory problems, or tremor?",
+      "area": "clarification",
+      "rationale": "Clarifying the main neurological complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "neuro"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sudden_onset",
+      "text": "Did the symptoms come on suddenly, and when exactly did they begin?",
+      "area": "stroke",
+      "rationale": "Abrupt onset with known time matters for stroke treatment windows.",
+      "tags": [
+        "onset",
+        "stroke",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_face_arm_speech",
+      "text": "Have you had face drooping, arm or leg weakness, or slurred or confused speech?",
+      "area": "stroke",
+      "rationale": "These are the cardinal signs of stroke.",
+      "tags": [
+        "stroke",
+        "fast",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vision_loss",
+      "text": "Have you lost vision in one or both eyes, or have double vision?",
+      "area": "vision",
+      "rationale": "Vision loss may signal stroke, optic nerve disease, or retinal artery occlusion.",
+      "tags": [
+        "vision",
+        "diplopia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vertigo_vs_lightheaded",
+      "text": "Is the dizziness a spinning feeling, or more like lightheadedness or being about to faint?",
+      "area": "dizziness",
+      "rationale": "True vertigo points to vestibular causes, while lightheadedness suggests cardiovascular causes.",
+      "tags": [
+        "vertigo",
+        "dizziness"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vertigo_neuro_signs",
+      "text": "With the dizziness, do you have trouble walking, double vision, slurred speech, or severe headache?",
+      "area": "dizziness",
+      "rationale": "These features suggest posterior circulation stroke rather than benign vertigo.",
+      "tags": [
+        "vertigo",
+        "stroke",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_loc",
+      "text": "Did you lose consciousness or blank out? Did anyone see what happened?",
+      "area": "consciousness",
+      "rationale": "Witness account helps separate syncope from seizure.",
+      "tags": [
+        "syncope",
+        "seizure",
+        "loc"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_seizure",
+      "text": "Did you have shaking, tongue biting, loss of bladder control, or confusion afterward?",
+      "area": "seizure",
+      "rationale": "These features support a generalized seizure.",
+      "tags": [
+        "seizure",
+        "postictal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_seizure_history",
+      "text": "Have you had seizures before, or are you on seizure medicine?",
+      "area": "seizure",
+      "rationale": "History shapes whether this is a first seizure or breakthrough event.",
+      "tags": [
+        "epilepsy",
+        "history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache",
+      "text": "Do you have a new or severe headache with these symptoms?",
+      "area": "headache",
+      "rationale": "Headache with neurologic symptoms raises concern for bleeding or mass.",
+      "tags": [
+        "headache",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_numbness_pattern",
+      "text": "Where is the numbness or tingling, and is it on one side, in a glove-stocking pattern, or in one limb?",
+      "area": "sensory",
+      "rationale": "Distribution suggests central versus peripheral versus nerve root causes.",
+      "tags": [
+        "numbness",
+        "pattern"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weakness_pattern",
+      "text": "Which muscles are weak, how fast did it develop, and is it getting worse?",
+      "area": "motor",
+      "rationale": "Pattern and tempo separate stroke, Guillain-Barre, myasthenia, and nerve compression.",
+      "tags": [
+        "weakness",
+        "progression"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_balance_falls",
+      "text": "Have you had trouble with balance, walking, or falls?",
+      "area": "gait",
+      "rationale": "Gait disturbance can reflect cerebellar, vestibular, or myelopathic disease.",
+      "tags": [
+        "gait",
+        "falls"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_memory_confusion",
+      "text": "Have you or others noticed memory loss, confusion, or personality changes?",
+      "area": "cognition",
+      "rationale": "Acute confusion needs urgent evaluation, while gradual decline suggests dementia.",
+      "tags": [
+        "memory",
+        "confusion"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_acute_confusion",
+      "text": "Is the confusion new over hours or days, or fluctuating?",
+      "area": "cognition",
+      "rationale": "Acute confusion suggests delirium, infection, stroke, or metabolic cause.",
+      "tags": [
+        "delirium",
+        "acute-confusion",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tremor",
+      "text": "Do you have tremor, stiffness, or slowed movement? Is the tremor at rest or with action?",
+      "area": "movement",
+      "rationale": "Tremor type helps separate Parkinson's disease from essential tremor.",
+      "tags": [
+        "tremor",
+        "parkinsonism"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_stiff_neck",
+      "text": "Do you have fever with neck stiffness or sensitivity to light?",
+      "area": "infection",
+      "rationale": "This suggests meningitis or encephalitis.",
+      "tags": [
+        "meningitis",
+        "fever",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_head_injury",
+      "text": "Have you had a recent head injury? Do you take blood thinners?",
+      "area": "trauma",
+      "rationale": "Trauma with anticoagulation raises risk of intracranial bleeding.",
+      "tags": [
+        "head-injury",
+        "anticoagulant",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bladder_bowel_saddle",
+      "text": "Do you have new trouble controlling bladder or bowels, or numbness in the saddle area?",
+      "area": "spinal",
+      "rationale": "These suggest spinal cord or cauda equina compression.",
+      "tags": [
+        "cauda-equina",
+        "myelopathy",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vascular_risk",
+      "text": "Do you have high blood pressure, diabetes, atrial fibrillation, high cholesterol, or smoke?",
+      "area": "risk-factors",
+      "rationale": "These are the major stroke risk factors.",
+      "tags": [
+        "stroke-risk",
+        "afib"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications_substances",
+      "text": "Have you started new medicines, or used alcohol, sedatives, or recreational drugs?",
+      "area": "medications",
+      "rationale": "Medications and substances commonly cause neurologic symptoms.",
+      "tags": [
+        "medications",
+        "substances"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sleep_mood",
+      "text": "How is your sleep and mood, and are you under unusual stress?",
+      "area": "contributors",
+      "rationale": "Sleep deprivation and stress can lower seizure threshold and cause dizziness.",
+      "tags": [
+        "sleep",
+        "mood"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_history",
+      "text": "Does anyone in your family have epilepsy, stroke, dementia, MS, or Parkinson's disease?",
+      "area": "history",
+      "rationale": "Family history informs risk for hereditary neurologic disease.",
+      "tags": [
+        "family-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_stroke_signs",
+      "label": "Face, arm, or speech symptoms",
+      "detection_instructions": "Does the patient report face drooping, arm or leg weakness, or slurred or confused speech?",
+      "prompt_question_id": "q_face_arm_speech"
+    },
+    {
+      "id": "rf_sudden_vision_loss",
+      "label": "Sudden vision loss or double vision",
+      "detection_instructions": "Does the patient report sudden loss of vision or new double vision?",
+      "prompt_question_id": "q_vision_loss"
+    },
+    {
+      "id": "rf_seizure",
+      "label": "Seizure or ongoing seizure activity",
+      "detection_instructions": "Does the patient describe shaking, loss of consciousness, tongue biting, or postictal confusion?",
+      "prompt_question_id": "q_seizure"
+    },
+    {
+      "id": "rf_acute_confusion",
+      "label": "New acute confusion",
+      "detection_instructions": "Does the patient or caregiver report confusion that is new over hours or days?",
+      "prompt_question_id": "q_acute_confusion"
+    },
+    {
+      "id": "rf_meningitis",
+      "label": "Fever with stiff neck",
+      "detection_instructions": "Does the patient report fever with neck stiffness, light sensitivity, or severe headache?",
+      "prompt_question_id": "q_fever_stiff_neck"
+    },
+    {
+      "id": "rf_head_injury",
+      "label": "Head injury with deterioration",
+      "detection_instructions": "Does the patient report a recent head injury, especially on blood thinners, with worsening symptoms?",
+      "prompt_question_id": "q_head_injury"
+    },
+    {
+      "id": "rf_cord_compression",
+      "label": "Saddle numbness or bladder/bowel change",
+      "detection_instructions": "Does the patient describe new loss of bladder or bowel control or numbness in the saddle area?",
+      "prompt_question_id": "q_bladder_bowel_saddle"
+    },
+    {
+      "id": "rf_posterior_stroke",
+      "label": "Dizziness with brainstem features",
+      "detection_instructions": "Does the patient report dizziness with double vision, trouble walking, or slurred speech?",
+      "prompt_question_id": "q_vertigo_neuro_signs"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_neuro",
+    "q_sudden_onset",
+    "q_face_arm_speech",
+    "q_loc",
+    "q_headache",
+    "q_numbness_pattern",
+    "q_weakness_pattern",
+    "q_medications_substances"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "general_bank": "_general.json",
+  "domains": [
+    {
+      "id": "urinary",
+      "label": "Urinary",
+      "file": "urinary.json",
+      "router_description": "urinary symptoms: trouble peeing, weak stream, hesitancy, burning with urination, frequency, urgency, leaking or incontinence, blood in urine, inability to pass urine, flank or suprapubic pain related to the urinary tract",
+      "keywords": [
+        "pee",
+        "urine",
+        "urinat",
+        "bladder",
+        "urinary",
+        "burning when i",
+        "incontinen",
+        "uti",
+        "kidney stone"
+      ]
+    },
+    {
+      "id": "respiratory",
+      "label": "Respiratory",
+      "file": "respiratory.json",
+      "router_description": "breathing and lung symptoms: cough, shortness of breath, wheezing, chest tightness with breathing, coughing up phlegm or blood, noisy breathing",
+      "keywords": [
+        "cough",
+        "short of breath",
+        "breath",
+        "wheez",
+        "phlegm",
+        "sputum",
+        "asthma",
+        "copd",
+        "inhaler",
+        "pneumonia"
+      ]
+    },
+    {
+      "id": "oral",
+      "label": "Oral / dental",
+      "file": "oral.json",
+      "router_description": "mouth, teeth, gums, tongue, and lips: tooth pain, gum bleeding, mouth sores, dental swelling, dry mouth, jaw or tooth injury",
+      "keywords": [
+        "tooth",
+        "teeth",
+        "gum",
+        "dentist",
+        "dental",
+        "mouth",
+        "tongue",
+        "lip",
+        "cavity",
+        "denture",
+        "wisdom"
+      ]
+    },
+    {
+      "id": "musculoskeletal",
+      "label": "Musculoskeletal",
+      "file": "musculoskeletal.json",
+      "router_description": "bones, joints, muscles, tendons, and back: joint pain or swelling, injuries, sprains, fractures, stiffness, back pain, limb weakness from musculoskeletal causes",
+      "keywords": [
+        "joint",
+        "knee",
+        "ankle",
+        "shoulder",
+        "hip",
+        "elbow",
+        "wrist",
+        "back pain",
+        "sprain",
+        "fracture",
+        "broke",
+        "muscle",
+        "tendon",
+        "stiff",
+        "swollen joint"
+      ]
+    },
+    {
+      "id": "head_neck",
+      "label": "Head and neck",
+      "file": "head_neck.json",
+      "router_description": "head and neck complaints: headache, neck pain, neck lumps, sore throat, hoarse voice, ear pain or hearing loss, sinus or nasal symptoms, nosebleeds",
+      "keywords": [
+        "headache",
+        "migraine",
+        "sore throat",
+        "throat",
+        "neck",
+        "ear",
+        "hearing",
+        "sinus",
+        "nose",
+        "nosebleed",
+        "hoarse",
+        "tinnitus",
+        "swollen gland",
+        "lump in my neck"
+      ]
+    },
+    {
+      "id": "digestive",
+      "label": "Digestive",
+      "file": "digestive.json",
+      "router_description": "digestive and abdominal symptoms: belly pain, nausea, vomiting, diarrhea, constipation, heartburn, trouble swallowing, bloating, blood in stool, yellow skin or eyes",
+      "keywords": [
+        "stomach",
+        "belly",
+        "abdom",
+        "nausea",
+        "vomit",
+        "diarrhea",
+        "constipat",
+        "heartburn",
+        "reflux",
+        "bowel",
+        "stool",
+        "poop",
+        "bloat",
+        "swallow"
+      ]
+    },
+    {
+      "id": "cardiovascular",
+      "label": "Cardiovascular",
+      "file": "cardiovascular.json",
+      "router_description": "heart and circulation symptoms: chest pain or pressure, palpitations, fainting, leg swelling, high blood pressure concerns, exertional breathlessness thought to be cardiac",
+      "keywords": [
+        "chest pain",
+        "chest pressure",
+        "palpitation",
+        "heart",
+        "faint",
+        "passed out",
+        "blood pressure",
+        "leg swelling",
+        "racing heart",
+        "ankle swelling"
+      ]
+    },
+    {
+      "id": "neurological",
+      "label": "Neurological",
+      "file": "neurological.json",
+      "router_description": "nervous system symptoms: dizziness or vertigo, weakness, numbness or tingling, trouble speaking, vision changes, seizures, memory problems or confusion, tremor, balance problems",
+      "keywords": [
+        "dizzy",
+        "vertigo",
+        "numb",
+        "tingling",
+        "weakness",
+        "slurred",
+        "seizure",
+        "confus",
+        "memory",
+        "tremor",
+        "balance",
+        "double vision",
+        "stroke"
+      ]
+    },
+    {
+      "id": "dermatological",
+      "label": "Skin",
+      "file": "dermatological.json",
+      "router_description": "skin complaints: rash, itching, hives, blisters, moles or skin lesions, wounds that will not heal, skin infections, reactions on the skin",
+      "keywords": [
+        "rash",
+        "itch",
+        "hives",
+        "blister",
+        "mole",
+        "skin",
+        "wound",
+        "sore that",
+        "redness",
+        "eczema",
+        "acne",
+        "sunburn",
+        "bite"
+      ]
+    }
+  ]
+}

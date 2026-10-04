@@ -13,6 +13,7 @@ class PatientInput(BaseModel):
 
 class Suggestion(BaseModel):
     question_id: str
+    bank: str = ""
     text: str
     area: str
     rationale: str
@@ -22,9 +23,23 @@ class Suggestion(BaseModel):
     label: str = ""
 
 
+class RoutedDomain(BaseModel):
+    id: str
+    label: str
+    score: float
+
+
+class RoutingInfo(BaseModel):
+    primary: str | None = None
+    domains: list[RoutedDomain] = Field(default_factory=list)
+    unclear: bool = False
+    method: str = "llm"
+
+
 class SuggestResponse(BaseModel):
     suggestions: list[Suggestion]
     red_flags: list[Suggestion]
     low_confidence: bool
     degraded: bool
     latency_ms: int
+    routing: RoutingInfo = Field(default_factory=RoutingInfo)

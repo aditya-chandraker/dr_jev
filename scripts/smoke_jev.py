@@ -17,7 +17,7 @@ async def main() -> None:
         return
 
     start = time.perf_counter()
-    async with AsyncTypeSafeClient(model=os.getenv("TYPESAFE_MODEL", "jev-latest")) as client:
+    async with AsyncTypeSafeClient() as client:
         response = await client.system_one(
             state={"patient_statements": ["I am having trouble peeing"], "demographics": {"age": 58, "sex": "male"}},
             questions={
@@ -33,10 +33,19 @@ async def main() -> None:
             },
         )
     elapsed_ms = int((time.perf_counter() - start) * 1000)
+    assert hasattr(response, "nouls")
+    assert hasattr(response, "choices")
+    assert hasattr(response, "scores")
     print("elapsed_ms", elapsed_ms)
     print("model", response.model)
     print("request_id", response.request_id)
-    print("answers", response.answers)
+    print("has_nouls", hasattr(response, "nouls"))
+    print("has_choices", hasattr(response, "choices"))
+    print("has_scores", hasattr(response, "scores"))
+    print("has_answers", hasattr(response, "answers"))
+    print("nouls_keys", list(response.nouls.keys()))
+    print("choices_keys", list(response.choices.keys()))
+    print("scores_keys", list(response.scores.keys()))
     print("nouls", response.nouls)
     print("choices", response.choices)
     print("scores", response.scores)

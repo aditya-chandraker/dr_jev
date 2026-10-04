@@ -1,0 +1,350 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_head_neck",
+      "text": "What is the main problem: headache, neck pain, a lump in your neck, sore throat, hoarse voice, ear problem, or sinus symptoms?",
+      "area": "clarification",
+      "rationale": "Clarifying the main complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "head-neck"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache_onset",
+      "text": "Did the headache come on suddenly and reach its worst within a minute, or build up over time?",
+      "area": "headache",
+      "rationale": "Thunderclap onset raises concern for subarachnoid hemorrhage.",
+      "tags": [
+        "thunderclap",
+        "headache",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache_pattern",
+      "text": "Where is the headache, what does it feel like, and how often do you get it?",
+      "area": "headache",
+      "rationale": "Location and pattern help separate tension, migraine, cluster, and secondary headaches.",
+      "tags": [
+        "headache",
+        "pattern"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache_features",
+      "text": "Do you get nausea, sensitivity to light or sound, or visual aura with the headache?",
+      "area": "headache",
+      "rationale": "Associated features support migraine.",
+      "tags": [
+        "migraine",
+        "aura"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_stiff_neck",
+      "text": "Do you have fever together with neck stiffness, light sensitivity, or a rash?",
+      "area": "infection",
+      "rationale": "This combination raises concern for meningitis.",
+      "tags": [
+        "meningitis",
+        "fever",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_neuro_symptoms",
+      "text": "Do you have weakness, numbness, trouble speaking, vision loss, double vision, or confusion with the headache?",
+      "area": "neurologic",
+      "rationale": "Focal neurologic symptoms suggest stroke or other intracranial pathology.",
+      "tags": [
+        "neuro",
+        "stroke",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_head_injury",
+      "text": "Have you hit your head recently, especially if you take blood thinners?",
+      "area": "trauma",
+      "rationale": "Recent head trauma, especially with anticoagulation, raises risk of intracranial bleeding.",
+      "tags": [
+        "head-injury",
+        "anticoagulant",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_new_after_50",
+      "text": "Are you over 50 with a new headache, scalp tenderness, jaw pain when chewing, or vision changes?",
+      "area": "vascular",
+      "rationale": "This pattern suggests giant cell arteritis, which can cause blindness if untreated.",
+      "tags": [
+        "gca",
+        "jaw-claudication",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_neck_pain",
+      "text": "Is your neck pain from an injury, and does it spread into your arm or cause numbness?",
+      "area": "neck",
+      "rationale": "Mechanism and radiation help separate strain from radiculopathy or fracture.",
+      "tags": [
+        "neck-pain",
+        "radiculopathy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_neck_lump",
+      "text": "Have you found a lump in your neck? How big is it, how long has it been there, and is it painful?",
+      "area": "lump",
+      "rationale": "Painless persistent neck masses raise concern for malignancy, while tender nodes suggest infection.",
+      "tags": [
+        "neck-lump",
+        "lymph"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lump_cancer_features",
+      "text": "Has the lump grown steadily, felt hard or fixed, or have you had weight loss or night sweats?",
+      "area": "lump",
+      "rationale": "These features raise concern for lymphoma or head and neck cancer.",
+      "tags": [
+        "lump",
+        "cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sore_throat",
+      "text": "How long has your throat been sore, and is it one-sided, severe, or worse when swallowing?",
+      "area": "throat",
+      "rationale": "Severity and laterality help separate viral pharyngitis, strep, and peritonsillar abscess.",
+      "tags": [
+        "sore-throat",
+        "pharyngitis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_drooling_voice",
+      "text": "Are you drooling, unable to swallow saliva, or have a muffled 'hot potato' voice?",
+      "area": "airway",
+      "rationale": "These findings suggest peritonsillar abscess, epiglottitis, or deep neck infection.",
+      "tags": [
+        "drooling",
+        "airway",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_breathing_stridor",
+      "text": "Do you have noisy breathing, difficulty breathing, or a feeling that your throat is closing?",
+      "area": "airway",
+      "rationale": "Airway compromise is an emergency.",
+      "tags": [
+        "stridor",
+        "airway",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hoarseness",
+      "text": "Have you been hoarse for more than three weeks?",
+      "area": "voice",
+      "rationale": "Persistent hoarseness, especially in smokers, needs laryngeal evaluation.",
+      "tags": [
+        "hoarseness",
+        "larynx"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dysphagia",
+      "text": "Do you have trouble swallowing solids or liquids, or does food get stuck?",
+      "area": "swallowing",
+      "rationale": "Dysphagia can indicate esophageal, throat, or neurologic disease.",
+      "tags": [
+        "dysphagia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_ear_pain_discharge",
+      "text": "Do you have ear pain, drainage, or a feeling of fullness?",
+      "area": "ear",
+      "rationale": "Otalgia and discharge point to otitis externa or media.",
+      "tags": [
+        "ear-pain",
+        "otitis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hearing_loss",
+      "text": "Have you lost hearing, especially suddenly, or have ringing in the ear?",
+      "area": "ear",
+      "rationale": "Sudden sensorineural hearing loss is time-sensitive for treatment.",
+      "tags": [
+        "hearing-loss",
+        "tinnitus",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sinus_symptoms",
+      "text": "Do you have facial pressure, nasal blockage, thick discharge, or loss of smell?",
+      "area": "sinus",
+      "rationale": "These are typical features of rhinosinusitis.",
+      "tags": [
+        "sinus",
+        "nasal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nosebleed",
+      "text": "Do you have nosebleeds, how often, and how long do they last?",
+      "area": "nasal",
+      "rationale": "Frequency and duration guide the assessment of epistaxis.",
+      "tags": [
+        "epistaxis",
+        "nasal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_eye_swelling",
+      "text": "Is there swelling or redness around your eye, or pain moving your eyes?",
+      "area": "orbital",
+      "rationale": "Orbital cellulitis can complicate sinus infection and is an emergency.",
+      "tags": [
+        "orbital",
+        "eye",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tobacco_alcohol",
+      "text": "Do you smoke, chew tobacco, or drink alcohol regularly?",
+      "area": "risk-factors",
+      "rationale": "Tobacco and alcohol are major risk factors for head and neck cancer.",
+      "tags": [
+        "tobacco",
+        "alcohol",
+        "risk-factor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and trajectory help distinguish acute from chronic problems.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take pain relievers frequently, blood thinners, or any new medicines?",
+      "area": "medications",
+      "rationale": "Medication overuse headache and anticoagulation change risk and management.",
+      "tags": [
+        "medications",
+        "analgesic-overuse"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_thunderclap",
+      "label": "Sudden worst headache",
+      "detection_instructions": "Does the patient describe a headache that came on suddenly and severely, the worst of their life?",
+      "prompt_question_id": "q_headache_onset"
+    },
+    {
+      "id": "rf_meningitis",
+      "label": "Fever with stiff neck or light sensitivity",
+      "detection_instructions": "Does the patient report fever together with neck stiffness, photophobia, confusion, or a non-blanching rash?",
+      "prompt_question_id": "q_fever_stiff_neck"
+    },
+    {
+      "id": "rf_focal_neuro",
+      "label": "Neurologic symptoms with headache",
+      "detection_instructions": "Does the patient report weakness, numbness, speech trouble, vision loss, or confusion with the headache?",
+      "prompt_question_id": "q_neuro_symptoms"
+    },
+    {
+      "id": "rf_head_injury_thinners",
+      "label": "Head injury on blood thinners",
+      "detection_instructions": "Does the patient report a recent head injury, especially while taking anticoagulants, with worsening symptoms?",
+      "prompt_question_id": "q_head_injury"
+    },
+    {
+      "id": "rf_gca",
+      "label": "Possible giant cell arteritis",
+      "detection_instructions": "Does the patient over 50 report new headache with scalp tenderness, jaw pain on chewing, or visual changes?",
+      "prompt_question_id": "q_new_after_50"
+    },
+    {
+      "id": "rf_airway",
+      "label": "Airway compromise",
+      "detection_instructions": "Does the patient report drooling, muffled voice, stridor, or difficulty breathing or swallowing saliva?",
+      "prompt_question_id": "q_drooling_voice"
+    },
+    {
+      "id": "rf_suspicious_lump",
+      "label": "Suspicious neck lump",
+      "detection_instructions": "Does the patient describe a hard, growing, or persistent neck lump with weight loss or night sweats?",
+      "prompt_question_id": "q_lump_cancer_features"
+    },
+    {
+      "id": "rf_sudden_hearing_loss",
+      "label": "Sudden hearing loss",
+      "detection_instructions": "Does the patient report hearing loss that came on suddenly over hours to days?",
+      "prompt_question_id": "q_hearing_loss"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_head_neck",
+    "q_duration",
+    "q_headache_onset",
+    "q_fever_stiff_neck",
+    "q_neuro_symptoms",
+    "q_sore_throat",
+    "q_neck_lump",
+    "q_medications"
+  ]
+}

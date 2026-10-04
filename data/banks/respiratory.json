@@ -1,0 +1,324 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_breathing",
+      "text": "What kind of breathing problem are you having: cough, shortness of breath, wheezing, chest tightness, noisy breathing, or coughing up phlegm?",
+      "area": "clarification",
+      "rationale": "Clarifying the main respiratory complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "respiratory"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sob_rest",
+      "text": "Are you short of breath even when sitting still, or only when you move around or exert yourself?",
+      "area": "dyspnea",
+      "rationale": "Dyspnea at rest suggests more severe disease than exertional dyspnea.",
+      "tags": [
+        "dyspnea",
+        "severity"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sob_onset",
+      "text": "Did the shortness of breath come on suddenly, over hours or days, or over weeks to months?",
+      "area": "dyspnea",
+      "rationale": "Onset tempo helps separate acute causes such as PE or pneumothorax from chronic disease.",
+      "tags": [
+        "dyspnea",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_full_sentences",
+      "text": "Can you speak in full sentences without stopping to catch your breath?",
+      "area": "dyspnea",
+      "rationale": "Inability to speak full sentences is a bedside marker of severe respiratory distress.",
+      "tags": [
+        "dyspnea",
+        "severity",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lips_confusion",
+      "text": "Have your lips or fingertips looked blue or gray, or have you felt unusually drowsy or confused?",
+      "area": "hypoxia",
+      "rationale": "Cyanosis or altered mentation can indicate significant hypoxia.",
+      "tags": [
+        "cyanosis",
+        "hypoxia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cough_duration",
+      "text": "How long have you had the cough, and is it dry or does it bring up phlegm?",
+      "area": "cough",
+      "rationale": "Duration and type of cough separate acute infection from subacute and chronic causes.",
+      "tags": [
+        "cough",
+        "duration"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sputum",
+      "text": "What color is the phlegm, and how much are you bringing up each day?",
+      "area": "cough",
+      "rationale": "Purulent or large-volume sputum suggests bacterial infection or bronchiectasis.",
+      "tags": [
+        "sputum",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hemoptysis",
+      "text": "Have you coughed up any blood or pink, frothy phlegm?",
+      "area": "hemoptysis",
+      "rationale": "Hemoptysis can indicate infection, PE, malignancy, or heart failure and needs prompt assessment.",
+      "tags": [
+        "hemoptysis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_wheeze",
+      "text": "Do you hear or feel wheezing or whistling when you breathe, and is it worse at night or with triggers?",
+      "area": "wheeze",
+      "rationale": "Wheeze with triggers points toward asthma or reactive airway disease.",
+      "tags": [
+        "wheeze",
+        "asthma"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_stridor_choking",
+      "text": "Is there a harsh, high-pitched noise when you breathe in, or did this start after choking on food or an object?",
+      "area": "airway",
+      "rationale": "Stridor or aspiration suggests upper airway obstruction, which is an emergency.",
+      "tags": [
+        "stridor",
+        "airway",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pleuritic_pain",
+      "text": "Do you have chest pain that gets worse when you take a deep breath or cough?",
+      "area": "pain",
+      "rationale": "Pleuritic pain can point to pleurisy, pneumonia, pneumothorax, or pulmonary embolism.",
+      "tags": [
+        "chest-pain",
+        "pleuritic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_chills",
+      "text": "Have you had fever, chills, or sweats along with the breathing symptoms?",
+      "area": "infection",
+      "rationale": "Systemic symptoms raise concern for pneumonia or other respiratory infection.",
+      "tags": [
+        "fever",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_night_sweats_weight",
+      "text": "Have you had drenching night sweats or unintended weight loss?",
+      "area": "constitutional",
+      "rationale": "These constitutional symptoms raise concern for TB, malignancy, or other chronic disease.",
+      "tags": [
+        "night-sweats",
+        "weight-loss"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_orthopnea_swelling",
+      "text": "Do you get breathless lying flat, wake up gasping at night, or notice swelling in your ankles?",
+      "area": "cardiac",
+      "rationale": "Orthopnea and edema suggest heart failure as a cause of dyspnea.",
+      "tags": [
+        "orthopnea",
+        "heart-failure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dvt_risk",
+      "text": "Do you have pain or swelling in one calf, or recent long travel, surgery, or immobility?",
+      "area": "thromboembolism",
+      "rationale": "These features raise the pretest probability of pulmonary embolism.",
+      "tags": [
+        "dvt",
+        "pe",
+        "risk-factor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lung_history",
+      "text": "Have you ever been told you have asthma, COPD, emphysema, or another lung condition?",
+      "area": "history",
+      "rationale": "Known lung disease is the most common explanation for recurrent symptoms.",
+      "tags": [
+        "asthma",
+        "copd",
+        "history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_smoking",
+      "text": "Do you smoke or vape, or have you in the past? About how much?",
+      "area": "risk-factors",
+      "rationale": "Smoking history drives risk for COPD, lung cancer, and infection.",
+      "tags": [
+        "smoking",
+        "risk-factor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_exposures",
+      "text": "Are you exposed to dust, fumes, chemicals, mold, birds, or asbestos at work or home?",
+      "area": "exposures",
+      "rationale": "Occupational and environmental exposures cause many chronic lung diseases.",
+      "tags": [
+        "exposure",
+        "occupational"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sick_contacts_travel",
+      "text": "Has anyone around you been sick, or have you traveled recently or been around someone with TB?",
+      "area": "infection",
+      "rationale": "Exposure history helps assess infectious causes.",
+      "tags": [
+        "sick-contacts",
+        "travel",
+        "tb"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_allergy_reflux",
+      "text": "Do you have hay fever, postnasal drip, frequent heartburn, or known allergies?",
+      "area": "triggers",
+      "rationale": "Upper airway disease and reflux are common causes of chronic cough.",
+      "tags": [
+        "allergy",
+        "reflux",
+        "cough"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take any ACE inhibitors, beta blockers, or have you started any new medicines recently?",
+      "area": "medications",
+      "rationale": "ACE inhibitors cause cough and beta blockers can trigger bronchospasm.",
+      "tags": [
+        "medications",
+        "cough"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_immune_cancer",
+      "text": "Do you have a weakened immune system, cancer history, or take steroids or other immune-suppressing medicine?",
+      "area": "history",
+      "rationale": "Immunosuppression broadens the infectious differential and raises severity risk.",
+      "tags": [
+        "immunosuppression",
+        "cancer"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vaccines",
+      "text": "Are you up to date on flu, pneumonia, COVID, and RSV vaccines?",
+      "area": "prevention",
+      "rationale": "Vaccination status modifies infection risk.",
+      "tags": [
+        "vaccines",
+        "prevention"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_severe_dyspnea",
+      "label": "Severe shortness of breath",
+      "detection_instructions": "Does the patient say they are very short of breath at rest, cannot speak full sentences, or are struggling to breathe?",
+      "prompt_question_id": "q_full_sentences"
+    },
+    {
+      "id": "rf_cyanosis_confusion",
+      "label": "Blue lips or altered alertness",
+      "detection_instructions": "Does the patient report blue or gray lips or fingertips, new confusion, or unusual drowsiness?",
+      "prompt_question_id": "q_lips_confusion"
+    },
+    {
+      "id": "rf_hemoptysis",
+      "label": "Coughing up blood",
+      "detection_instructions": "Does the patient describe coughing up blood or pink frothy sputum?",
+      "prompt_question_id": "q_hemoptysis"
+    },
+    {
+      "id": "rf_stridor_aspiration",
+      "label": "Stridor or possible airway obstruction",
+      "detection_instructions": "Does the patient describe noisy high-pitched breathing in, or choking on food or an object?",
+      "prompt_question_id": "q_stridor_choking"
+    },
+    {
+      "id": "rf_pleuritic_dvt",
+      "label": "Pleuritic chest pain with clot risk factors",
+      "detection_instructions": "Does the patient report sharp chest pain with breathing together with calf swelling, recent travel, or surgery?",
+      "prompt_question_id": "q_dvt_risk"
+    },
+    {
+      "id": "rf_sudden_onset",
+      "label": "Sudden-onset shortness of breath",
+      "detection_instructions": "Does the patient describe shortness of breath that came on abruptly over minutes to hours?",
+      "prompt_question_id": "q_sob_onset"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_breathing",
+    "q_sob_rest",
+    "q_cough_duration",
+    "q_hemoptysis",
+    "q_fever_chills",
+    "q_lung_history",
+    "q_smoking",
+    "q_medications"
+  ]
+}
