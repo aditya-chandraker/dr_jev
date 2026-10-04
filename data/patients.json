@@ -9,7 +9,7 @@
     {
       "id": "jordan-whitfield",
       "name": "Jordan Whitfield",
-      "organization": "Lakeside Community Clinic (Synthetic)",
+      "organization": "Lakeside Community Clinic",
       "demographics": { "age": 58, "sex": "male" },
       "health_record": [
         "Condition (active): Essential hypertension (since 2016-05-02)",
@@ -25,7 +25,7 @@
     {
       "id": "priya-natarajan",
       "name": "Priya Natarajan",
-      "organization": "Riverbend Family Medicine (Synthetic)",
+      "organization": "Riverbend Family Medicine",
       "demographics": { "age": 29, "sex": "female" },
       "health_record": [
         "Condition (active): Moderate persistent asthma (since 2009-02-20)",
@@ -39,7 +39,7 @@
     {
       "id": "elena-vasquez",
       "name": "Elena Vasquez",
-      "organization": "Northgate Medical Group (Synthetic)",
+      "organization": "Northgate Medical Group",
       "demographics": { "age": 67, "sex": "female" },
       "health_record": [
         "Condition (active): Chronic obstructive pulmonary disease (since 2017-11-08)",
@@ -56,7 +56,7 @@
     {
       "id": "marcus-bell",
       "name": "Marcus Bell",
-      "organization": "Lakeside Community Clinic (Synthetic)",
+      "organization": "Lakeside Community Clinic",
       "demographics": { "age": 45, "sex": "male" },
       "health_record": [
         "Condition (active): Gastroesophageal reflux disease (since 2019-03-15)",
@@ -71,7 +71,7 @@
     {
       "id": "aiko-tanaka",
       "name": "Aiko Tanaka",
-      "organization": "Harborview Women's Health (Synthetic)",
+      "organization": "Harborview Women's Health",
       "demographics": { "age": 34, "sex": "female" },
       "health_record": [
         "Condition (active): Pregnancy, 24 weeks, second pregnancy (since 2026-04-19)",
@@ -86,7 +86,7 @@
     {
       "id": "samuel-okafor",
       "name": "Samuel Okafor",
-      "organization": "Northgate Medical Group (Synthetic)",
+      "organization": "Northgate Medical Group",
       "demographics": { "age": 72, "sex": "male" },
       "health_record": [
         "Condition (active): Type 2 diabetes mellitus (since 2008-08-21)",
@@ -103,7 +103,7 @@
     {
       "id": "leah-goldberg",
       "name": "Leah Goldberg",
-      "organization": "Riverbend Family Medicine (Synthetic)",
+      "organization": "Riverbend Family Medicine",
       "demographics": { "age": 51, "sex": "female" },
       "health_record": [
         "Condition (active): Major depressive disorder, recurrent (since 2014-01-09)",
@@ -117,7 +117,7 @@
     {
       "id": "diego-hernandez",
       "name": "Diego Hernandez",
-      "organization": "Campus Health Center (Synthetic)",
+      "organization": "Campus Health Center",
       "demographics": { "age": 23, "sex": "male" },
       "health_record": [
         "Condition (active): Seasonal allergic rhinitis (since 2010-04-02)",
@@ -129,7 +129,7 @@
     {
       "id": "grace-oneill",
       "name": "Grace O'Neill",
-      "organization": "Harborview Senior Care (Synthetic)",
+      "organization": "Harborview Senior Care",
       "demographics": { "age": 81, "sex": "female" },
       "health_record": [
         "Condition (active): Heart failure with reduced ejection fraction, EF 35% (since 2021-09-23)",
@@ -146,7 +146,7 @@
     {
       "id": "kwame-mensah",
       "name": "Kwame Mensah",
-      "organization": "Lakeside Community Clinic (Synthetic)",
+      "organization": "Lakeside Community Clinic",
       "demographics": { "age": 39, "sex": "male" },
       "health_record": [
         "Condition (active): Sickle cell trait (since 1987-02-05)",

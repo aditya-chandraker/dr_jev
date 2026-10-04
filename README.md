@@ -50,7 +50,7 @@ With either path, as soon as the patient answers, the UI fills the "Patient stat
 
 ## FinchNode synthetic patients (optional)
 
-Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`). The "Load synthetic patient" button in the UI then:
+Set `FINCHNODE_API_KEY` in `.env` to a sandbox key (`ck_test_...`). The "Load patient" button in the UI then:
 
 1. calls `POST /api/finchnode/sessions`, which creates a FinchNode Connect session and immediately calls the sandbox `/simulate` endpoint (scenario from `FINCHNODE_SCENARIO`, default `baseline-adult`), so no hosted login is needed;
 2. calls `GET /api/finchnode/sessions/{id}/patient`, which waits for the simulation to complete, reads the patient's records, and returns age, sex, and one-line chart facts (conditions, medications, allergies, recent labs);

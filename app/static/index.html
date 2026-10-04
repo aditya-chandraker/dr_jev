@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Patient Interview Helper</title>
+  <script src="https://unpkg.com/lucide@1.52.0/dist/umd/lucide.min.js"></script>
   <style>
     :root { color-scheme: light; --bg: #f6f4ef; --panel: #fff; --ink: #1d1b19; --muted: #6c655d; --accent: #0f766e; --danger: #b42318; --border: #d9d2c7; }
     * { box-sizing: border-box; }
@@ -43,55 +44,60 @@
     .turn-physician { border-left: 3px solid #93c5fd; padding-left: 10px; }
     .turn-patient { border-left: 3px solid #86efac; padding-left: 10px; }
     .turn-other { border-left: 3px solid #d1d5db; padding-left: 10px; color: var(--muted); }
+    svg.lucide, i[data-lucide] { width: 1.1em; height: 1.1em; flex-shrink: 0; vertical-align: -0.15em; }
+    button, .badge, .pill, h2, header, .banner, .title { display: inline-flex; align-items: center; gap: 6px; }
+    header, .banner { display: flex; }
+    label .icon-label { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+    .title { font-weight: 700; }
     @media (max-width: 960px) { .wrap { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <header>Patient Interview Helper MVP</header>
+  <header><i data-lucide="stethoscope"></i>Patient Interview Helper MVP</header>
   <main class="wrap">
     <section class="panel">
-      <h2>Interview</h2>
+      <h2><i data-lucide="clipboard-list"></i>Interview</h2>
       <div class="panel-body">
-        <div class="banner">Training tool. Not medical advice. Do not enter real patient information.</div>
+        <div class="banner"><i data-lucide="triangle-alert"></i>Training tool. Not medical advice. Do not enter real patient information.</div>
         <div class="grid">
-          <label>Age <input id="age" type="number" min="0" placeholder="58" /></label>
-          <label>Sex <input id="sex" type="text" placeholder="male" /></label>
+          <label><span class="icon-label"><i data-lucide="cake"></i>Age</span><input id="age" type="number" min="0" placeholder="58" /></label>
+          <label><span class="icon-label"><i data-lucide="user"></i>Sex</span><input id="sex" type="text" placeholder="male" /></label>
         </div>
-        <label>Patient <input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
+        <label><span class="icon-label"><i data-lucide="search"></i>Patient</span><input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
         <datalist id="patient-options"></datalist>
-        <label for="statement"><strong>Patient statement</strong></label>
-        <textarea id="statement" placeholder="Type what the simulated patient says..."></textarea>
+        <label for="statement"><span class="icon-label title"><i data-lucide="message-square-quote"></i>Patient statement</span></label>
+        <textarea id="statement" placeholder="Type what the patient says..."></textarea>
         <div class="toolbar">
-          <button id="send">Add statement</button>
-          <button id="demo" class="ghost" type="button">Load demo</button>
-          <button id="load-patient" class="ghost" type="button">Load synthetic patient</button>
-          <button id="record" class="secondary" type="button">Record conversation</button>
-          <span id="latency" class="badge">-- ms</span>
+          <button id="send"><i data-lucide="plus"></i>Add statement</button>
+          <button id="demo" class="ghost" type="button"><i data-lucide="sparkles"></i>Load demo</button>
+          <button id="load-patient" class="ghost" type="button"><i data-lucide="user-round-plus"></i>Load patient</button>
+          <button id="record" class="secondary" type="button" data-icon="mic"><i data-lucide="mic"></i><span id="record-label">Record conversation</span></button>
+          <span class="badge"><i data-lucide="timer"></i><span id="latency">-- ms</span></span>
           <span id="status" class="stat">Ready</span>
         </div>
         <div id="transcript" class="card hidden" style="margin-top:16px;">
-          <div class="row" style="justify-content:space-between;"><strong>Last recording transcript</strong><span id="transcript-meta" class="stat"></span></div>
+          <div class="row" style="justify-content:space-between;"><span class="title"><i data-lucide="audio-lines"></i>Last recording transcript</span><span id="transcript-meta" class="stat"></span></div>
           <div id="transcript-turns" class="stack" style="margin-top:10px; gap:6px;"></div>
         </div>
         <div id="chart" class="card hidden" style="margin-top:16px;">
-          <div class="row" style="justify-content:space-between;"><strong>Health record (synthetic)</strong><span id="chart-source" class="stat"></span></div>
+          <div class="row" style="justify-content:space-between;"><span class="title"><i data-lucide="file-heart"></i>Health record</span><span id="chart-source" class="stat"></span></div>
           <div id="chart-lines" class="stack" style="margin-top:10px; gap:6px;"></div>
         </div>
         <div style="margin-top:16px;">
-          <div class="row" style="justify-content:space-between;"><strong>Patient statements</strong><span id="count" class="stat">0</span></div>
+          <div class="row" style="justify-content:space-between;"><span class="title"><i data-lucide="messages-square"></i>Patient statements</span><span id="count" class="stat">0</span></div>
           <div id="statements" class="stack" style="margin-top:10px;"></div>
         </div>
         <div style="margin-top:16px;">
-          <div class="row" style="justify-content:space-between;"><strong>Asked</strong><span class="stat">Moves selected items out of suggestions</span></div>
+          <div class="row" style="justify-content:space-between;"><span class="title"><i data-lucide="list-checks"></i>Asked</span><span class="stat">Moves selected items out of suggestions</span></div>
           <div id="asked" class="asked-list"></div>
         </div>
       </div>
     </section>
 
     <section class="panel">
-      <h2>Suggested next questions</h2>
+      <h2><i data-lucide="lightbulb"></i>Suggested next questions</h2>
       <div class="panel-body">
-        <div id="low-confidence" class="card hidden"><strong>Not sure yet, here is a standard checklist.</strong><div class="muted" style="margin-top:6px;">The model is below the confidence threshold or unavailable.</div></div>
+        <div id="low-confidence" class="card hidden"><span class="title"><i data-lucide="circle-help"></i>Not sure yet, here is a standard checklist.</span><div class="muted" style="margin-top:6px;">The model is below the confidence threshold or unavailable.</div></div>
         <div id="red-flags" class="stack"></div>
         <div id="suggestions" class="stack" style="margin-top:12px;"></div>
       </div>
@@ -108,6 +114,25 @@
       loadPatient: document.getElementById('load-patient'), patientSearch: document.getElementById('patient-search'), patientOptions: document.getElementById('patient-options'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
       record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
+
+    function icon(name) {
+      return `<i data-lucide="${name}"></i>`;
+    }
+
+    function refreshIcons() {
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function setRecordButton(recording, label) {
+      const name = recording ? 'square' : 'mic';
+      if (els.record.dataset.icon !== name) {
+        els.record.querySelector('svg, i')?.remove();
+        els.record.insertAdjacentHTML('afterbegin', icon(name));
+        els.record.dataset.icon = name;
+        refreshIcons();
+      }
+      document.getElementById('record-label').textContent = label;
+    }
 
     const MAX_RECORDING_MS = 180000;
     const LIVE_INTERVAL_MS = 4000;
@@ -167,9 +192,9 @@
       speech.recognition = recognition;
       recognition.start();
       els.record.classList.add('recording');
-      els.record.textContent = 'Stop recording (0s)';
+      setRecordButton(true, 'Stop recording (0s)');
       speech.timer = setInterval(() => {
-        els.record.textContent = `Stop recording (${Math.floor((Date.now() - speech.startedAt) / 1000)}s)`;
+        setRecordButton(true, `Stop recording (${Math.floor((Date.now() - speech.startedAt) / 1000)}s)`);
       }, 250);
       els.status.textContent = 'Listening...';
       renderSpeech();
@@ -179,7 +204,7 @@
       clearInterval(speech.timer);
       speech.interim = '';
       els.record.classList.remove('recording');
-      els.record.textContent = 'Record conversation';
+      setRecordButton(false, 'Record conversation');
       els.record.disabled = true;
       try {
         await speech.queue;
@@ -267,14 +292,14 @@
       els.record.classList.add('recording');
       recorder.timer = setInterval(() => {
         const elapsed = Date.now() - recorder.startedAt;
-        els.record.textContent = `Stop recording (${Math.floor(elapsed / 1000)}s)`;
+        setRecordButton(true, `Stop recording (${Math.floor(elapsed / 1000)}s)`);
         if (elapsed >= MAX_RECORDING_MS) {
           recorder.media.stop();
         } else if (!recorder.inFlight && elapsed - recorder.lastSentAt >= LIVE_INTERVAL_MS) {
           startTranscription(false);
         }
       }, 250);
-      els.record.textContent = 'Stop recording (0s)';
+      setRecordButton(true, 'Stop recording (0s)');
       els.status.textContent = 'Listening...';
     }
 
@@ -283,7 +308,7 @@
       recorder.stream.getTracks().forEach((track) => track.stop());
       recorder.media = null;
       els.record.classList.remove('recording');
-      els.record.textContent = 'Record conversation';
+      setRecordButton(false, 'Record conversation');
       els.record.disabled = true;
       els.status.textContent = 'Finishing transcript...';
       try {
@@ -385,7 +410,7 @@
       return typeof detail === 'string' ? detail : detail?.message || `HTTP ${response.status}`;
     }
 
-    async function loadSyntheticPatient() {
+    async function loadDefaultPatient() {
       els.loadPatient.disabled = true;
       els.status.textContent = 'Loading patient records...';
       try {
@@ -393,11 +418,11 @@
         const noSubject = chartResponse.status === 404
           && (await chartResponse.clone().json().catch(() => ({}))).detail?.code === 'no_subject';
         if (noSubject) {
-          els.status.textContent = 'Connecting synthetic patient...';
+          els.status.textContent = 'Connecting patient...';
           const created = await fetch('/api/finchnode/sessions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
           if (!created.ok) throw new Error(await readError(created));
           const session = await created.json();
-          els.status.textContent = 'Importing synthetic records...';
+          els.status.textContent = 'Importing records...';
           chartResponse = await fetch(`/api/finchnode/sessions/${encodeURIComponent(session.id)}/patient`);
         }
         if (!chartResponse.ok) throw new Error(await readError(chartResponse));
@@ -447,13 +472,13 @@
       els.age.value = chart.demographics?.age ?? '';
       els.sex.value = chart.demographics?.sex ?? '';
       renderChart(chart);
-      els.status.textContent = `${chart.name || 'Synthetic patient'} loaded`;
+      els.status.textContent = `${chart.name || 'Patient'} loaded`;
       if (state.patient_statements.length) scheduleRequest();
     }
 
     function renderChart(chart) {
       els.chart.classList.remove('hidden');
-      els.chartSource.textContent = chart.organization || chart.sources.join(', ');
+      els.chartSource.textContent = (chart.organization || chart.sources.join(', ')).replace(/\s*\(synthetic\)/gi, '');
       els.chartLines.innerHTML = state.health_record.length
         ? state.health_record.map((line) => `<div class="asked-item">${escapeHtml(line)}</div>`).join('')
         : '<div class="muted">No records were shared.</div>';
@@ -481,6 +506,7 @@
       els.lowConfidence.classList.toggle('hidden', !payload?.low_confidence);
       els.redFlags.innerHTML = redFlags.map(renderCard).join('');
       els.suggestions.innerHTML = suggestions.map(renderCard).join('');
+      refreshIcons();
       els.latency.textContent = `${payload?.latency_ms ?? '--'} ms`;
       els.status.textContent = payload?.degraded ? 'Degraded mode' : payload?.low_confidence ? 'Low confidence' : 'Live suggestions';
     }
@@ -494,14 +520,14 @@
         <div class="card ${red}">
           <div class="row" style="justify-content:space-between; align-items:flex-start; gap:12px;">
             <strong>${escapeHtml(item.text)}</strong>
-            <span class="pill ${item.is_red_flag ? 'red' : 'gray'}">${escapeHtml(label)}</span>
+            <span class="pill ${item.is_red_flag ? 'red' : 'gray'}">${icon(item.is_red_flag ? 'triangle-alert' : 'lightbulb')}${escapeHtml(label)}</span>
           </div>
           <div class="muted" style="margin-top:8px;">${escapeHtml(item.rationale)}</div>
           <div class="meta">
             <span class="pill gray">area: ${escapeHtml(item.area)}</span>
-            <span class="pill gray">score: ${score}</span>
+            <span class="pill gray">${icon('gauge')}score: ${score}</span>
             <span class="pill ${confidence < 0.35 ? 'red' : 'green'}">confidence: ${confidence}</span>
-            <button class="secondary" type="button" onclick='markAsked(${JSON.stringify(item.question_id)})'>Asked it</button>
+            <button class="secondary" type="button" onclick='markAsked(${JSON.stringify(item.question_id)})'>${icon('check')}Asked it</button>
           </div>
         </div>`;
     }
@@ -571,9 +597,10 @@
       els.statement.value = "I'm having trouble peeing";
       addStatement();
     });
-    els.loadPatient.addEventListener('click', loadSyntheticPatient);
+    els.loadPatient.addEventListener('click', loadDefaultPatient);
     els.patientSearch.addEventListener('change', selectRosterPatient);
     loadRoster();
+    refreshIcons();
     els.record.addEventListener('click', () => (SpeechRecognitionImpl ? toggleSpeech() : toggleRecording()));
     renderStatements();
     renderAsked();

@@ -21,7 +21,7 @@ def test_roster_entries_are_complete_and_unique() -> None:
         assert patient["demographics"]["age"] > 0
         assert patient["demographics"]["sex"] in {"female", "male"}
         assert patient["health_record"]
-        assert "(Synthetic)" in patient["organization"]
+        assert patient["organization"]
 
 
 def test_patients_endpoint_lists_names_sorted() -> None:
