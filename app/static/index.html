@@ -39,6 +39,7 @@
     .badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-size: 0.85rem; }
     .hidden { display: none; }
     button.recording { background: var(--danger); }
+    textarea.autofilled { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
     .turn-physician { border-left: 3px solid #93c5fd; padding-left: 10px; }
     .turn-patient { border-left: 3px solid #86efac; padding-left: 10px; }
     .turn-other { border-left: 3px solid #d1d5db; padding-left: 10px; color: var(--muted); }
@@ -106,9 +107,13 @@
       record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
 
-    const MAX_RECORDING_MS = 120000;
+    const MAX_RECORDING_MS = 180000;
+    const LIVE_INTERVAL_MS = 4000;
     const TARGET_SAMPLE_RATE = 16000;
-    const recorder = { media: null, chunks: [], stream: null, timer: null, startedAt: 0 };
+    const recorder = { media: null, mimeType: 'audio/webm', chunks: [], stream: null, timer: null, startedAt: 0, inFlight: null, lastSentAt: 0, generation: 0 };
+    // consumed = patient turns in this recording already added (or replaced by typed text);
+    // fill = what the text box currently holds from the transcript, while owned is true.
+    const live = { consumed: 0, owned: false, fill: null };
 
     async function toggleRecording() {
       if (recorder.media) {
@@ -121,43 +126,69 @@
         els.status.textContent = 'Microphone access was blocked';
         return;
       }
+      recorder.generation += 1;
       recorder.chunks = [];
+      recorder.lastSentAt = 0;
+      Object.assign(live, { consumed: 0, owned: false, fill: null });
       recorder.media = new MediaRecorder(recorder.stream);
+      recorder.mimeType = recorder.media.mimeType || 'audio/webm';
       recorder.media.ondataavailable = (event) => { if (event.data.size) recorder.chunks.push(event.data); };
       recorder.media.onstop = finishRecording;
-      recorder.media.start();
+      recorder.media.start(1000);
       recorder.startedAt = Date.now();
       els.record.classList.add('recording');
       recorder.timer = setInterval(() => {
         const elapsed = Date.now() - recorder.startedAt;
         els.record.textContent = `Stop recording (${Math.floor(elapsed / 1000)}s)`;
-        if (elapsed >= MAX_RECORDING_MS) recorder.media.stop();
+        if (elapsed >= MAX_RECORDING_MS) {
+          recorder.media.stop();
+        } else if (!recorder.inFlight && elapsed - recorder.lastSentAt >= LIVE_INTERVAL_MS) {
+          startTranscription(false);
+        }
       }, 250);
       els.record.textContent = 'Stop recording (0s)';
-      els.status.textContent = 'Recording...';
+      els.status.textContent = 'Listening...';
     }
 
     async function finishRecording() {
       clearInterval(recorder.timer);
       recorder.stream.getTracks().forEach((track) => track.stop());
-      const blob = new Blob(recorder.chunks, { type: recorder.media.mimeType || 'audio/webm' });
       recorder.media = null;
       els.record.classList.remove('recording');
       els.record.textContent = 'Record conversation';
       els.record.disabled = true;
-      els.status.textContent = 'Transcribing...';
+      els.status.textContent = 'Finishing transcript...';
       try {
-        const wav = await toWav(blob);
+        if (recorder.inFlight) await recorder.inFlight;
+        await startTranscription(true);
+      } finally {
+        els.record.disabled = false;
+      }
+    }
+
+    function startTranscription(final) {
+      const run = transcribeSoFar(final).finally(() => {
+        if (recorder.inFlight === run) recorder.inFlight = null;
+      });
+      recorder.inFlight = run;
+      return run;
+    }
+
+    async function transcribeSoFar(final) {
+      const generation = recorder.generation;
+      recorder.lastSentAt = Date.now() - recorder.startedAt;
+      try {
+        if (!recorder.chunks.length) return;
+        const wav = await toWav(new Blob(recorder.chunks, { type: recorder.mimeType }));
         const form = new FormData();
         form.append('audio', wav, 'encounter.wav');
         const response = await fetch('/api/transcribe', { method: 'POST', body: form });
         if (!response.ok) throw new Error(await readError(response));
-        applyTranscript(await response.json());
+        const transcript = await response.json();
+        if (generation === recorder.generation) applyLiveTranscript(transcript, final);
       } catch (err) {
-        els.status.textContent = `Transcription failed: ${err.message}`;
+        if (final) els.status.textContent = `Transcription failed: ${err.message}`;
         console.error(err);
-      } finally {
-        els.record.disabled = false;
       }
     }
 
@@ -184,23 +215,34 @@
       return new Blob([buffer], { type: 'audio/wav' });
     }
 
-    function applyTranscript(transcript) {
-      renderTranscript(transcript);
-      transcript.exchanges.forEach((exchange) => state.asked.push({ question: exchange.question, answer: exchange.answer }));
-      state.patient_statements.push(...transcript.patient_statements);
-      renderStatements();
-      renderAsked();
-      if (transcript.patient_statements.length) {
-        els.status.textContent = `Added ${transcript.patient_statements.length} patient statement(s)`;
-        scheduleRequest();
+    function applyLiveTranscript(transcript, final) {
+      renderTranscript(transcript, final);
+      const turns = transcript.turns;
+      const patientIndexes = turns.map((turn, index) => (turn.speaker === 'patient' ? index : -1)).filter((index) => index >= 0);
+      live.consumed = Math.min(live.consumed, patientIndexes.length);
+      const pending = patientIndexes.slice(live.consumed);
+      const editable = live.owned || !els.statement.value.trim();
+      if (pending.length && editable) {
+        let question = '';
+        for (let index = pending[0] - 1; index >= 0 && turns[index].speaker !== 'patient'; index -= 1) {
+          if (turns[index].speaker === 'physician') { question = turns[index].text; break; }
+        }
+        els.statement.value = pending.map((index) => turns[index].text).join(' ');
+        els.statement.classList.add('autofilled');
+        live.owned = true;
+        live.fill = { question, patientCount: patientIndexes.length };
+      }
+      const ready = Boolean(live.fill && els.statement.value.trim());
+      if (final) {
+        els.status.textContent = ready ? 'Review the patient answer, then click Add statement' : 'Recording finished';
       } else {
-        els.status.textContent = 'No patient speech detected';
+        els.status.textContent = ready ? 'Live: patient answer ready, click Add statement' : 'Listening...';
       }
     }
 
-    function renderTranscript(transcript) {
+    function renderTranscript(transcript, final) {
       els.transcript.classList.remove('hidden');
-      els.transcriptMeta.textContent = `${transcript.model} · ${transcript.latency_ms} ms`;
+      els.transcriptMeta.textContent = `${final ? 'final' : 'live'} · ${transcript.model} · ${transcript.latency_ms} ms`;
       els.transcriptTurns.innerHTML = transcript.turns.length
         ? transcript.turns.map((turn) => `<div class="turn-${escapeHtml(turn.speaker)}"><strong>${escapeHtml(turn.speaker[0].toUpperCase() + turn.speaker.slice(1))}:</strong> ${escapeHtml(turn.text)}</div>`).join('')
         : '<div class="muted">No intelligible speech.</div>';
@@ -314,9 +356,21 @@
       const text = els.statement.value.trim();
       if (!text) return;
       state.patient_statements.push(text);
+      const hadFill = Boolean(live.fill);
+      if (live.fill) {
+        live.consumed = live.fill.patientCount;
+        if (live.fill.question) {
+          state.asked.push({ question: live.fill.question, answer: text });
+          renderAsked();
+        }
+      }
+      Object.assign(live, { owned: false, fill: null });
+      els.statement.classList.remove('autofilled');
       els.statement.value = '';
       renderStatements();
       scheduleRequest();
+      if (recorder.media) els.status.textContent = 'Listening...';
+      else if (hadFill) els.status.textContent = '';
     }
 
     async function markAsked(questionId) {
@@ -331,6 +385,10 @@
     }
 
     els.send.addEventListener('click', addStatement);
+    els.statement.addEventListener('input', () => {
+      live.owned = false;
+      els.statement.classList.remove('autofilled');
+    });
     els.statement.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();

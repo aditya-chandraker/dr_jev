@@ -30,13 +30,13 @@ cp .env.example .env
 
 ## Speech to text (optional)
 
-Set `GEMINI_API_KEY` in `.env`. Click "Record conversation" in the UI, let the physician ask a question and the patient answer, then click stop (recording stops on its own after 2 minutes). The browser converts the clip to 16 kHz mono WAV and posts it to `POST /api/transcribe`, which:
+Set `GEMINI_API_KEY` in `.env`. Click "Record conversation" in the UI and run the interview as usual (recording stops on its own after 3 minutes). While recording, the browser converts the audio so far to 16 kHz mono WAV about every 4 seconds and posts it to `POST /api/transcribe`, which:
 
 1. sends the audio to Gemini (`GEMINI_MODEL`, default `gemini-3.8-flash`) and asks for a JSON transcript with each turn labeled `physician`, `patient`, or `other` by conversational role;
 2. retries briefly on overload or rate limits, then tries `GEMINI_FALLBACK_MODELS` (default `gemini-3.5-flash,gemini-flash-latest`);
 3. returns the turns, the patient's statements, and each physician question paired with the patient's answer.
 
-The UI adds the patient's statements to the interview and the question/answer pairs to "Asked", then requests new suggestions from Jev. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
+As soon as the patient answers, the UI fills the "Patient statement" box with that answer (highlighted) and keeps refining it on each pass. The physician reviews it and clicks "Add statement", which adds the answer to the interview, records the physician's question and the answer under "Asked", and requests new suggestions from Jev. If the physician edits the box, live updates stop overwriting it until the statement is added. Stopping the recording runs one final transcription pass; nothing is added without a click. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
 
 ## FinchNode synthetic patients (optional)
 
