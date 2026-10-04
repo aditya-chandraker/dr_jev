@@ -18,6 +18,29 @@ class TranscriptTurn(BaseModel):
     simplified: str = ""
 
 
+class SpeakerRequest(BaseModel):
+    text: str = Field(min_length=1, max_length=2000)
+    history: list[TranscriptTurn] = Field(default_factory=list, max_length=50)
+
+
+class SpeakerResponse(BaseModel):
+    speaker: str
+    confidence: float
+    method: str
+    latency_ms: int
+
+
+class SimplifyRequest(BaseModel):
+    text: str = Field(min_length=1, max_length=2000)
+    question: str = Field(default="", max_length=1000)
+
+
+class SimplifyResponse(BaseModel):
+    simplified: str
+    model: str
+    latency_ms: int
+
+
 class Exchange(BaseModel):
     question: str
     answer: str = ""

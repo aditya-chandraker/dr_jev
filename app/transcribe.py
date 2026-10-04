@@ -11,7 +11,7 @@ from typing import Any
 import httpx
 from dotenv import load_dotenv
 
-from app.models import Exchange, TranscriptResponse, TranscriptTurn
+from app.models import Exchange, SimplifyResponse, TranscriptResponse, TranscriptTurn
 
 
 load_dotenv()
@@ -66,6 +66,18 @@ RESPONSE_SCHEMA = {
         }
     },
     "required": ["turns"],
+}
+
+
+SIMPLIFY_PROMPT = """A patient in a clinical interview gave the answer below. Restate it as one or two short, plain sentences in the patient's first person. Keep every clinical detail they gave (symptoms, timing, duration, severity, triggers, and anything they deny), drop rambling and repetition, and add nothing they did not say.
+
+Physician's question (may be empty): {question}
+Patient's answer: {answer}"""
+
+SIMPLIFY_SCHEMA = {
+    "type": "OBJECT",
+    "properties": {"simplified": {"type": "STRING"}},
+    "required": ["simplified"],
 }
 
 
@@ -182,6 +194,45 @@ async def transcribe_encounter(
         turns=turns,
         patient_statements=[turn.text for turn in turns if turn.speaker == "patient"],
         exchanges=build_exchanges(turns),
+        model=used_model,
+        latency_ms=int((time.perf_counter() - start) * 1000),
+    )
+
+
+async def simplify_answer(
+    answer: str,
+    question: str = "",
+    *,
+    http: httpx.AsyncClient | None = None,
+    api_key: str | None = None,
+    thinking_level: str = GEMINI_THINKING_LEVEL,
+) -> SimplifyResponse:
+    key = api_key or os.getenv("GEMINI_API_KEY", "").strip()
+    if not key:
+        raise TranscriptionError(503, "GEMINI_API_KEY is not configured")
+    body: dict[str, Any] = {
+        "contents": [
+            {"role": "user", "parts": [{"text": SIMPLIFY_PROMPT.format(question=question.strip(), answer=answer.strip())}]}
+        ],
+        "generationConfig": {"temperature": 0, "responseMimeType": "application/json", "responseSchema": SIMPLIFY_SCHEMA},
+    }
+    if thinking_level:
+        body["generationConfig"]["thinkingConfig"] = {"thinkingLevel": thinking_level}
+    start = time.perf_counter()
+    models = list(dict.fromkeys([GEMINI_LIVE_MODEL, GEMINI_MODEL, *GEMINI_FALLBACK_MODELS]))
+    client = http or httpx.AsyncClient(timeout=30.0)
+    try:
+        payload, used_model = await _generate_with_fallback(client, key, body, models, 0.0, attempts=1)
+    finally:
+        if http is None:
+            await client.aclose()
+    parts = ((payload.get("candidates") or [{}])[0].get("content") or {}).get("parts") or []
+    try:
+        simplified = str(json.loads("".join(part.get("text", "") for part in parts)).get("simplified") or "").strip()
+    except (json.JSONDecodeError, AttributeError) as exc:
+        raise TranscriptionError(502, "Gemini returned a simplification that is not valid JSON") from exc
+    return SimplifyResponse(
+        simplified=simplified or answer.strip(),
         model=used_model,
         latency_ms=int((time.perf_counter() - start) * 1000),
     )

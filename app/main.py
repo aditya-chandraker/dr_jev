@@ -21,9 +21,20 @@ from app.finchnode import (
     FinchNodeError,
     summarize_records,
 )
-from app.models import FinchNodeSessionRequest, PatientChart, PatientInput, SuggestResponse, TranscriptResponse
+from app.models import (
+    FinchNodeSessionRequest,
+    PatientChart,
+    PatientInput,
+    SimplifyRequest,
+    SimplifyResponse,
+    SpeakerRequest,
+    SpeakerResponse,
+    SuggestResponse,
+    TranscriptResponse,
+)
 from app.patients import load_roster, roster_summary
-from app.transcribe import MAX_AUDIO_BYTES, TranscriptionError, transcribe_encounter
+from app.speaker import classify_speaker
+from app.transcribe import MAX_AUDIO_BYTES, TranscriptionError, simplify_answer, transcribe_encounter
 
 
 load_dotenv()
@@ -147,6 +158,23 @@ async def api_transcribe(audio: UploadFile = File(...), live: bool = Form(False)
         transcript.latency_ms,
     )
     return transcript
+
+
+@app.post("/api/speaker", response_model=SpeakerResponse)
+async def api_speaker(payload: SpeakerRequest) -> SpeakerResponse:
+    result = await classify_speaker(payload.text, payload.history, getattr(app.state, "typesafe_client", None))
+    logging.info("Speaker %s via %s in %sms", result.speaker, result.method, result.latency_ms)
+    return result
+
+
+@app.post("/api/simplify", response_model=SimplifyResponse)
+async def api_simplify(payload: SimplifyRequest) -> SimplifyResponse:
+    try:
+        result = await simplify_answer(payload.text, payload.question)
+    except TranscriptionError as exc:
+        raise HTTPException(status_code=exc.status or 502, detail=exc.message) from exc
+    logging.info("Simplified %d chars with %s in %sms", len(payload.text), result.model, result.latency_ms)
+    return result
 
 
 def _finchnode() -> FinchNodeClient:

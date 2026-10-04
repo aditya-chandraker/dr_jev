@@ -30,14 +30,23 @@ cp .env.example .env
 
 ## Speech to text (optional)
 
-Set `GEMINI_API_KEY` in `.env`. Click "Record conversation" in the UI and run the interview as usual (recording stops on its own after 3 minutes). While recording, the browser converts the audio so far to 16 kHz mono WAV about every 4 seconds and posts it to `POST /api/transcribe`, which:
+Click "Record conversation" in the UI and run the interview as usual.
+
+In Chrome and Edge, the browser's built-in speech recognition turns speech into text as it is spoken (no audio is uploaded to this server; the browser sends it to its own speech service). Each finished utterance then goes to:
+
+1. `POST /api/speaker`, which asks Jev (a TypeSafe `Choice`, using the last six labeled utterances as context) whether the physician, the patient, or someone else said it. This takes about 0.1 to 0.3 seconds; without `TYPESAFE_API_KEY` it falls back to a rule (a question mark means physician).
+2. For patient utterances, `POST /api/simplify`, which sends only the text and the physician's preceding question to Gemini (`GEMINI_LIVE_MODEL` first) for a short plain-language restatement that keeps every clinical detail, including what the patient denies. This takes about 1 to 2 seconds and needs `GEMINI_API_KEY`.
+
+The patient's exact words appear in the "Patient statement" box about half a second after they finish speaking and are replaced by the simplified version when it arrives. If simplification fails (for example, Gemini quota is exhausted), the exact words stay.
+
+In browsers without speech recognition (such as Firefox), recording falls back to Gemini audio transcription (recording stops on its own after 3 minutes). The browser converts the audio so far to 16 kHz mono WAV about every 4 seconds and posts it to `POST /api/transcribe`, which:
 
 1. sends the audio to Gemini and asks for a JSON transcript with each turn labeled `physician`, `patient`, or `other` by conversational role, plus a short plain-language restatement of each patient answer (`simplified`) that keeps every clinical detail, including what the patient denies;
 2. uses `GEMINI_LIVE_MODEL` (default `gemini-3.5-flash`, about 2 to 3 seconds per pass) while recording and `GEMINI_MODEL` (default `gemini-3.8-flash`) for the final pass, with thinking set to `GEMINI_THINKING_LEVEL` (default `low`);
 3. on overload or rate limits, moves to the next model (`GEMINI_MODEL`, then `GEMINI_FALLBACK_MODELS`) and skips the overloaded model for `GEMINI_MODEL_COOLDOWN_S` seconds (default 60). Live passes do not wait between retries; the final pass retries briefly first;
 4. returns the turns, the patient's statements, and each physician question paired with the patient's answer.
 
-As soon as the patient answers, the UI fills the "Patient statement" box with the simplified answer (highlighted) and keeps refining it on each pass. The physician reviews it and clicks "Add statement", which adds the answer to the interview, records the physician's question and the answer under "Asked", and requests new suggestions from Jev. If the physician edits the box, live updates stop overwriting it until the statement is added. Stopping the recording runs one final transcription pass; nothing is added without a click. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
+With either path, as soon as the patient answers, the UI fills the "Patient statement" box with the answer (highlighted). The physician reviews it and clicks "Add statement", which adds the answer to the interview, records the physician's question and the answer under "Asked", and requests new suggestions from Jev. If the physician edits the box, live updates stop overwriting it until the statement is added. With Gemini audio transcription, stopping the recording runs one final pass. Nothing is added without a click. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
 
 ## FinchNode synthetic patients (optional)
 
@@ -86,7 +95,8 @@ pytest -m "not slow"
 - `app/bank.py` question bank loading and validation
 - `app/models.py` request and response models
 - `app/finchnode.py` FinchNode sandbox client and chart summary
-- `app/transcribe.py` Gemini speech-to-text with speaker roles
+- `app/transcribe.py` Gemini speech-to-text with speaker roles, and text-only answer simplification
+- `app/speaker.py` Jev speaker labeling (physician, patient, other) for live utterances
 - `app/static/index.html` single-page UI
 - `data/urinary_bank.json` drafted question bank, red flags, and fallback checklist
 - `scripts/smoke_jev.py` live API smoke test

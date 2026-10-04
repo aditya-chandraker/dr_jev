@@ -117,6 +117,132 @@
     // fill = what the text box currently holds from the transcript, while owned is true.
     const live = { consumed: 0, owned: false, fill: null };
 
+    // Browser speech recognition gives text as it is spoken; Jev labels each finished utterance.
+    // Turns are labeled one at a time in order, so labeled turns always come before pending ones.
+    const SpeechRecognitionImpl = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const speech = { recognition: null, active: false, turns: [], interim: '', queue: Promise.resolve(), generation: 0, startedAt: 0, timer: null, meta: '' };
+
+    function toggleSpeech() {
+      if (speech.active) {
+        speech.active = false;
+        speech.recognition.stop();
+        return;
+      }
+      speech.generation += 1;
+      Object.assign(speech, { turns: [], interim: '', meta: '', queue: Promise.resolve(), active: true, startedAt: Date.now() });
+      Object.assign(live, { consumed: 0, owned: false, fill: null });
+      const recognition = new SpeechRecognitionImpl();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+      recognition.onresult = (event) => {
+        let interim = '';
+        for (let index = event.resultIndex; index < event.results.length; index += 1) {
+          const result = event.results[index];
+          const text = result[0].transcript.trim();
+          if (result.isFinal) {
+            if (text) enqueueUtterance(text);
+          } else {
+            interim += `${text} `;
+          }
+        }
+        speech.interim = interim.trim();
+        renderSpeech();
+      };
+      recognition.onerror = (event) => {
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+          speech.active = false;
+          els.status.textContent = 'Microphone access was blocked';
+        } else if (event.error !== 'no-speech' && event.error !== 'aborted') {
+          console.warn('Speech recognition error', event.error);
+        }
+      };
+      recognition.onend = () => {
+        if (speech.active) {
+          recognition.start();
+        } else {
+          finishSpeech();
+        }
+      };
+      speech.recognition = recognition;
+      recognition.start();
+      els.record.classList.add('recording');
+      els.record.textContent = 'Stop recording (0s)';
+      speech.timer = setInterval(() => {
+        els.record.textContent = `Stop recording (${Math.floor((Date.now() - speech.startedAt) / 1000)}s)`;
+      }, 250);
+      els.status.textContent = 'Listening...';
+      renderSpeech();
+    }
+
+    async function finishSpeech() {
+      clearInterval(speech.timer);
+      speech.interim = '';
+      els.record.classList.remove('recording');
+      els.record.textContent = 'Record conversation';
+      els.record.disabled = true;
+      try {
+        await speech.queue;
+      } finally {
+        els.record.disabled = false;
+      }
+      refreshSpeech();
+    }
+
+    function enqueueUtterance(text) {
+      const generation = speech.generation;
+      const turn = { speaker: 'pending', text, simplified: '' };
+      speech.turns.push(turn);
+      speech.queue = speech.queue.then(async () => {
+        const history = speech.turns.slice(0, speech.turns.indexOf(turn)).map(({ speaker, text: spoken }) => ({ speaker, text: spoken }));
+        try {
+          const response = await fetch('/api/speaker', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, history }) });
+          if (!response.ok) throw new Error(await readError(response));
+          const result = await response.json();
+          turn.speaker = result.speaker;
+          speech.meta = `${result.method === 'jev' ? 'Jev' : 'rule'} · ${result.latency_ms} ms`;
+        } catch (err) {
+          turn.speaker = text.endsWith('?') ? 'physician' : 'patient';
+          console.error(err);
+        }
+        if (generation !== speech.generation) return;
+        refreshSpeech();
+        if (turn.speaker === 'patient') simplifyTurn(turn, generation);
+      });
+    }
+
+    async function simplifyTurn(turn, generation) {
+      const index = speech.turns.indexOf(turn);
+      const question = speech.turns.slice(0, index).reverse().find((item) => item.speaker === 'physician')?.text || '';
+      try {
+        const response = await fetch('/api/simplify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: turn.text, question }) });
+        if (!response.ok) throw new Error(await readError(response));
+        turn.simplified = (await response.json()).simplified;
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+      if (generation === speech.generation) refreshSpeech();
+    }
+
+    function refreshSpeech() {
+      const labeled = speech.turns.filter((turn) => turn.speaker !== 'pending');
+      applyLiveTranscript({ turns: labeled }, !speech.active);
+      renderSpeech();
+    }
+
+    function renderSpeech() {
+      els.transcript.classList.remove('hidden');
+      els.transcriptMeta.textContent = `${speech.active ? 'live' : 'final'} · browser speech${speech.meta ? ` · ${speech.meta}` : ''}`;
+      const rows = speech.turns.map((turn) => {
+        if (turn.speaker === 'pending') return `<div class="turn-other"><strong>...</strong> ${escapeHtml(turn.text)}</div>`;
+        const label = turn.speaker[0].toUpperCase() + turn.speaker.slice(1);
+        return `<div class="turn-${escapeHtml(turn.speaker)}"><strong>${escapeHtml(label)}:</strong> ${escapeHtml(turn.text)}</div>`;
+      });
+      if (speech.interim) rows.push(`<div class="turn-other"><em>${escapeHtml(speech.interim)}</em></div>`);
+      els.transcriptTurns.innerHTML = rows.join('') || '<div class="muted">Listening for speech...</div>';
+    }
+
     async function toggleRecording() {
       if (recorder.media) {
         recorder.media.stop();
@@ -188,7 +314,10 @@
         const response = await fetch('/api/transcribe', { method: 'POST', body: form });
         if (!response.ok) throw new Error(await readError(response));
         const transcript = await response.json();
-        if (generation === recorder.generation) applyLiveTranscript(transcript, final);
+        if (generation === recorder.generation) {
+          renderTranscript(transcript, final);
+          applyLiveTranscript(transcript, final);
+        }
       } catch (err) {
         if (final) els.status.textContent = `Transcription failed: ${err.message}`;
         console.error(err);
@@ -219,7 +348,6 @@
     }
 
     function applyLiveTranscript(transcript, final) {
-      renderTranscript(transcript, final);
       const turns = transcript.turns;
       const patientIndexes = turns.map((turn, index) => (turn.speaker === 'patient' ? index : -1)).filter((index) => index >= 0);
       live.consumed = Math.min(live.consumed, patientIndexes.length);
@@ -413,7 +541,7 @@
       els.statement.value = '';
       renderStatements();
       scheduleRequest();
-      if (recorder.media) els.status.textContent = 'Listening...';
+      if (recorder.media || speech.active) els.status.textContent = 'Listening...';
       else if (hadFill) els.status.textContent = '';
     }
 
@@ -446,7 +574,7 @@
     els.loadPatient.addEventListener('click', loadSyntheticPatient);
     els.patientSearch.addEventListener('change', selectRosterPatient);
     loadRoster();
-    els.record.addEventListener('click', toggleRecording);
+    els.record.addEventListener('click', () => (SpeechRecognitionImpl ? toggleSpeech() : toggleRecording()));
     renderStatements();
     renderAsked();
   </script>
