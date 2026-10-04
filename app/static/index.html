@@ -49,6 +49,12 @@
     header, .banner { display: flex; }
     label .icon-label { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 4px; }
     .title { font-weight: 700; }
+    .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 16px 16px 0; }
+    .panel .panel-head h2 { padding: 0; }
+    button.small { padding: 6px 12px; font-size: 0.85rem; }
+    .patient-row { display: grid; grid-template-columns: minmax(0, 1fr) 84px 110px; gap: 10px; margin-bottom: 12px; }
+    .patient-row input { padding: 10px 12px; }
+    @media (max-width: 520px) { .patient-row { grid-template-columns: 1fr 1fr; } .patient-row label:first-child { grid-column: 1 / -1; } }
     @media (max-width: 960px) { .wrap { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -56,21 +62,25 @@
   <header><i data-lucide="stethoscope"></i>Patient Interview Helper MVP</header>
   <main class="wrap">
     <section class="panel">
-      <h2><i data-lucide="clipboard-list"></i>Interview</h2>
+      <div class="panel-head">
+        <h2><i data-lucide="clipboard-list"></i>Interview</h2>
+        <div class="row">
+          <button id="demo" class="ghost small" type="button"><i data-lucide="sparkles"></i>Load demo</button>
+          <button id="load-patient" class="ghost small" type="button"><i data-lucide="user-round-plus"></i>Load patient</button>
+        </div>
+      </div>
       <div class="panel-body">
         <div class="banner"><i data-lucide="triangle-alert"></i>Training tool. Not medical advice. Do not enter real patient information.</div>
-        <div class="grid">
+        <div class="patient-row">
+          <label><span class="icon-label"><i data-lucide="search"></i>Patient</span><input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
           <label><span class="icon-label"><i data-lucide="cake"></i>Age</span><input id="age" type="number" min="0" placeholder="58" /></label>
           <label><span class="icon-label"><i data-lucide="user"></i>Sex</span><input id="sex" type="text" placeholder="male" /></label>
         </div>
-        <label><span class="icon-label"><i data-lucide="search"></i>Patient</span><input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
         <datalist id="patient-options"></datalist>
         <label for="statement"><span class="icon-label title"><i data-lucide="message-square-quote"></i>Patient statement</span></label>
         <textarea id="statement" placeholder="Type what the patient says..."></textarea>
         <div class="toolbar">
           <button id="send"><i data-lucide="plus"></i>Add statement</button>
-          <button id="demo" class="ghost" type="button"><i data-lucide="sparkles"></i>Load demo</button>
-          <button id="load-patient" class="ghost" type="button"><i data-lucide="user-round-plus"></i>Load patient</button>
           <button id="record" class="secondary" type="button" data-icon="mic"><i data-lucide="mic"></i><span id="record-label">Record conversation</span></button>
           <span class="badge"><i data-lucide="timer"></i><span id="latency">-- ms</span></span>
           <span id="status" class="stat">Ready</span>
