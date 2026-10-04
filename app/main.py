@@ -22,6 +22,7 @@ from app.finchnode import (
     summarize_records,
 )
 from app.models import FinchNodeSessionRequest, PatientChart, PatientInput, SuggestResponse, TranscriptResponse
+from app.patients import load_roster, roster_summary
 from app.transcribe import MAX_AUDIO_BYTES, TranscriptionError, transcribe_encounter
 
 
@@ -217,7 +218,29 @@ async def api_finchnode_patient_by_subject(subject: str | None = Query(None)) ->
         snapshot = await _finchnode().get_records(subject)
     except FinchNodeError as exc:
         raise _finchnode_http_error(exc) from exc
-    return PatientChart(subject=subject, **summarize_records(snapshot))
+    name = next((p["name"] for p in load_roster().values() if p.get("finchnode_subject") == subject), None)
+    return PatientChart(subject=subject, name=name, **summarize_records(snapshot))
+
+
+@app.get("/api/patients")
+def api_patients() -> list[dict[str, object]]:
+    return roster_summary(load_roster())
+
+
+@app.get("/api/patients/{patient_id}", response_model=PatientChart)
+async def api_patient(patient_id: str) -> PatientChart:
+    patient = load_roster().get(patient_id)
+    if patient is None:
+        raise HTTPException(status_code=404, detail="Unknown patient")
+    if patient.get("finchnode_subject"):
+        return await api_finchnode_patient_by_subject(patient["finchnode_subject"])
+    return PatientChart(
+        name=patient["name"],
+        organization=patient.get("organization"),
+        demographics=patient.get("demographics", {}),
+        health_record=patient.get("health_record", []),
+        sources=[patient["organization"]] if patient.get("organization") else [],
+    )
 
 
 @app.get("/")

@@ -38,7 +38,8 @@ class FinchNodeSessionRequest(BaseModel):
 
 class PatientChart(BaseModel):
     session_id: str | None = None
-    subject: str
+    subject: str | None = None
+    name: str | None = None
     scenario: str | None = None
     organization: str | None = None
     demographics: dict[str, Any] = Field(default_factory=dict)

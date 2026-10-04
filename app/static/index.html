@@ -57,7 +57,11 @@
           <label>Age <input id="age" type="number" min="0" placeholder="58" /></label>
           <label>Sex <input id="sex" type="text" placeholder="male" /></label>
         </div>
-        <label>FinchNode patient ID (optional) <input id="patient-id" type="text" placeholder="u_..." autocomplete="off" /></label>
+        <div class="grid">
+          <label>Patient <input id="patient-search" type="search" list="patient-options" placeholder="Search by name..." autocomplete="off" /></label>
+          <label>FinchNode patient ID <input id="patient-id" type="text" placeholder="u_..." autocomplete="off" /></label>
+        </div>
+        <datalist id="patient-options"></datalist>
         <label for="statement"><strong>Patient statement</strong></label>
         <textarea id="statement" placeholder="Type what the simulated patient says..."></textarea>
         <div class="toolbar">
@@ -73,7 +77,7 @@
           <div id="transcript-turns" class="stack" style="margin-top:10px; gap:6px;"></div>
         </div>
         <div id="chart" class="card hidden" style="margin-top:16px;">
-          <div class="row" style="justify-content:space-between;"><strong>Health record (synthetic, FinchNode)</strong><span id="chart-source" class="stat"></span></div>
+          <div class="row" style="justify-content:space-between;"><strong>Health record (synthetic)</strong><span id="chart-source" class="stat"></span></div>
           <div id="chart-lines" class="stack" style="margin-top:10px; gap:6px;"></div>
         </div>
         <div style="margin-top:16px;">
@@ -104,7 +108,7 @@
       send: document.getElementById('send'), demo: document.getElementById('demo'), latency: document.getElementById('latency'),
       status: document.getElementById('status'), count: document.getElementById('count'), statements: document.getElementById('statements'),
       asked: document.getElementById('asked'), suggestions: document.getElementById('suggestions'), redFlags: document.getElementById('red-flags'), lowConfidence: document.getElementById('low-confidence'),
-      loadPatient: document.getElementById('load-patient'), patientId: document.getElementById('patient-id'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
+      loadPatient: document.getElementById('load-patient'), patientId: document.getElementById('patient-id'), patientSearch: document.getElementById('patient-search'), patientOptions: document.getElementById('patient-options'), chart: document.getElementById('chart'), chartLines: document.getElementById('chart-lines'), chartSource: document.getElementById('chart-source'),
       record: document.getElementById('record'), transcript: document.getElementById('transcript'), transcriptTurns: document.getElementById('transcript-turns'), transcriptMeta: document.getElementById('transcript-meta')
     };
 
@@ -272,20 +276,55 @@
           chartResponse = await fetch(`/api/finchnode/sessions/${encodeURIComponent(session.id)}/patient`);
         }
         if (!chartResponse.ok) throw new Error(await readError(chartResponse));
-        const chart = await chartResponse.json();
-        els.patientId.value = chart.subject;
-        state.health_record = chart.health_record || [];
-        if (chart.demographics?.age) els.age.value = chart.demographics.age;
-        if (chart.demographics?.sex) els.sex.value = chart.demographics.sex;
-        renderChart(chart);
-        els.status.textContent = 'Synthetic patient loaded';
-        if (state.patient_statements.length) scheduleRequest();
+        applyChart(await chartResponse.json());
       } catch (err) {
         els.status.textContent = `FinchNode: ${err.message}`;
         console.error(err);
       } finally {
         els.loadPatient.disabled = false;
       }
+    }
+
+    let roster = [];
+
+    async function loadRoster() {
+      try {
+        const response = await fetch('/api/patients');
+        if (!response.ok) throw new Error(await readError(response));
+        roster = await response.json();
+        els.patientOptions.innerHTML = roster.map((patient) => `<option value="${escapeHtml(patient.name)}"></option>`).join('');
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function selectRosterPatient() {
+      const query = els.patientSearch.value.trim().toLowerCase();
+      const patient = roster.find((item) => item.name.toLowerCase() === query);
+      if (!patient) return;
+      els.patientSearch.disabled = true;
+      els.status.textContent = `Loading ${patient.name}...`;
+      try {
+        const response = await fetch(`/api/patients/${encodeURIComponent(patient.id)}`);
+        if (!response.ok) throw new Error(await readError(response));
+        applyChart(await response.json());
+      } catch (err) {
+        els.status.textContent = `Could not load ${patient.name}: ${err.message}`;
+        console.error(err);
+      } finally {
+        els.patientSearch.disabled = false;
+      }
+    }
+
+    function applyChart(chart) {
+      els.patientId.value = chart.subject || '';
+      els.patientSearch.value = chart.name || '';
+      state.health_record = chart.health_record || [];
+      els.age.value = chart.demographics?.age ?? '';
+      els.sex.value = chart.demographics?.sex ?? '';
+      renderChart(chart);
+      els.status.textContent = `${chart.name || 'Synthetic patient'} loaded`;
+      if (state.patient_statements.length) scheduleRequest();
     }
 
     function renderChart(chart) {
@@ -409,6 +448,8 @@
       addStatement();
     });
     els.loadPatient.addEventListener('click', loadSyntheticPatient);
+    els.patientSearch.addEventListener('change', selectRosterPatient);
+    loadRoster();
     els.record.addEventListener('click', toggleRecording);
     renderStatements();
     renderAsked();
