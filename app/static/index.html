@@ -65,8 +65,7 @@
       <div class="panel-head">
         <h2><i data-lucide="clipboard-list"></i>Interview</h2>
         <div class="row">
-          <button id="demo" class="ghost small" type="button"><i data-lucide="sparkles"></i>Load demo</button>
-          <span class="badge"><i data-lucide="timer"></i><span id="latency">-- ms</span></span>
+   
         </div>
       </div>
       <div class="panel-body">
@@ -80,8 +79,8 @@
         <label for="statement"><span class="icon-label title"><i data-lucide="message-square-quote"></i>Patient statement</span></label>
         <textarea id="statement" placeholder="Type what the patient says..."></textarea>
         <div class="toolbar">
-          <button id="send"><i data-lucide="plus"></i>Add statement</button>
-          <button id="record" class="secondary" type="button" data-icon="mic"><i data-lucide="mic"></i><span id="record-label">Record conversation</span></button>
+          <button id="send" title="Ctrl+Enter"><i data-lucide="plus"></i>Add statement</button>
+          <button id="record" class="secondary" type="button" data-icon="mic" title="Ctrl+Shift+Enter"><i data-lucide="mic"></i><span id="record-label">Record conversation</span></button>
           <span id="status" class="stat">Ready</span>
         </div>
         <div id="transcript" class="card hidden" style="margin-top:16px;">
@@ -104,7 +103,9 @@
     </section>
 
     <section class="panel">
-      <h2><i data-lucide="lightbulb"></i>Suggested next questions</h2>
+      <div>       <h2><i data-lucide="lightbulb"></i>Suggested next questions</h2> <button id="demo" class="ghost small" type="button" style="display:none;"><i data-lucide="sparkles"></i>Load demo</button>
+        <span class="badge"><i data-lucide="timer"></i><span id="latency">-- ms</span></span></div>
+      
       <div class="panel-body">
         <div id="low-confidence" class="card hidden"><span class="title"><i data-lucide="circle-help"></i>Not sure yet, here is a standard checklist.</span><div class="muted" style="margin-top:6px;">The model is below the confidence threshold or unavailable.</div></div>
         <div id="red-flags" class="stack"></div>
@@ -571,9 +572,12 @@
       live.owned = false;
       els.statement.classList.remove('autofilled');
     });
-    els.statement.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
-        event.preventDefault();
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' || !(event.ctrlKey || event.metaKey) || event.repeat) return;
+      event.preventDefault();
+      if (event.shiftKey) {
+        if (!els.record.disabled) els.record.click();
+      } else {
         addStatement();
       }
     });
