@@ -36,7 +36,7 @@ Set `GEMINI_API_KEY` in `.env`. Click "Record conversation" in the UI, let the p
 2. retries briefly on overload or rate limits, then tries `GEMINI_FALLBACK_MODELS` (default `gemini-3.5-flash,gemini-flash-latest`);
 3. returns the turns, the patient's statements, and each physician question paired with the patient's answer.
 
-The UI adds the patient's statements to the interview and the question/answer pairs to "Asked", then requests new suggestions from Jev. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py` for a live check; with `ELEVENLABS_API_KEY` set, it synthesizes a two-voice doctor/patient exchange to transcribe.
+The UI adds the patient's statements to the interview and the question/answer pairs to "Asked", then requests new suggestions from Jev. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
 
 ## FinchNode synthetic patients (optional)
 
