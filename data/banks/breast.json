@@ -1,0 +1,311 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_breast",
+      "text": "What is the main breast problem: a lump, pain, nipple discharge, skin change, swelling, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main breast complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "breast"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did you first notice it, and has it changed?",
+      "area": "timeline",
+      "rationale": "A new or changing finding is more concerning than long-stable cyclical pain.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lump",
+      "text": "Where is the lump, about how big is it, and is it hard, mobile, or fixed?",
+      "area": "mass",
+      "rationale": "Mass character and location start the breast-cancer versus cyst assessment.",
+      "tags": [
+        "lump",
+        "mass"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lump_change",
+      "text": "Is the lump growing, and is there one lump or several?",
+      "area": "mass",
+      "rationale": "A growing dominant mass needs prompt imaging.",
+      "tags": [
+        "lump",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain",
+      "text": "Is there breast pain, is it one side, and does it change with your period?",
+      "area": "pain",
+      "rationale": "Cyclical bilateral pain is often benign; focal noncyclical pain needs evaluation.",
+      "tags": [
+        "mastalgia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_skin_change",
+      "text": "Is the skin dimpled, thickened like orange peel, red, or ulcerated?",
+      "area": "skin",
+      "rationale": "Peau d'orange, ulceration, or inflammatory changes raise concern for cancer or infection.",
+      "tags": [
+        "peau-dorange",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nipple_discharge",
+      "text": "Is there nipple discharge, and is it bloody, clear, or milky, and from one duct or many?",
+      "area": "nipple",
+      "rationale": "Unilateral bloody or clear discharge is more concerning than bilateral milky discharge.",
+      "tags": [
+        "discharge",
+        "nipple"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nipple_change",
+      "text": "Has the nipple pulled in, crusted, or changed shape?",
+      "area": "nipple",
+      "rationale": "New inversion or eczema-like nipple change can indicate cancer or Paget disease.",
+      "tags": [
+        "inversion",
+        "paget",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_red_hot",
+      "text": "Is the breast red, hot, swollen, and painful, and have you had fever?",
+      "area": "infection",
+      "rationale": "This pattern suggests mastitis or abscess, and also inflammatory breast cancer.",
+      "tags": [
+        "mastitis",
+        "fever"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nodes",
+      "text": "Have you felt lumps in the armpit or above the collarbone?",
+      "area": "lymph",
+      "rationale": "Regional nodes change urgency of a breast finding.",
+      "tags": [
+        "axilla",
+        "lymph"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_laterality",
+      "text": "Is it one breast or both?",
+      "area": "pattern",
+      "rationale": "Unilateral findings are more concerning than symmetric changes.",
+      "tags": [
+        "laterality"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cycle_hormones",
+      "text": "Are you still having periods, on hormones or contraception, or pregnant or breastfeeding?",
+      "area": "hormones",
+      "rationale": "Hormonal state changes the meaning of lumps, pain, and discharge.",
+      "tags": [
+        "hormones",
+        "pregnancy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trauma",
+      "text": "Did you injure the breast recently?",
+      "area": "trauma",
+      "rationale": "Trauma can cause fat necrosis that mimics a mass.",
+      "tags": [
+        "trauma"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_history",
+      "text": "Has anyone in your family had breast, ovarian, or related cancers, especially at a young age?",
+      "area": "history",
+      "rationale": "Family history and possible BRCA-related cancers change risk.",
+      "tags": [
+        "family-history",
+        "brca"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_personal_cancer",
+      "text": "Have you had breast cancer, radiation to the chest, or a prior abnormal biopsy?",
+      "area": "history",
+      "rationale": "Personal history is the strongest risk factor for a new breast problem.",
+      "tags": [
+        "cancer",
+        "history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_screening",
+      "text": "When was your last mammogram or breast imaging, and were any findings followed up?",
+      "area": "screening",
+      "rationale": "Screening history avoids duplicate work and catches missed follow-up.",
+      "tags": [
+        "mammogram"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_systemic",
+      "text": "Any unintended weight loss, bone pain, or new persistent cough or headache?",
+      "area": "metastasis",
+      "rationale": "These symptoms raise concern for advanced disease.",
+      "tags": [
+        "metastasis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_implants",
+      "text": "Do you have breast implants, and any swelling, pain, or change in shape of the implant?",
+      "area": "implants",
+      "rationale": "Implant complications include rupture and rare associated lymphoma.",
+      "tags": [
+        "implants"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Are you taking hormones, antipsychotics, or other medicines that can cause milky discharge?",
+      "area": "medications",
+      "rationale": "Medications commonly cause galactorrhea.",
+      "tags": [
+        "medications",
+        "prolactin"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_self_exam",
+      "text": "Do you check your breasts, and is this different from what you usually feel?",
+      "area": "history",
+      "rationale": "Patient-detected change is a common presentation.",
+      "tags": [
+        "self-exam"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_age_prior_biopsy",
+      "text": "Have you had a prior breast biopsy, dense breasts, or been told you are at higher risk?",
+      "area": "risk-factors",
+      "rationale": "Prior atypia and density change screening and workup intensity.",
+      "tags": [
+        "risk",
+        "density"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_alcohol_hrt",
+      "text": "Do you drink alcohol regularly, or have you used hormone replacement for a long time?",
+      "area": "risk-factors",
+      "rationale": "Alcohol and prolonged estrogen exposure modestly raise breast cancer risk.",
+      "tags": [
+        "alcohol",
+        "hrt"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "How much is the pain or worry affecting sleep and daily life?",
+      "area": "function",
+      "rationale": "Impact and distress guide support while workup proceeds.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_growing_mass",
+      "label": "Growing or hard breast lump",
+      "detection_instructions": "Does the patient describe a new, hard, or growing breast lump?",
+      "prompt_question_id": "q_lump_change"
+    },
+    {
+      "id": "rf_inflammatory_skin",
+      "label": "Skin dimpling, orange-peel change, or ulceration",
+      "detection_instructions": "Does the patient report dimpled, thickened, red, or ulcerated breast skin?",
+      "prompt_question_id": "q_skin_change"
+    },
+    {
+      "id": "rf_nipple_inversion",
+      "label": "New nipple inversion or bloody discharge",
+      "detection_instructions": "Does the patient report a nipple pulling in, crusting, or bloody discharge from one nipple?",
+      "prompt_question_id": "q_nipple_change"
+    },
+    {
+      "id": "rf_mastitis_fever",
+      "label": "Red hot swollen breast with fever",
+      "detection_instructions": "Does the patient report a red, hot, swollen breast with fever?",
+      "prompt_question_id": "q_red_hot"
+    },
+    {
+      "id": "rf_regional_nodes",
+      "label": "Breast finding with armpit or collarbone lumps",
+      "detection_instructions": "Does the patient report a breast lump together with lumps in the armpit or above the collarbone?",
+      "prompt_question_id": "q_nodes"
+    },
+    {
+      "id": "rf_systemic_spread",
+      "label": "Breast complaint with weight loss or bone pain",
+      "detection_instructions": "Does the patient report a breast problem together with weight loss, bone pain, or persistent cough?",
+      "prompt_question_id": "q_systemic"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_breast",
+    "q_duration",
+    "q_lump",
+    "q_skin_change",
+    "q_nipple_discharge",
+    "q_red_hot",
+    "q_family_history",
+    "q_screening"
+  ]
+}

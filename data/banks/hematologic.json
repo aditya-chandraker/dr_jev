@@ -1,0 +1,311 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_heme",
+      "text": "What is the main problem: easy bruising, bleeding, paleness, swollen glands, frequent infections, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main blood or lymph complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "heme"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Acute bleeding or rapidly enlarging nodes is more urgent than long-standing easy bruising.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bruising",
+      "text": "Do you bruise easily, and are the bruises large, raised, or without an injury?",
+      "area": "bleeding",
+      "rationale": "Spontaneous or out-of-proportion bruising suggests a platelet or clotting problem.",
+      "tags": [
+        "bruising"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bleeding",
+      "text": "Have you had nosebleeds, gum bleeding, heavy periods, or blood in stool or urine?",
+      "area": "bleeding",
+      "rationale": "Mucosal and deep bleeding patterns separate platelet from clotting-factor disorders.",
+      "tags": [
+        "bleeding"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_uncontrolled_bleed",
+      "text": "Is there bleeding that will not stop with pressure, or vomiting or coughing blood?",
+      "area": "bleeding",
+      "rationale": "Uncontrolled or internal bleeding is an emergency.",
+      "tags": [
+        "hemorrhage",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_petechiae",
+      "text": "Have you noticed tiny red or purple spots on the skin that do not fade when pressed?",
+      "area": "bleeding",
+      "rationale": "Petechiae suggest thrombocytopenia or vasculitis.",
+      "tags": [
+        "petechiae",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pallor_anemia",
+      "text": "Do you look pale, feel short of breath climbing stairs, or have a pounding heart at rest?",
+      "area": "anemia",
+      "rationale": "These symptoms suggest symptomatic anemia.",
+      "tags": [
+        "anemia",
+        "pallor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_chest_syncope",
+      "text": "With the anemia symptoms, have you had chest pain, severe breathlessness, or fainting?",
+      "area": "anemia",
+      "rationale": "Unstable anemia needs urgent care.",
+      "tags": [
+        "anemia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nodes",
+      "text": "Have you felt lumps in your neck, armpits, or groin, and are they growing or painless?",
+      "area": "lymph",
+      "rationale": "Persistent or growing nodes raise concern for lymphoma or infection.",
+      "tags": [
+        "lymphadenopathy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_spleen",
+      "text": "Do you feel fullness or pain under the left ribs, or get full after a few bites?",
+      "area": "spleen",
+      "rationale": "Splenomegaly can accompany heme malignancy or hemolysis.",
+      "tags": [
+        "spleen"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_b_symptoms",
+      "text": "Have you had fevers, drenching night sweats, or unintended weight loss?",
+      "area": "constitutional",
+      "rationale": "B symptoms with nodes or cytopenias raise concern for hematologic malignancy.",
+      "tags": [
+        "b-symptoms",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_infections",
+      "text": "Are you getting infections more often, or infections that will not clear?",
+      "area": "infection",
+      "rationale": "Recurrent infection suggests neutropenia or immune deficiency.",
+      "tags": [
+        "infection",
+        "neutropenia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_neutropenia",
+      "text": "Do you have fever now, especially if you are on chemotherapy or have a low white count?",
+      "area": "infection",
+      "rationale": "Fever in neutropenia is an emergency.",
+      "tags": [
+        "neutropenic-fever",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_clots",
+      "text": "Have you had a blood clot in a leg or lung, or unusual clots at a young age?",
+      "area": "thrombosis",
+      "rationale": "Unprovoked or unusual clots suggest thrombophilia or occult cancer.",
+      "tags": [
+        "clot",
+        "thrombosis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hemolysis",
+      "text": "Have you had yellow skin, dark urine, or sudden drop in energy with paleness?",
+      "area": "hemolysis",
+      "rationale": "These features suggest hemolysis.",
+      "tags": [
+        "hemolysis",
+        "jaundice"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_bleeding",
+      "text": "Does anyone in your family have a bleeding or clotting disorder, or hemophilia?",
+      "area": "history",
+      "rationale": "Inherited disorders often present with a family history.",
+      "tags": [
+        "family-history",
+        "hemophilia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_chemo_cancer",
+      "text": "Are you being treated for cancer, or have you had chemotherapy or radiation?",
+      "area": "history",
+      "rationale": "Cancer therapy causes cytopenias and fever risk.",
+      "tags": [
+        "cancer",
+        "chemo"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_liver_alcohol",
+      "text": "Do you have liver disease, or drink heavily?",
+      "area": "history",
+      "rationale": "Liver disease impairs clotting factor production.",
+      "tags": [
+        "liver",
+        "alcohol"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diet",
+      "text": "Is your diet low in iron, meat, or vegetables, or have you had heavy periods or recent surgery?",
+      "area": "anemia",
+      "rationale": "Iron deficiency causes are often in diet, bleeding, or menses.",
+      "tags": [
+        "iron",
+        "diet"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take blood thinners, aspirin, NSAIDs, or chemotherapy, or any new medicines?",
+      "area": "medications",
+      "rationale": "Drugs are a leading cause of bleeding and cytopenias.",
+      "tags": [
+        "medications",
+        "anticoagulant"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy",
+      "text": "Is pregnancy possible right now?",
+      "area": "pregnancy",
+      "rationale": "Pregnancy changes clotting risk and anemia evaluation.",
+      "tags": [
+        "pregnancy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_ethnicity_g6pd",
+      "text": "Have you been told you have sickle cell trait or disease, thalassemia, or G6PD deficiency?",
+      "area": "history",
+      "rationale": "Inherited red-cell disorders are important in the heme history.",
+      "tags": [
+        "sickle-cell",
+        "g6pd"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "How is this affecting work, bleeding with daily activities, or exercise?",
+      "area": "function",
+      "rationale": "Functional impact and ongoing bleeding guide urgency.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_uncontrolled_bleed",
+      "label": "Bleeding that will not stop",
+      "detection_instructions": "Does the patient report bleeding that continues despite pressure, or vomiting or coughing blood?",
+      "prompt_question_id": "q_uncontrolled_bleed"
+    },
+    {
+      "id": "rf_petechiae",
+      "label": "Petechiae or spontaneous bruising",
+      "detection_instructions": "Does the patient describe tiny non-blanching spots or large bruises without injury?",
+      "prompt_question_id": "q_petechiae"
+    },
+    {
+      "id": "rf_unstable_anemia",
+      "label": "Anemia with chest pain, severe breathlessness, or fainting",
+      "detection_instructions": "Does the patient report paleness or known anemia with chest pain, severe shortness of breath, or fainting?",
+      "prompt_question_id": "q_chest_syncope"
+    },
+    {
+      "id": "rf_b_symptoms",
+      "label": "Nodes with fevers, night sweats, or weight loss",
+      "detection_instructions": "Does the patient report swollen glands together with fevers, night sweats, or weight loss?",
+      "prompt_question_id": "q_b_symptoms"
+    },
+    {
+      "id": "rf_neutropenic_fever",
+      "label": "Fever with chemotherapy or low white count",
+      "detection_instructions": "Does the patient report fever while on chemotherapy or with a known low white blood cell count?",
+      "prompt_question_id": "q_fever_neutropenia"
+    },
+    {
+      "id": "rf_acute_hemolysis",
+      "label": "Possible acute hemolysis",
+      "detection_instructions": "Does the patient report sudden paleness, jaundice, or dark urine with fatigue?",
+      "prompt_question_id": "q_hemolysis"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_heme",
+    "q_duration",
+    "q_bruising",
+    "q_bleeding",
+    "q_pallor_anemia",
+    "q_nodes",
+    "q_b_symptoms",
+    "q_medications"
+  ]
+}

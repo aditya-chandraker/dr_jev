@@ -1,0 +1,312 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_ob",
+      "text": "What is the main pregnancy-related problem: bleeding, pain, contractions, fluid leaking, the baby moving less, headache, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main obstetric complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "obstetric"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_gestational_age",
+      "text": "How far along are you, and have you had prenatal care and an ultrasound?",
+      "area": "timeline",
+      "rationale": "Gestational age determines viability, ectopic risk, and which complications are likely.",
+      "tags": [
+        "gestational-age"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_known_pregnancy",
+      "text": "Have you had a positive pregnancy test, and do you know if this is an intrauterine pregnancy?",
+      "area": "pregnancy",
+      "rationale": "An unconfirmed location leaves ectopic pregnancy on the table.",
+      "tags": [
+        "pregnancy",
+        "ectopic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bleeding",
+      "text": "Are you having vaginal bleeding, how heavy, and are you passing tissue or clots?",
+      "area": "bleeding",
+      "rationale": "Bleeding in pregnancy may be threatened miscarriage, ectopic, or later placental problems.",
+      "tags": [
+        "bleeding",
+        "miscarriage"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_heavy_bleed_faint",
+      "text": "Are you soaking pads hourly, feeling faint, or having shoulder pain with the bleeding?",
+      "area": "bleeding",
+      "rationale": "Heavy bleeding or syncope can indicate rupture or hemorrhage.",
+      "tags": [
+        "hemorrhage",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain",
+      "text": "Where is the pain, is it one-sided, crampy, or constant, and how severe?",
+      "area": "pain",
+      "rationale": "Unilateral pain early in pregnancy raises concern for ectopic pregnancy.",
+      "tags": [
+        "ectopic",
+        "pain"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_contractions",
+      "text": "Are you having regular tightening or contractions, how often, and does the belly stay hard?",
+      "area": "labor",
+      "rationale": "Regular contractions before term suggest preterm labor.",
+      "tags": [
+        "contractions",
+        "preterm"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fluid_leak",
+      "text": "Has fluid leaked from the vagina, is it a gush or trickle, and what color is it?",
+      "area": "membranes",
+      "rationale": "Rupture of membranes changes infection and cord-prolapse risk.",
+      "tags": [
+        "prom",
+        "fluid"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fetal_movement",
+      "text": "Have you felt the baby move less than usual?",
+      "area": "fetal",
+      "rationale": "Reduced fetal movement needs urgent evaluation in the second half of pregnancy.",
+      "tags": [
+        "fetal-movement",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache_vision",
+      "text": "Have you had a new severe headache, vision changes, or pain in the upper right belly?",
+      "area": "preeclampsia",
+      "rationale": "These are warning symptoms of preeclampsia and HELLP.",
+      "tags": [
+        "preeclampsia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_swelling_bp",
+      "text": "Have you had sudden swelling of the face or hands, or high blood pressure readings?",
+      "area": "preeclampsia",
+      "rationale": "Sudden edema and hypertension support preeclampsia.",
+      "tags": [
+        "edema",
+        "hypertension"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_seizure",
+      "text": "Have you had a seizure, or felt about to have one?",
+      "area": "preeclampsia",
+      "rationale": "Seizure in pregnancy is eclampsia until proven otherwise.",
+      "tags": [
+        "eclampsia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_infection",
+      "text": "Have you had fever, burning urine, or foul discharge?",
+      "area": "infection",
+      "rationale": "Pyelonephritis and chorioamnionitis are obstetric emergencies.",
+      "tags": [
+        "fever",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trauma_dv",
+      "text": "Have you had a fall, car accident, or has anyone hurt you?",
+      "area": "trauma",
+      "rationale": "Trauma and intimate-partner violence are important in pregnancy.",
+      "tags": [
+        "trauma",
+        "dv"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_abdominal_trauma_bleed",
+      "text": "After injury, have you had bleeding, pain, or the baby moving less?",
+      "area": "trauma",
+      "rationale": "Placental abruption can follow even modest trauma.",
+      "tags": [
+        "abruption",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hyperemesis",
+      "text": "Are you vomiting so much you cannot keep fluids down, or have you lost weight?",
+      "area": "nausea",
+      "rationale": "Hyperemesis can cause dehydration and electrolyte problems.",
+      "tags": [
+        "hyperemesis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_glucose_diabetes",
+      "text": "Have you had diabetes before pregnancy or gestational diabetes, and any very high or low sugars?",
+      "area": "endocrine",
+      "rationale": "Diabetes complications and DKA can occur in pregnancy.",
+      "tags": [
+        "diabetes"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_prior_ob",
+      "text": "Have you had preterm birth, preeclampsia, C-section, miscarriage, or stillbirth before?",
+      "area": "history",
+      "rationale": "Obstetric history is the strongest predictor of recurrence.",
+      "tags": [
+        "history",
+        "prior-ob"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_rh_blood",
+      "text": "Do you know your blood type, and have you received RhoGAM if you needed it?",
+      "area": "history",
+      "rationale": "Rh status matters with bleeding.",
+      "tags": [
+        "rh",
+        "blood-type"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "What medicines, prenatal vitamins, or substances are you taking, including alcohol or drugs?",
+      "area": "medications",
+      "rationale": "Teratogens, missed vitamins, and substances change risk.",
+      "tags": [
+        "medications",
+        "substance"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_prenatal_care",
+      "text": "When was your last prenatal visit, and were there any problems with blood pressure, growth, or labs?",
+      "area": "care",
+      "rationale": "Gaps in prenatal care and known complications frame urgency.",
+      "tags": [
+        "prenatal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_placenta_multiples",
+      "text": "Have you been told you have placenta previa, a low placenta, twins, or a short cervix?",
+      "area": "history",
+      "rationale": "Known placental and cervical problems change bleeding and preterm-labor risk.",
+      "tags": [
+        "previa",
+        "twins"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "Are you able to drink, walk, and feel the baby as expected, or do you feel too unwell?",
+      "area": "function",
+      "rationale": "Functional status and fetal movement guide disposition.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_ectopic_hemorrhage",
+      "label": "Pregnancy with heavy bleeding, fainting, or shoulder pain",
+      "detection_instructions": "Does the patient report pregnancy or a positive test with heavy bleeding, fainting, or shoulder-tip pain?",
+      "prompt_question_id": "q_heavy_bleed_faint"
+    },
+    {
+      "id": "rf_reduced_movement",
+      "label": "Baby moving less than usual",
+      "detection_instructions": "Does the patient report reduced fetal movement?",
+      "prompt_question_id": "q_fetal_movement"
+    },
+    {
+      "id": "rf_preeclampsia",
+      "label": "Headache, vision change, or upper abdominal pain in pregnancy",
+      "detection_instructions": "Does the patient report new severe headache, vision changes, or right-upper-belly pain in pregnancy?",
+      "prompt_question_id": "q_headache_vision"
+    },
+    {
+      "id": "rf_eclampsia",
+      "label": "Seizure in pregnancy",
+      "detection_instructions": "Does the patient report a seizure while pregnant?",
+      "prompt_question_id": "q_seizure"
+    },
+    {
+      "id": "rf_preterm_labor",
+      "label": "Regular contractions or fluid leak before term",
+      "detection_instructions": "Does the patient report regular contractions or leaking fluid before 37 weeks?",
+      "prompt_question_id": "q_contractions"
+    },
+    {
+      "id": "rf_abruption_trauma",
+      "label": "Trauma with bleeding or reduced movement",
+      "detection_instructions": "Does the patient report a fall or blow to the belly with bleeding, pain, or less fetal movement?",
+      "prompt_question_id": "q_abdominal_trauma_bleed"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_ob",
+    "q_gestational_age",
+    "q_bleeding",
+    "q_pain",
+    "q_fetal_movement",
+    "q_headache_vision",
+    "q_contractions",
+    "q_medications"
+  ]
+}

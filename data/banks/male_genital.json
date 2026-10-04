@@ -1,0 +1,312 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_male_genital",
+      "text": "What is the main problem: testicular pain or swelling, a lump, penile sores or discharge, erection problems, or a bulge in the groin?",
+      "area": "clarification",
+      "rationale": "Clarifying the main male genital complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "male-genital"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Sudden testicular pain is treated as torsion until proven otherwise.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_testicular_pain",
+      "text": "Is there pain in a testicle, and did it start suddenly?",
+      "area": "testicle",
+      "rationale": "Acute unilateral testicular pain is a surgical emergency until torsion is excluded.",
+      "tags": [
+        "torsion",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_testicular_swelling",
+      "text": "Is one testicle swollen, high-riding, or different in size or firmness?",
+      "area": "testicle",
+      "rationale": "Swelling and lie of the testis help separate torsion, epididymitis, and tumor.",
+      "tags": [
+        "swelling",
+        "testicle"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lump_testicle",
+      "text": "Have you felt a lump on a testicle, and is it painless and growing?",
+      "area": "mass",
+      "rationale": "A painless testicular mass is cancer until proven otherwise.",
+      "tags": [
+        "mass",
+        "cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nausea_torsion",
+      "text": "With the testicular pain, have you had nausea, vomiting, or abdominal pain?",
+      "area": "torsion",
+      "rationale": "Nausea with acute testicular pain supports torsion.",
+      "tags": [
+        "torsion",
+        "nausea"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_urinary_sti",
+      "text": "Any burning with urine, discharge from the penis, or sores?",
+      "area": "infection",
+      "rationale": "Discharge and dysuria suggest urethritis or STI rather than torsion.",
+      "tags": [
+        "sti",
+        "discharge"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sex_history",
+      "text": "Have you had any new sexual partners or unprotected sex recently?",
+      "area": "sexual_history",
+      "rationale": "Sexual history frames STI and epididymo-orchitis risk.",
+      "tags": [
+        "sexual-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever",
+      "text": "Have you had fever or chills with the genital symptoms?",
+      "area": "infection",
+      "rationale": "Fever suggests epididymo-orchitis, abscess, or Fournier gangrene.",
+      "tags": [
+        "fever",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_scrotal_skin",
+      "text": "Is the scrotal skin red, very tender, spreading, or dark, especially if you have diabetes?",
+      "area": "infection",
+      "rationale": "Rapidly progressive scrotal infection can be necrotizing and is an emergency.",
+      "tags": [
+        "fournier",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hernia",
+      "text": "Do you have a bulge in the groin that comes and goes, and is it stuck, painful, or red?",
+      "area": "hernia",
+      "rationale": "An incarcerated or strangulated hernia needs urgent surgical care.",
+      "tags": [
+        "hernia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trauma",
+      "text": "Did you injure the testicles, penis, or groin?",
+      "area": "trauma",
+      "rationale": "Trauma can cause rupture, hematoma, or urethral injury.",
+      "tags": [
+        "trauma"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_erection",
+      "text": "Are you having trouble getting or keeping an erection, and is that new?",
+      "area": "sexual_function",
+      "rationale": "Erectile dysfunction may be vascular, neurologic, hormonal, or medication-related.",
+      "tags": [
+        "ed"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_priapism",
+      "text": "Have you had an erection lasting more than four hours, or one that is painful?",
+      "area": "sexual_function",
+      "rationale": "Priapism is a time-sensitive emergency.",
+      "tags": [
+        "priapism",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_penile_curve",
+      "text": "Is there curvature, pain with erection, or a lump along the shaft?",
+      "area": "penis",
+      "rationale": "These features suggest Peyronie's disease or other penile pathology.",
+      "tags": [
+        "peyronie"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_foreskin",
+      "text": "If uncircumcised, can you retract the foreskin, or is the head of the penis trapped?",
+      "area": "foreskin",
+      "rationale": "Paraphimosis is an emergency; phimosis can cause infection and retention.",
+      "tags": [
+        "phimosis",
+        "paraphimosis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_prostate_overlap",
+      "text": "Any trouble starting urine, weak stream, or waking at night to pee?",
+      "area": "voiding",
+      "rationale": "Voiding symptoms may belong with the urinary bank but often accompany genital complaints.",
+      "tags": [
+        "voiding",
+        "prostate"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cancer_symptoms",
+      "text": "Any back pain, weight loss, or swollen legs with a testicular or prostate concern?",
+      "area": "cancer",
+      "rationale": "These can indicate advanced testicular or prostate cancer.",
+      "tags": [
+        "cancer",
+        "metastasis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mumps_history",
+      "text": "Have you had mumps, or a recent viral illness with testicular pain?",
+      "area": "history",
+      "rationale": "Viral orchitis is a classic cause of testicular pain after puberty.",
+      "tags": [
+        "mumps",
+        "orchitis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take blood pressure medicines, antidepressants, testosterone, or injections for erections?",
+      "area": "medications",
+      "rationale": "Many drugs affect erections, libido, and priapism risk.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diabetes_vascular",
+      "text": "Do you have diabetes, heart disease, or smoking history?",
+      "area": "risk-factors",
+      "rationale": "Vascular disease is a leading cause of erectile dysfunction.",
+      "tags": [
+        "diabetes",
+        "vascular"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_undescended",
+      "text": "Did you have an undescended testicle, or surgery on a testicle as a child?",
+      "area": "history",
+      "rationale": "Cryptorchidism raises testicular cancer risk.",
+      "tags": [
+        "cryptorchidism",
+        "cancer"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "How is this affecting pain, sex, work, or walking?",
+      "area": "function",
+      "rationale": "Functional impact and unrelenting pain guide urgency.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_torsion",
+      "label": "Sudden severe testicular pain",
+      "detection_instructions": "Does the patient describe sudden severe pain in a testicle, especially with swelling or nausea?",
+      "prompt_question_id": "q_testicular_pain"
+    },
+    {
+      "id": "rf_testicular_mass",
+      "label": "Painless testicular lump",
+      "detection_instructions": "Does the patient report a painless or growing lump on a testicle?",
+      "prompt_question_id": "q_lump_testicle"
+    },
+    {
+      "id": "rf_fournier",
+      "label": "Spreading red or dark scrotal skin with illness",
+      "detection_instructions": "Does the patient report rapidly spreading redness, darkness, or severe pain of the scrotal skin, especially with diabetes or fever?",
+      "prompt_question_id": "q_scrotal_skin"
+    },
+    {
+      "id": "rf_incarcerated_hernia",
+      "label": "Stuck painful groin bulge",
+      "detection_instructions": "Does the patient describe a groin bulge that will not go back in and is painful or red?",
+      "prompt_question_id": "q_hernia"
+    },
+    {
+      "id": "rf_priapism",
+      "label": "Erection lasting more than four hours",
+      "detection_instructions": "Does the patient report a prolonged or painful erection lasting hours?",
+      "prompt_question_id": "q_priapism"
+    },
+    {
+      "id": "rf_paraphimosis",
+      "label": "Foreskin trapped behind the head of the penis",
+      "detection_instructions": "Does the patient report the foreskin stuck behind the head of the penis with swelling?",
+      "prompt_question_id": "q_foreskin"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_male_genital",
+    "q_duration",
+    "q_testicular_pain",
+    "q_lump_testicle",
+    "q_urinary_sti",
+    "q_hernia",
+    "q_fever",
+    "q_medications"
+  ]
+}

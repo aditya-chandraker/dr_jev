@@ -1,0 +1,315 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_gyn",
+      "text": "What is the main problem: pelvic pain, abnormal bleeding, discharge, missed periods, menopause symptoms, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main gynecologic complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "gyn"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and course distinguish acute from chronic gynecologic problems.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy",
+      "text": "Is pregnancy possible right now, or have you had a positive pregnancy test?",
+      "area": "pregnancy",
+      "rationale": "Pregnancy, including ectopic pregnancy, must be considered with pelvic pain or bleeding.",
+      "tags": [
+        "pregnancy",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_last_period",
+      "text": "When was your last menstrual period, and was it normal for you?",
+      "area": "bleeding",
+      "rationale": "Last period dates the cycle and pregnancy risk.",
+      "tags": [
+        "lmp",
+        "menses"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bleeding_pattern",
+      "text": "Are you bleeding more heavily, spotting between periods, or bleeding after sex or after menopause?",
+      "area": "bleeding",
+      "rationale": "Pattern of bleeding separates hormonal, structural, pregnancy, and cancer causes.",
+      "tags": [
+        "menorrhagia",
+        "postmenopausal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_soaking",
+      "text": "Are you soaking through a pad or tampon every hour, passing large clots, or feeling lightheaded?",
+      "area": "bleeding",
+      "rationale": "Heavy bleeding with lightheadedness can be hemodynamically important.",
+      "tags": [
+        "hemorrhage",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pelvic_pain",
+      "text": "Where is the pelvic or lower belly pain, and is it one-sided, constant, or crampy?",
+      "area": "pain",
+      "rationale": "Location and quality help separate ovarian, uterine, and gastrointestinal causes.",
+      "tags": [
+        "pelvic-pain"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sudden_severe_pain",
+      "text": "Did the pain start suddenly and become severe on one side?",
+      "area": "pain",
+      "rationale": "Sudden severe unilateral pain raises concern for ovarian torsion or ectopic pregnancy.",
+      "tags": [
+        "torsion",
+        "ectopic",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_discharge",
+      "text": "Do you have vaginal discharge, and what color or odor is it?",
+      "area": "infection",
+      "rationale": "Discharge character helps identify vaginitis, cervicitis, and PID.",
+      "tags": [
+        "discharge",
+        "vaginitis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sti_symptoms",
+      "text": "Any itching, sores, blisters, or pain with sex or urination?",
+      "area": "infection",
+      "rationale": "These features suggest STI, herpes, or local irritation.",
+      "tags": [
+        "sti",
+        "dyspareunia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_pid",
+      "text": "Have you had fever, chills, or pain with sex along with pelvic pain or discharge?",
+      "area": "infection",
+      "rationale": "Fever with pelvic pain and discharge raises concern for pelvic inflammatory disease.",
+      "tags": [
+        "pid",
+        "fever",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cycle_regularity",
+      "text": "Are your periods regular, and have they stopped, become farther apart, or come more often?",
+      "area": "cycle",
+      "rationale": "Cycle change can reflect PCOS, thyroid disease, menopause, or pregnancy.",
+      "tags": [
+        "amenorrhea",
+        "oligomenorrhea"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_menopause",
+      "text": "Are you having hot flashes, night sweats, or vaginal dryness, or have your periods stopped?",
+      "area": "menopause",
+      "rationale": "Menopausal symptoms are a common primary gynecologic complaint.",
+      "tags": [
+        "menopause"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_contraception",
+      "text": "Are you using contraception, an IUD, or hormone therapy, and has anything changed recently?",
+      "area": "history",
+      "rationale": "Contraception type changes bleeding, pain, and infection risk.",
+      "tags": [
+        "contraception",
+        "iud"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sex_history",
+      "text": "Have you had any new sexual partners or unprotected sex recently?",
+      "area": "sexual_history",
+      "rationale": "Sexual history helps assess STI and pregnancy risk.",
+      "tags": [
+        "sexual-history",
+        "sti"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pap_screening",
+      "text": "When was your last Pap or HPV test, and have you had abnormal results?",
+      "area": "screening",
+      "rationale": "Screening history informs cancer risk for bleeding or discharge.",
+      "tags": [
+        "pap",
+        "hpv"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_gyn_history",
+      "text": "Have you had fibroids, endometriosis, ovarian cysts, PID, or gynecologic surgery?",
+      "area": "history",
+      "rationale": "Prior gynecologic disease often explains recurrent pain or bleeding.",
+      "tags": [
+        "fibroids",
+        "endometriosis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cancer_symptoms",
+      "text": "Have you had postmenopausal bleeding, a pelvic mass, bloating, or unintended weight loss?",
+      "area": "cancer",
+      "rationale": "These features raise concern for gynecologic malignancy.",
+      "tags": [
+        "cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_urinary_bowel",
+      "text": "Any burning with urine, leaking, constipation, or pain with bowel movements?",
+      "area": "associated",
+      "rationale": "Urinary and bowel symptoms may be related or point to another system.",
+      "tags": [
+        "urinary",
+        "bowel"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_shoulder_syncope",
+      "text": "With the pain or bleeding, have you felt faint, or had pain in your shoulder tip?",
+      "area": "ectopic",
+      "rationale": "Shoulder-tip pain or syncope with pelvic pain can indicate ruptured ectopic pregnancy.",
+      "tags": [
+        "ectopic",
+        "syncope",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Are you taking blood thinners, hormones, or any new medicines?",
+      "area": "medications",
+      "rationale": "Anticoagulants and hormones commonly change bleeding patterns.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy_history",
+      "text": "Have you had pregnancies, miscarriages, or trouble getting pregnant?",
+      "area": "history",
+      "rationale": "Obstetric history informs current bleeding and pain workup.",
+      "tags": [
+        "obstetric-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "How is this affecting work, sex, sleep, or daily activities?",
+      "area": "function",
+      "rationale": "Functional impact guides urgency and treatment.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_possible_pregnancy",
+      "label": "Possible pregnancy with pain or bleeding",
+      "detection_instructions": "Does the patient report pelvic pain or vaginal bleeding with a possible or positive pregnancy?",
+      "prompt_question_id": "q_pregnancy"
+    },
+    {
+      "id": "rf_heavy_bleeding",
+      "label": "Heavy vaginal bleeding",
+      "detection_instructions": "Does the patient report soaking pads hourly, large clots, or bleeding with lightheadedness?",
+      "prompt_question_id": "q_soaking"
+    },
+    {
+      "id": "rf_sudden_pelvic_pain",
+      "label": "Sudden severe one-sided pelvic pain",
+      "detection_instructions": "Does the patient describe sudden severe pain on one side of the pelvis?",
+      "prompt_question_id": "q_sudden_severe_pain"
+    },
+    {
+      "id": "rf_pid",
+      "label": "Possible pelvic inflammatory disease",
+      "detection_instructions": "Does the patient report pelvic pain with fever, discharge, or pain with sex?",
+      "prompt_question_id": "q_fever_pid"
+    },
+    {
+      "id": "rf_ectopic_features",
+      "label": "Possible ruptured ectopic pregnancy",
+      "detection_instructions": "Does the patient report pelvic pain with fainting or shoulder-tip pain, especially if pregnancy is possible?",
+      "prompt_question_id": "q_shoulder_syncope"
+    },
+    {
+      "id": "rf_postmenopausal_bleeding",
+      "label": "Postmenopausal bleeding or possible cancer features",
+      "detection_instructions": "Does the patient report bleeding after menopause, a pelvic mass, bloating, or weight loss?",
+      "prompt_question_id": "q_cancer_symptoms"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_gyn",
+    "q_duration",
+    "q_pregnancy",
+    "q_bleeding_pattern",
+    "q_pelvic_pain",
+    "q_discharge",
+    "q_fever_pid",
+    "q_medications"
+  ]
+}

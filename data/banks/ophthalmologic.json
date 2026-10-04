@@ -1,0 +1,321 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_eye",
+      "text": "What is the main eye problem: pain, redness, vision loss, double vision, flashes or floaters, discharge, or an injury?",
+      "area": "clarification",
+      "rationale": "Clarifying the main eye complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "eye"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Sudden vision change is more urgent than gradual change.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_which_eye",
+      "text": "Is it one eye or both, and did it start suddenly or over days to weeks?",
+      "area": "pattern",
+      "rationale": "Unilateral sudden loss suggests vascular, retinal, or acute glaucoma causes.",
+      "tags": [
+        "laterality",
+        "onset"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vision_loss",
+      "text": "Have you lost vision, is it complete or a curtain or shadow, and can you still see light?",
+      "area": "vision",
+      "rationale": "Pattern of loss helps separate retinal detachment, vascular occlusion, and optic nerve disease.",
+      "tags": [
+        "vision-loss",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_flashes_floaters",
+      "text": "Have you seen flashes of light, a shower of new floaters, or a curtain over part of your vision?",
+      "area": "retina",
+      "rationale": "These symptoms raise concern for retinal tear or detachment.",
+      "tags": [
+        "flashes",
+        "floaters",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain_redness",
+      "text": "Is the eye painful, red, or sensitive to light?",
+      "area": "pain",
+      "rationale": "Painful red eye with photophobia can be keratitis, uveitis, or acute glaucoma.",
+      "tags": [
+        "red-eye",
+        "photophobia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_acute_glaucoma",
+      "text": "Is there severe eye pain with headache, nausea, and a cloudy or steamy cornea or halo lights?",
+      "area": "pressure",
+      "rationale": "This cluster suggests acute angle-closure glaucoma, which is time-sensitive.",
+      "tags": [
+        "glaucoma",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_discharge",
+      "text": "Is there discharge, crusting, or is the eye stuck shut in the morning?",
+      "area": "infection",
+      "rationale": "Discharge pattern helps separate conjunctivitis from more serious infection.",
+      "tags": [
+        "discharge",
+        "conjunctivitis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_contact_lenses",
+      "text": "Do you wear contact lenses, sleep in them, or swim in them?",
+      "area": "risk-factors",
+      "rationale": "Contact lens use raises risk of sight-threatening keratitis.",
+      "tags": [
+        "contacts",
+        "keratitis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trauma_chemical",
+      "text": "Did something hit the eye, or did a chemical, metal, or dust get in it?",
+      "area": "trauma",
+      "rationale": "Chemical burns and penetrating injury need immediate care.",
+      "tags": [
+        "trauma",
+        "chemical",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_foreign_body",
+      "text": "Do you feel like something is still in the eye, or is there a visible cut or object?",
+      "area": "trauma",
+      "rationale": "A retained foreign body or globe injury changes management.",
+      "tags": [
+        "foreign-body"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_double_vision",
+      "text": "Do you have double vision, and is it worse looking one direction or with both eyes open?",
+      "area": "alignment",
+      "rationale": "Binocular diplopia can indicate cranial nerve palsy or orbital disease.",
+      "tags": [
+        "diplopia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_lid_swelling",
+      "text": "Are the eyelids swollen, and can you still move the eye without pain?",
+      "area": "orbital",
+      "rationale": "Pain with eye movement and lid swelling raise concern for orbital cellulitis.",
+      "tags": [
+        "orbital",
+        "cellulitis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache_scalp",
+      "text": "If you are over 50, do you have new headache, scalp tenderness, or jaw pain when chewing with the vision change?",
+      "area": "vascular",
+      "rationale": "This pattern suggests giant cell arteritis.",
+      "tags": [
+        "gca",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_neurologic",
+      "text": "Any weakness, numbness, trouble speaking, or a drooping lid with the vision change?",
+      "area": "neurologic",
+      "rationale": "Eye symptoms plus focal neuro signs suggest stroke or aneurysm.",
+      "tags": [
+        "stroke",
+        "neuro"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_systemic",
+      "text": "Do you have diabetes, high blood pressure, autoimmune disease, or recent shingles?",
+      "area": "history",
+      "rationale": "Systemic disease drives many acute vision threats.",
+      "tags": [
+        "diabetes",
+        "autoimmune"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_eye_history",
+      "text": "Have you had eye surgery, glaucoma, lazy eye, or retinal problems before?",
+      "area": "history",
+      "rationale": "Prior eye disease frames the current complaint.",
+      "tags": [
+        "history",
+        "ophthalmology"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_meds_eye",
+      "text": "Do you take blood thinners, steroids, or medicines for glaucoma or erectile dysfunction?",
+      "area": "medications",
+      "rationale": "Some drugs affect bleeding, pressure, or optic nerves.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_corrective",
+      "text": "Do you wear glasses, and has your prescription changed quickly?",
+      "area": "refraction",
+      "rationale": "Rapid refractive shift can occur with diabetes or cataract.",
+      "tags": [
+        "glasses",
+        "refraction"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_occupational",
+      "text": "Do you weld, grind metal, or work with chemicals without eye protection?",
+      "area": "exposures",
+      "rationale": "Occupational injury is a common cause of acute eye complaints.",
+      "tags": [
+        "occupation",
+        "exposure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_contact_ill",
+      "text": "Has anyone around you had pink eye, or have you had a recent cold?",
+      "area": "infection",
+      "rationale": "Viral conjunctivitis is often preceded by URI or sick contacts.",
+      "tags": [
+        "sick-contacts"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_only_eye",
+      "text": "Is this your only seeing eye, or is vision already limited in the other eye?",
+      "area": "function",
+      "rationale": "Threat to a remaining good eye raises urgency.",
+      "tags": [
+        "monocular"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "Is this affecting driving, reading, or work?",
+      "area": "function",
+      "rationale": "Functional impact guides urgency, especially monocular patients.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_sudden_vision_loss",
+      "label": "Sudden vision loss",
+      "detection_instructions": "Does the patient report sudden loss of vision in one or both eyes?",
+      "prompt_question_id": "q_vision_loss"
+    },
+    {
+      "id": "rf_retinal_detachment",
+      "label": "Flashes, floaters, or curtain over vision",
+      "detection_instructions": "Does the patient describe flashes, a shower of floaters, or a curtain or shadow over part of the vision?",
+      "prompt_question_id": "q_flashes_floaters"
+    },
+    {
+      "id": "rf_acute_glaucoma",
+      "label": "Possible acute glaucoma",
+      "detection_instructions": "Does the patient report severe eye pain with nausea, halos, or a cloudy cornea?",
+      "prompt_question_id": "q_acute_glaucoma"
+    },
+    {
+      "id": "rf_chemical_trauma",
+      "label": "Chemical or penetrating eye injury",
+      "detection_instructions": "Does the patient report a chemical in the eye, metal striking the eye, or a cut or object in the eye?",
+      "prompt_question_id": "q_trauma_chemical"
+    },
+    {
+      "id": "rf_orbital_cellulitis",
+      "label": "Possible orbital cellulitis",
+      "detection_instructions": "Does the patient report eyelid swelling with pain moving the eye, fever, or trouble opening the eye?",
+      "prompt_question_id": "q_lid_swelling"
+    },
+    {
+      "id": "rf_diplopia",
+      "label": "New double vision",
+      "detection_instructions": "Does the patient report new double vision, especially with a drooping lid or neurologic symptoms?",
+      "prompt_question_id": "q_double_vision"
+    },
+    {
+      "id": "rf_gca_eye",
+      "label": "Possible giant cell arteritis",
+      "detection_instructions": "Does a patient over 50 report vision change with new headache, scalp tenderness, or jaw pain on chewing?",
+      "prompt_question_id": "q_headache_scalp"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_eye",
+    "q_duration",
+    "q_which_eye",
+    "q_vision_loss",
+    "q_pain_redness",
+    "q_flashes_floaters",
+    "q_trauma_chemical",
+    "q_contact_lenses"
+  ]
+}

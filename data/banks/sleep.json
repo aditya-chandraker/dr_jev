@@ -1,0 +1,312 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_sleep",
+      "text": "What is the main sleep problem: trouble falling asleep, waking too often, snoring or gasping, sleepiness in the day, or restless legs?",
+      "area": "clarification",
+      "rationale": "Clarifying the main sleep complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "sleep"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "How long has this been going on, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Acute insomnia after a stressor differs from chronic sleep apnea.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sleep_schedule",
+      "text": "What time do you get into bed, fall asleep, and get up, including weekends?",
+      "area": "schedule",
+      "rationale": "Schedule mismatch causes many insomnia and circadian complaints.",
+      "tags": [
+        "schedule",
+        "circadian"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_insomnia_type",
+      "text": "Is the problem falling asleep, staying asleep, waking too early, or unrefreshing sleep?",
+      "area": "insomnia",
+      "rationale": "Insomnia pattern points toward anxiety, depression, apnea, or circadian issues.",
+      "tags": [
+        "insomnia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sleepiness",
+      "text": "Do you fall asleep in the daytime, in meetings, or while driving?",
+      "area": "hypersomnia",
+      "rationale": "Sleepiness while driving is a safety emergency.",
+      "tags": [
+        "sleepiness",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_snoring_apnea",
+      "text": "Do you snore loudly, or has anyone seen you stop breathing or gasp at night?",
+      "area": "apnea",
+      "rationale": "Witnessed apneas and loud snoring suggest obstructive sleep apnea.",
+      "tags": [
+        "osa",
+        "snoring"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_morning_symptoms",
+      "text": "Do you wake with a headache, dry mouth, or a sore throat?",
+      "area": "apnea",
+      "rationale": "These morning symptoms support sleep apnea.",
+      "tags": [
+        "osa",
+        "morning"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_restless_legs",
+      "text": "Do your legs feel creepy, restless, or need to move in the evening, and does moving help?",
+      "area": "movement",
+      "rationale": "Restless legs commonly fragment sleep.",
+      "tags": [
+        "rls"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_parasomnia",
+      "text": "Do you sleepwalk, act out dreams, or have unusual movements at night?",
+      "area": "parasomnia",
+      "rationale": "Dream enactment raises concern for REM behavior disorder.",
+      "tags": [
+        "parasomnia",
+        "rbd"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cataplexy",
+      "text": "Do you have sudden weakness with laughing or surprise, or brief sleep attacks?",
+      "area": "narcolepsy",
+      "rationale": "Cataplexy and sleep attacks suggest narcolepsy.",
+      "tags": [
+        "narcolepsy",
+        "cataplexy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mood",
+      "text": "How is your mood, worry, and stress, and do racing thoughts keep you up?",
+      "area": "psych",
+      "rationale": "Mood and anxiety are among the most common insomnia drivers.",
+      "tags": [
+        "mood",
+        "anxiety"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pain_nocturia",
+      "text": "Does pain, needing to pee, reflux, or breathing trouble wake you?",
+      "area": "medical",
+      "rationale": "Medical nocturia, pain, and orthopnea fragment sleep.",
+      "tags": [
+        "nocturia",
+        "pain"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_substances",
+      "text": "How much caffeine, alcohol, nicotine, or other drugs do you use, and how late?",
+      "area": "substance",
+      "rationale": "Stimulants and alcohol strongly disrupt sleep architecture.",
+      "tags": [
+        "caffeine",
+        "alcohol"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_shift_work",
+      "text": "Do you work nights, rotate shifts, or travel across time zones?",
+      "area": "circadian",
+      "rationale": "Shift work and jet lag are common circadian disorders.",
+      "tags": [
+        "shift-work"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_screen_habits",
+      "text": "What is your wind-down like, including screens in bed?",
+      "area": "hygiene",
+      "rationale": "Sleep hygiene contributes to insomnia and is a first counseling target.",
+      "tags": [
+        "hygiene",
+        "screens"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weight_neck",
+      "text": "Have you gained weight, or been told you have a thick neck or small airway?",
+      "area": "risk-factors",
+      "rationale": "Obesity and neck size raise OSA risk.",
+      "tags": [
+        "obesity",
+        "osa"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cardiorespiratory",
+      "text": "Do you have high blood pressure, heart failure, atrial fibrillation, or COPD?",
+      "area": "history",
+      "rationale": "OSA both causes and is caused by cardiorespiratory disease.",
+      "tags": [
+        "hypertension",
+        "heart"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_depression_safety",
+      "text": "Has lack of sleep made you feel hopeless, or affected your ability to stay safe?",
+      "area": "safety",
+      "rationale": "Severe insomnia can worsen suicidal thinking and occupational safety.",
+      "tags": [
+        "safety",
+        "mood"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Do you take sleeping pills, stimulants, antidepressants, or steroids, or have you started anything new?",
+      "area": "medications",
+      "rationale": "Medications commonly cause insomnia or daytime sleepiness.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_prior_study",
+      "text": "Have you had a sleep study, or do you use CPAP, and is it working?",
+      "area": "history",
+      "rationale": "Prior testing and CPAP adherence change next steps.",
+      "tags": [
+        "cpap",
+        "sleep-study"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_naps_kids",
+      "text": "Do you nap in the day, or do children or a bed partner interrupt your sleep?",
+      "area": "schedule",
+      "rationale": "External interruptions and compensatory naps change the insomnia plan.",
+      "tags": [
+        "naps",
+        "environment"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_leg_cramps_plm",
+      "text": "Do your legs kick or cramp at night, or has a partner said you jerk in sleep?",
+      "area": "movement",
+      "rationale": "Periodic limb movements fragment sleep independently of restless legs.",
+      "tags": [
+        "plm",
+        "cramps"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "How is this affecting work, mood, driving, and relationships?",
+      "area": "function",
+      "rationale": "Daytime impairment defines whether a sleep complaint is clinically important.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_drowsy_driving",
+      "label": "Falling asleep while driving",
+      "detection_instructions": "Does the patient report falling asleep or nodding off while driving or in other unsafe situations?",
+      "prompt_question_id": "q_sleepiness"
+    },
+    {
+      "id": "rf_witnessed_apnea",
+      "label": "Witnessed breathing pauses at night",
+      "detection_instructions": "Does the patient or a partner describe snoring with pauses in breathing or gasping at night?",
+      "prompt_question_id": "q_snoring_apnea"
+    },
+    {
+      "id": "rf_cataplexy",
+      "label": "Sudden weakness with emotion or sleep attacks",
+      "detection_instructions": "Does the patient report sudden weakness with laughing or irresistible sleep attacks?",
+      "prompt_question_id": "q_cataplexy"
+    },
+    {
+      "id": "rf_dream_enactment",
+      "label": "Acting out dreams or injuring self or partner at night",
+      "detection_instructions": "Does the patient describe acting out dreams, sleepwalking into danger, or injuring someone at night?",
+      "prompt_question_id": "q_parasomnia"
+    },
+    {
+      "id": "rf_mood_safety",
+      "label": "Severe insomnia with hopelessness or safety risk",
+      "detection_instructions": "Does the patient report that lack of sleep is making them hopeless or unable to stay safe?",
+      "prompt_question_id": "q_depression_safety"
+    },
+    {
+      "id": "rf_acute_decompensation",
+      "label": "New severe sleepiness with medical illness",
+      "detection_instructions": "Does the patient describe new overwhelming sleepiness together with heart, lung, or neurologic symptoms?",
+      "prompt_question_id": "q_cardiorespiratory"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_sleep",
+    "q_duration",
+    "q_sleep_schedule",
+    "q_insomnia_type",
+    "q_sleepiness",
+    "q_snoring_apnea",
+    "q_substances",
+    "q_medications"
+  ]
+}

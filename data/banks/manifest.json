@@ -182,6 +182,252 @@
         "sunburn",
         "bite"
       ]
+    },
+    {
+      "id": "psychiatric",
+      "label": "Mental health",
+      "file": "psychiatric.json",
+      "router_description": "mental health complaints: low mood, depression, anxiety, panic, hearing voices or seeing things, racing thoughts, trauma symptoms, thoughts of self-harm, trouble functioning because of mood or thoughts",
+      "keywords": [
+        "depress",
+        "anxiety",
+        "panic",
+        "suicid",
+        "hearing voices",
+        "bipolar",
+        "ptsd",
+        "mental health",
+        "hopeless",
+        "panic attack"
+      ]
+    },
+    {
+      "id": "gynecologic",
+      "label": "Gynecologic",
+      "file": "gynecologic.json",
+      "router_description": "gynecologic symptoms: pelvic pain, abnormal periods or vaginal bleeding, vaginal discharge, missed periods, menopause symptoms, pain with sex, possible ovarian or uterine problems in someone who is not presenting mainly as pregnant",
+      "keywords": [
+        "period",
+        "menstrual",
+        "pelvic",
+        "vaginal",
+        "ovary",
+        "uterus",
+        "menopause",
+        "pap smear",
+        "fibroid",
+        "endometriosis"
+      ]
+    },
+    {
+      "id": "endocrine",
+      "label": "Endocrine / metabolic",
+      "file": "endocrine.json",
+      "router_description": "hormone and metabolic symptoms: unexplained fatigue with weight change, extreme thirst and urination, heat or cold intolerance, thyroid swelling, tremor, steroid or diabetes medicine problems",
+      "keywords": [
+        "thyroid",
+        "always thirsty",
+        "heat intoleran",
+        "cold intoleran",
+        "goiter",
+        "blood sugar",
+        "steroid pills",
+        "hormone",
+        "tremor",
+        "gaining weight"
+      ]
+    },
+    {
+      "id": "ophthalmologic",
+      "label": "Eyes",
+      "file": "ophthalmologic.json",
+      "router_description": "eye complaints: red eye, eye pain, sudden vision loss, flashes or floaters, double vision from the eye itself, eye injury, contact lens problems, discharge from the eye",
+      "keywords": [
+        "eye",
+        "vision",
+        "blurry",
+        "floaters",
+        "red eye",
+        "pink eye",
+        "contact lens",
+        "cornea",
+        "eyelid",
+        "can't see"
+      ]
+    },
+    {
+      "id": "constitutional",
+      "label": "Constitutional / systemic",
+      "file": "constitutional.json",
+      "router_description": "whole-body symptoms as the main problem: prolonged fever, drenching night sweats, unintended weight loss, crushing fatigue without a clear organ-system complaint",
+      "keywords": [
+        "night sweats",
+        "losing weight",
+        "unintended weight",
+        "exhausted",
+        "fever for",
+        "fevers",
+        "generally unwell",
+        "no energy",
+        "soaking the sheets"
+      ]
+    },
+    {
+      "id": "hematologic",
+      "label": "Blood and lymph",
+      "file": "hematologic.json",
+      "router_description": "blood and lymph complaints: easy bruising or bleeding, paleness or known anemia symptoms, swollen glands, frequent infections, clotting problems, petechiae",
+      "keywords": [
+        "bruise",
+        "bruising",
+        "bleed easily",
+        "anemic",
+        "swollen gland",
+        "lymph node",
+        "petechiae",
+        "low blood count",
+        "nosebleed",
+        "pale"
+      ]
+    },
+    {
+      "id": "allergic",
+      "label": "Allergy / immunology",
+      "file": "allergic.json",
+      "router_description": "allergic and immune reactions: hives after an exposure, facial or tongue swelling, anaphylaxis, food drug or sting allergy, epinephrine use, severe delayed drug rash",
+      "keywords": [
+        "allergic",
+        "anaphylaxis",
+        "epipen",
+        "epinephrine",
+        "bee sting",
+        "peanut",
+        "food allergy",
+        "angioedema",
+        "swelling of my tongue",
+        "allergic reaction"
+      ]
+    },
+    {
+      "id": "breast",
+      "label": "Breast",
+      "file": "breast.json",
+      "router_description": "breast complaints: breast lump, nipple discharge, breast skin or nipple change, breast pain, redness or swelling of the breast, armpit lump with a breast concern",
+      "keywords": [
+        "breast",
+        "nipple",
+        "lump in my breast",
+        "mammogram",
+        "mastitis",
+        "breastfeeding",
+        "areola"
+      ]
+    },
+    {
+      "id": "male_genital",
+      "label": "Male genital",
+      "file": "male_genital.json",
+      "router_description": "male genital complaints: testicular pain or swelling, testicular lump, penile sores or discharge, erection problems, groin hernia, foreskin problems",
+      "keywords": [
+        "testicle",
+        "testicular",
+        "scrotum",
+        "penis",
+        "erection",
+        "hernia",
+        "foreskin",
+        "groin bulge",
+        "epididymis"
+      ]
+    },
+    {
+      "id": "sleep",
+      "label": "Sleep",
+      "file": "sleep.json",
+      "router_description": "sleep complaints: insomnia, snoring, witnessed apneas, daytime sleepiness, restless legs, acting out dreams, narcolepsy symptoms, shift-work sleep problems",
+      "keywords": [
+        "insomnia",
+        "can't sleep",
+        "snoring",
+        "sleep apnea",
+        "cpap",
+        "restless legs",
+        "daytime sleepiness",
+        "falling asleep driving",
+        "sleep study"
+      ]
+    },
+    {
+      "id": "obstetric",
+      "label": "Obstetric / pregnancy",
+      "file": "obstetric.json",
+      "router_description": "pregnancy-related complaints: vaginal bleeding in pregnancy, contractions, leaking fluid, reduced fetal movement, preeclampsia symptoms, trauma while pregnant, severe vomiting in pregnancy",
+      "keywords": [
+        "pregnant",
+        "pregnancy",
+        "miscarriage",
+        "contractions",
+        "baby moving",
+        "prenatal",
+        "gestational",
+        "leaking fluid",
+        "preeclampsia",
+        "morning sickness"
+      ]
+    },
+    {
+      "id": "family_history",
+      "label": "Family history",
+      "file": "family_history.json",
+      "router_description": "family history concerns: a condition that runs in the family, relatives with early heart disease or sudden death, family cancers such as breast, ovarian, or colon, genetic testing or inherited conditions, worry about inheriting a relative's illness",
+      "keywords": [
+        "family history",
+        "runs in my family",
+        "runs in the family",
+        "my mother had",
+        "my father had",
+        "my mom had",
+        "my dad had",
+        "hereditary",
+        "genetic",
+        "brca"
+      ]
+    },
+    {
+      "id": "social_history",
+      "label": "Social history",
+      "file": "social_history.json",
+      "router_description": "social and lifestyle factors affecting health: smoking, alcohol or drug use, work exposures, housing or food insecurity, stress, isolation, feeling unsafe at home, partner violence, trouble affording care or getting to appointments",
+      "keywords": [
+        "smoking",
+        "cigarettes",
+        "drinking",
+        "alcohol",
+        "drugs",
+        "homeless",
+        "unsafe at home",
+        "my partner hits",
+        "lost my job",
+        "can't afford"
+      ]
+    },
+    {
+      "id": "sexual_history",
+      "label": "Sexual history",
+      "file": "sexual_history.json",
+      "router_description": "sexual health concerns: possible STI or HIV exposure, new or multiple sexual partners, condom problems, wanting STI testing, PrEP or PEP, contraception, worry about pregnancy after sex, pain or problems with sex, unwanted sexual contact",
+      "keywords": [
+        "sexual partner",
+        "unprotected sex",
+        "condom",
+        "std",
+        "sti",
+        "hiv",
+        "prep",
+        "hooked up",
+        "had sex",
+        "birth control"
+      ]
     }
   ]
 }

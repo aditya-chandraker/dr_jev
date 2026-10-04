@@ -1,0 +1,328 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_mental_health",
+      "text": "What is the main problem: low mood, anxiety, panic, trouble sleeping, hearing or seeing things, racing thoughts, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main mental health complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "psych"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and has it been getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Onset and course distinguish acute crisis from a longer episode.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mood",
+      "text": "Over the past two weeks, have you felt down, hopeless, or much less interested in things you usually enjoy?",
+      "area": "mood",
+      "rationale": "Core mood and anhedonia questions screen for a depressive episode.",
+      "tags": [
+        "depression",
+        "mood"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_anxiety",
+      "text": "Do you feel anxious, on edge, or unable to stop worrying most days?",
+      "area": "anxiety",
+      "rationale": "Generalized anxiety is a common primary complaint and co-occurs with depression.",
+      "tags": [
+        "anxiety"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_panic",
+      "text": "Do you get sudden episodes of pounding heart, shortness of breath, or a sense you might die or lose control?",
+      "area": "anxiety",
+      "rationale": "Panic attacks can mimic cardiac or respiratory emergencies.",
+      "tags": [
+        "panic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sleep",
+      "text": "How is your sleep: trouble falling asleep, waking too early, sleeping too much, or nightmares?",
+      "area": "sleep",
+      "rationale": "Sleep change is a core feature of mood, anxiety, and trauma-related illness.",
+      "tags": [
+        "sleep"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_appetite_weight",
+      "text": "Has your appetite or weight changed without you trying?",
+      "area": "somatic",
+      "rationale": "Appetite and weight shifts support a mood or medical contributor.",
+      "tags": [
+        "appetite",
+        "weight"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_energy_concentration",
+      "text": "Have you had low energy, trouble concentrating, or felt slowed down or restless?",
+      "area": "function",
+      "rationale": "Energy and concentration affect safety, work, and treatment planning.",
+      "tags": [
+        "energy",
+        "concentration"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_irritability",
+      "text": "Have you been more irritable, angry, or snapping at people than usual?",
+      "area": "mood",
+      "rationale": "Irritability can be the main face of depression, mania, or trauma.",
+      "tags": [
+        "irritability"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_suicide",
+      "text": "Have you had thoughts of wanting to die, or of harming yourself? If so, do you have a plan or intent?",
+      "area": "safety",
+      "rationale": "Active suicidal thoughts with plan or intent need urgent attention.",
+      "tags": [
+        "suicide",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_self_harm",
+      "text": "Have you hurt yourself on purpose, such as cutting or burning, even if you did not want to die?",
+      "area": "safety",
+      "rationale": "Nonsuicidal self-injury raises risk and needs a safety plan.",
+      "tags": [
+        "self-harm",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_harm_others",
+      "text": "Have you had thoughts of harming someone else, or do you feel you might lose control and hurt someone?",
+      "area": "safety",
+      "rationale": "Homicidal ideation or loss of control is a safety emergency.",
+      "tags": [
+        "homicide",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_psychosis",
+      "text": "Have you heard voices, seen things others do not, or felt that people are watching or controlling you?",
+      "area": "psychosis",
+      "rationale": "Hallucinations or paranoia may indicate psychosis and need prompt assessment.",
+      "tags": [
+        "psychosis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mania",
+      "text": "Have you had stretches of needing much less sleep, talking fast, spending a lot, or feeling unusually powerful?",
+      "area": "mood",
+      "rationale": "Manic features change diagnosis and med safety.",
+      "tags": [
+        "mania",
+        "bipolar"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trauma",
+      "text": "Have you been through something frightening or violent, and do memories, nightmares, or jumpiness still bother you?",
+      "area": "trauma",
+      "rationale": "Trauma history points toward PTSD and informs a safer interview.",
+      "tags": [
+        "trauma",
+        "ptsd"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_substance",
+      "text": "How much alcohol, cannabis, or other drugs have you been using, and has that changed recently?",
+      "area": "substance",
+      "rationale": "Substances commonly cause or worsen mood, anxiety, and psychosis.",
+      "tags": [
+        "substance",
+        "alcohol"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_withdrawal",
+      "text": "Are you shaking, sweating, seizing, or feeling very sick after cutting back on alcohol or drugs?",
+      "area": "substance",
+      "rationale": "Alcohol or benzodiazepine withdrawal can be medically dangerous.",
+      "tags": [
+        "withdrawal",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_unable_to_care",
+      "text": "Are you able to eat, drink, take medicines, and keep yourself safe at home right now?",
+      "area": "function",
+      "rationale": "Inability to care for basic needs is a psychiatric emergency.",
+      "tags": [
+        "function",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_support",
+      "text": "Is there anyone at home who can stay with you, or are you isolated right now?",
+      "area": "safety",
+      "rationale": "Social support changes disposition and safety planning.",
+      "tags": [
+        "support",
+        "safety"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_psych_history",
+      "text": "Have you had depression, bipolar disorder, schizophrenia, or a psychiatric hospitalization before?",
+      "area": "history",
+      "rationale": "Prior illness and hospitalizations raise relapse and risk.",
+      "tags": [
+        "history",
+        "psych"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_history",
+      "text": "Does anyone in your family have depression, bipolar disorder, schizophrenia, or has anyone died by suicide?",
+      "area": "history",
+      "rationale": "Family history informs risk and diagnosis.",
+      "tags": [
+        "family-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Are you taking any psychiatric medicines, and have you started, stopped, or missed doses recently?",
+      "area": "medications",
+      "rationale": "Missed doses, new meds, and withdrawal from psychotropics often explain new symptoms.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medical_contributors",
+      "text": "Have you had a recent illness, thyroid problem, head injury, or new medical diagnosis?",
+      "area": "history",
+      "rationale": "Medical causes can present as mood, anxiety, or psychosis.",
+      "tags": [
+        "medical",
+        "organic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function_work",
+      "text": "How is this affecting your work, school, relationships, or daily activities?",
+      "area": "function",
+      "rationale": "Functional impact guides urgency and treatment intensity.",
+      "tags": [
+        "function",
+        "impact"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_suicide",
+      "label": "Suicidal thoughts with plan or intent",
+      "detection_instructions": "Does the patient describe wanting to die, a suicide plan, or intent to harm themselves?",
+      "prompt_question_id": "q_suicide"
+    },
+    {
+      "id": "rf_self_harm",
+      "label": "Active self-harm",
+      "detection_instructions": "Does the patient report currently hurting themselves on purpose or feeling unable to stop?",
+      "prompt_question_id": "q_self_harm"
+    },
+    {
+      "id": "rf_harm_others",
+      "label": "Thoughts of harming others",
+      "detection_instructions": "Does the patient report thoughts of harming someone else or fear of losing control and hurting someone?",
+      "prompt_question_id": "q_harm_others"
+    },
+    {
+      "id": "rf_psychosis",
+      "label": "Possible psychosis",
+      "detection_instructions": "Does the patient describe hearing voices, seeing things others do not, or feeling watched or controlled?",
+      "prompt_question_id": "q_psychosis"
+    },
+    {
+      "id": "rf_withdrawal",
+      "label": "Possible alcohol or drug withdrawal",
+      "detection_instructions": "Does the patient report shaking, sweating, seizures, or severe sickness after cutting back on alcohol or drugs?",
+      "prompt_question_id": "q_withdrawal"
+    },
+    {
+      "id": "rf_unable_to_care",
+      "label": "Unable to meet basic needs",
+      "detection_instructions": "Does the patient say they cannot eat, drink, take medicines, or keep themselves safe at home?",
+      "prompt_question_id": "q_unable_to_care"
+    },
+    {
+      "id": "rf_mania",
+      "label": "Possible mania",
+      "detection_instructions": "Does the patient describe little need for sleep with racing thoughts, risky spending, or feeling unusually powerful?",
+      "prompt_question_id": "q_mania"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_mental_health",
+    "q_duration",
+    "q_mood",
+    "q_suicide",
+    "q_psychosis",
+    "q_substance",
+    "q_unable_to_care",
+    "q_medications"
+  ]
+}

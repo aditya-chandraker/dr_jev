@@ -1,0 +1,312 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_endocrine",
+      "text": "What is the main problem: fatigue, weight change, thirst, heat or cold intolerance, neck swelling, tremor, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main endocrine complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "endocrine"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and is it getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Tempo helps separate acute metabolic decompensation from gradual thyroid or adrenal disease.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fatigue",
+      "text": "How tired are you, and does rest help, or is it a new crushing fatigue?",
+      "area": "fatigue",
+      "rationale": "Endocrine disease often presents as unexplained fatigue.",
+      "tags": [
+        "fatigue"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weight_change",
+      "text": "Have you gained or lost weight without trying, and about how much?",
+      "area": "weight",
+      "rationale": "Unintended weight change is a core thyroid, diabetes, and adrenal clue.",
+      "tags": [
+        "weight"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_thirst_urine",
+      "text": "Are you much thirstier than usual, peeing a lot, or getting up often at night to pee?",
+      "area": "diabetes",
+      "rationale": "Polyuria and polydipsia suggest new or uncontrolled diabetes.",
+      "tags": [
+        "polyuria",
+        "polydipsia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_glucose_crisis",
+      "text": "Have you had very high or very low blood sugar, confusion, vomiting, or deep rapid breathing?",
+      "area": "diabetes",
+      "rationale": "Hyperglycemia with vomiting or Kussmaul breathing can be DKA; severe hypoglycemia is an emergency.",
+      "tags": [
+        "dka",
+        "hypoglycemia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_heat_cold",
+      "text": "Do you feel unusually hot or cold when others do not, or have you noticed sweating or dry skin?",
+      "area": "thyroid",
+      "rationale": "Heat and cold intolerance help separate hyperthyroidism from hypothyroidism.",
+      "tags": [
+        "thyroid",
+        "temperature"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_palpitations_tremor",
+      "text": "Do you have a racing heart, shakiness, or feeling wired?",
+      "area": "thyroid",
+      "rationale": "These features support thyrotoxicosis or hypoglycemia.",
+      "tags": [
+        "palpitations",
+        "tremor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_neck_swelling",
+      "text": "Have you noticed a swelling or lump in the front of your neck, or trouble swallowing?",
+      "area": "thyroid",
+      "rationale": "A goiter or nodule may accompany thyroid dysfunction or mass effect.",
+      "tags": [
+        "goiter",
+        "nodule"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_eye_thyroid",
+      "text": "Are your eyes prominent, gritty, or do you have double vision?",
+      "area": "thyroid",
+      "rationale": "Orbitopathy points toward Graves disease.",
+      "tags": [
+        "graves",
+        "eyes"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_skin_hair",
+      "text": "Has your hair thinned, or has your skin become very dry, coarse, or darker in creases?",
+      "area": "skin",
+      "rationale": "Hair and skin changes occur with thyroid, androgen, and adrenal disease.",
+      "tags": [
+        "hair",
+        "skin"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_libido_menses",
+      "text": "Have your periods changed, or has your sex drive or erections changed?",
+      "area": "reproductive",
+      "rationale": "Hypogonadism and thyroid disease often show up in reproductive symptoms.",
+      "tags": [
+        "menses",
+        "libido"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_adrenal_crisis",
+      "text": "Have you had dizziness on standing, salt craving, unexplained vomiting, or a very dark tan without sun?",
+      "area": "adrenal",
+      "rationale": "These features raise concern for adrenal insufficiency, which can decompensate quickly.",
+      "tags": [
+        "adrenal",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_steroid_use",
+      "text": "Have you taken steroid pills, injections, or high-dose inhalers, especially if you stopped suddenly?",
+      "area": "medications",
+      "rationale": "Abrupt steroid cessation can precipitate adrenal crisis.",
+      "tags": [
+        "steroids",
+        "adrenal"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_calcium",
+      "text": "Have you had kidney stones, constipation, extra thirst, or bone pain?",
+      "area": "calcium",
+      "rationale": "These can reflect hypercalcemia or parathyroid disease.",
+      "tags": [
+        "calcium",
+        "parathyroid"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hypocalcemia",
+      "text": "Do you get muscle cramps, tingling around your mouth, or spasms in your hands?",
+      "area": "calcium",
+      "rationale": "Neuromuscular irritability can indicate hypocalcemia.",
+      "tags": [
+        "hypocalcemia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diabetes_history",
+      "text": "Have you been told you have diabetes, prediabetes, or high blood sugar?",
+      "area": "history",
+      "rationale": "Known diabetes frames hypoglycemia, DKA, and complication screening.",
+      "tags": [
+        "diabetes",
+        "history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_thyroid_history",
+      "text": "Have you had thyroid disease, thyroid surgery, or radioactive iodine?",
+      "area": "history",
+      "rationale": "Prior thyroid treatment explains current hypo- or hyperthyroid symptoms.",
+      "tags": [
+        "thyroid",
+        "history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_family_history",
+      "text": "Does anyone in your family have thyroid disease, diabetes, or other hormone problems?",
+      "area": "history",
+      "rationale": "Family history raises likelihood of autoimmune endocrine disease.",
+      "tags": [
+        "family-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_headache_vision",
+      "text": "Do you have headaches, vision loss, or milky nipple discharge?",
+      "area": "pituitary",
+      "rationale": "These can indicate a pituitary mass or hyperprolactinemia.",
+      "tags": [
+        "pituitary",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Are you taking insulin, thyroid hormone, steroids, or any new medicines?",
+      "area": "medications",
+      "rationale": "Dosing errors in hormone medicines commonly cause new symptoms.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_recent_illness",
+      "text": "Have you had a recent infection, surgery, or been unable to take your usual hormone medicines?",
+      "area": "precipitant",
+      "rationale": "Intercurrent illness precipitates DKA and adrenal crisis.",
+      "tags": [
+        "illness",
+        "precipitant"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "How is this affecting your work, sleep, or daily activities?",
+      "area": "function",
+      "rationale": "Functional impact guides urgency.",
+      "tags": [
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_glucose_crisis",
+      "label": "Possible DKA or severe hypoglycemia",
+      "detection_instructions": "Does the patient report very high or low blood sugar with confusion, vomiting, or deep rapid breathing?",
+      "prompt_question_id": "q_glucose_crisis"
+    },
+    {
+      "id": "rf_adrenal_crisis",
+      "label": "Possible adrenal crisis",
+      "detection_instructions": "Does the patient report dizziness on standing, vomiting, steroid stoppage, or a new dark tan with severe weakness?",
+      "prompt_question_id": "q_adrenal_crisis"
+    },
+    {
+      "id": "rf_thyrotoxic",
+      "label": "Possible severe hyperthyroidism",
+      "detection_instructions": "Does the patient report racing heart, tremor, heat intolerance, and feeling very unwell or confused?",
+      "prompt_question_id": "q_palpitations_tremor"
+    },
+    {
+      "id": "rf_pituitary",
+      "label": "Headache with vision change or nipple discharge",
+      "detection_instructions": "Does the patient report headaches with vision loss or milky nipple discharge?",
+      "prompt_question_id": "q_headache_vision"
+    },
+    {
+      "id": "rf_neck_mass_effect",
+      "label": "Neck swelling with swallowing or breathing trouble",
+      "detection_instructions": "Does the patient describe a neck swelling with trouble swallowing or breathing?",
+      "prompt_question_id": "q_neck_swelling"
+    },
+    {
+      "id": "rf_polyuria_dehydration",
+      "label": "Severe thirst and urination",
+      "detection_instructions": "Does the patient report marked thirst, very frequent urination, and feeling dehydrated or confused?",
+      "prompt_question_id": "q_thirst_urine"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_endocrine",
+    "q_duration",
+    "q_weight_change",
+    "q_thirst_urine",
+    "q_heat_cold",
+    "q_glucose_crisis",
+    "q_steroid_use",
+    "q_medications"
+  ]
+}

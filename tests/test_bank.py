@@ -20,6 +20,20 @@ def test_registry_loads_all_banks() -> None:
         "cardiovascular",
         "neurological",
         "dermatological",
+        "psychiatric",
+        "gynecologic",
+        "endocrine",
+        "ophthalmologic",
+        "constitutional",
+        "hematologic",
+        "allergic",
+        "breast",
+        "male_genital",
+        "sleep",
+        "obstetric",
+        "family_history",
+        "social_history",
+        "sexual_history",
     }
     assert registry.general.bank_id == GENERAL_BANK_ID
     for bank in [*registry.banks.values(), registry.general]:
@@ -52,6 +66,20 @@ def test_manifest_and_files_are_consistent() -> None:
         "cardiovascular.json",
         "neurological.json",
         "dermatological.json",
+        "psychiatric.json",
+        "gynecologic.json",
+        "endocrine.json",
+        "ophthalmologic.json",
+        "constitutional.json",
+        "hematologic.json",
+        "allergic.json",
+        "breast.json",
+        "male_genital.json",
+        "sleep.json",
+        "obstetric.json",
+        "family_history.json",
+        "social_history.json",
+        "sexual_history.json",
     }
     assert {path.name for path in BANK_DIR.glob("*.json")} == expected_files
     for domain in registry.domains.values():

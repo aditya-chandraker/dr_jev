@@ -1,0 +1,309 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_allergy",
+      "text": "What is the main problem: hives, swelling, a food or drug reaction, a bee sting, trouble breathing after an exposure, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main allergic complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "allergy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and how fast did it come on after the exposure?",
+      "area": "timeline",
+      "rationale": "Minutes-to-onset after exposure supports anaphylaxis.",
+      "tags": [
+        "duration",
+        "onset"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_trigger",
+      "text": "What were you eating, taking, stung by, or exposed to just before this started?",
+      "area": "trigger",
+      "rationale": "Identifying the trigger is the key to prevention and acute care.",
+      "tags": [
+        "trigger",
+        "exposure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_hives",
+      "text": "Do you have itchy hives or welts that move around?",
+      "area": "skin",
+      "rationale": "Urticaria is the most common allergic skin finding.",
+      "tags": [
+        "hives",
+        "urticaria"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_angioedema",
+      "text": "Is your face, lips, tongue, or throat swelling?",
+      "area": "airway",
+      "rationale": "Angioedema can threaten the airway.",
+      "tags": [
+        "angioedema",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_breathing",
+      "text": "Are you wheezing, short of breath, or is your throat closing?",
+      "area": "airway",
+      "rationale": "Respiratory involvement defines anaphylaxis and needs immediate treatment.",
+      "tags": [
+        "anaphylaxis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dizziness_vomit",
+      "text": "Have you felt faint, dizzy, nauseated, or vomited with this reaction?",
+      "area": "anaphylaxis",
+      "rationale": "Cardiovascular and gut features also count toward anaphylaxis.",
+      "tags": [
+        "anaphylaxis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_epinephrine",
+      "text": "Have you used an epinephrine injector, and did the symptoms come back after it wore off?",
+      "area": "management",
+      "rationale": "Biphasic anaphylaxis can recur after initial improvement.",
+      "tags": [
+        "epinephrine",
+        "biphasic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_known_allergies",
+      "text": "What allergies do you already know about, and how severe have past reactions been?",
+      "area": "history",
+      "rationale": "Prior anaphylaxis is the strongest predictor of another severe reaction.",
+      "tags": [
+        "allergy-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_drug_reaction",
+      "text": "Did this start after a new medicine, antibiotic, NSAID, or contrast dye?",
+      "area": "medications",
+      "rationale": "Drugs are a leading cause of anaphylaxis and severe cutaneous reactions.",
+      "tags": [
+        "drug-allergy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_food",
+      "text": "Did this follow peanuts, tree nuts, shellfish, milk, egg, or another food?",
+      "area": "food",
+      "rationale": "IgE food allergy is a common anaphylaxis trigger.",
+      "tags": [
+        "food-allergy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_stinging",
+      "text": "Were you stung by a bee, wasp, or ant?",
+      "area": "venom",
+      "rationale": "Venom anaphylaxis needs counseling and often immunotherapy referral.",
+      "tags": [
+        "venom",
+        "bee"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_latex_exercise",
+      "text": "Does this happen with latex, or after exercise, especially after certain foods?",
+      "area": "triggers",
+      "rationale": "Latex and food-dependent exercise anaphylaxis are easy to miss.",
+      "tags": [
+        "latex",
+        "exercise"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_ace_inhibitor",
+      "text": "Do you take an ACE inhibitor or sitagliptin, especially if the swelling is of the tongue without hives?",
+      "area": "medications",
+      "rationale": "ACE-inhibitor angioedema often lacks hives and can recur.",
+      "tags": [
+        "ace-inhibitor",
+        "angioedema"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_chronic_hives",
+      "text": "If this is hives, have they lasted more than six weeks, and do they come daily?",
+      "area": "chronic",
+      "rationale": "Chronic spontaneous urticaria is managed differently from anaphylaxis.",
+      "tags": [
+        "chronic-urticaria"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_asthma",
+      "text": "Do you have asthma, and is it flaring with this reaction?",
+      "area": "history",
+      "rationale": "Asthma increases the risk of fatal anaphylaxis.",
+      "tags": [
+        "asthma"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_severe_skin",
+      "text": "Any blistering, peeling skin, or sores in the mouth, eyes, or genitals after a new drug?",
+      "area": "severe-reaction",
+      "rationale": "SJS/TEN is a drug emergency distinct from simple allergy.",
+      "tags": [
+        "sjs",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_serum_sickness",
+      "text": "Any fever, joint pain, or rash a week or more after a drug or injection?",
+      "area": "delayed",
+      "rationale": "Delayed drug reactions include serum sickness and DRESS.",
+      "tags": [
+        "serum-sickness",
+        "dress"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_immune_history",
+      "text": "Do you get unusual or repeated infections, or have you been told you have an immune deficiency?",
+      "area": "immunologic",
+      "rationale": "Recurrent infections may indicate immunodeficiency rather than allergy.",
+      "tags": [
+        "immunodeficiency"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_environment",
+      "text": "Are symptoms triggered by pollen, dust, cats, or mold, with sneezing and itchy eyes?",
+      "area": "atopy",
+      "rationale": "Allergic rhinitis is common and usually not anaphylaxis.",
+      "tags": [
+        "rhinitis",
+        "atopy"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Besides the suspected trigger, what medicines and supplements do you take?",
+      "area": "medications",
+      "rationale": "Beta blockers and ACE inhibitors change anaphylaxis management.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_action_plan",
+      "text": "Do you carry epinephrine, and do you have an allergy action plan?",
+      "area": "prevention",
+      "rationale": "Access to epinephrine is a core safety question after a reaction.",
+      "tags": [
+        "epipen",
+        "prevention"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "Are symptoms still getting worse right now?",
+      "area": "severity",
+      "rationale": "Progressive symptoms require emergency treatment rather than more history.",
+      "tags": [
+        "severity"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_anaphylaxis_airway",
+      "label": "Swelling of tongue or throat or trouble breathing",
+      "detection_instructions": "Does the patient report lip, tongue, or throat swelling, wheeze, or trouble breathing after an exposure?",
+      "prompt_question_id": "q_breathing"
+    },
+    {
+      "id": "rf_anaphylaxis_shock",
+      "label": "Allergic reaction with faintness or vomiting",
+      "detection_instructions": "Does the patient report an allergic reaction with dizziness, fainting, or vomiting?",
+      "prompt_question_id": "q_dizziness_vomit"
+    },
+    {
+      "id": "rf_angioedema",
+      "label": "Facial or tongue swelling",
+      "detection_instructions": "Does the patient report swelling of the face, lips, or tongue?",
+      "prompt_question_id": "q_angioedema"
+    },
+    {
+      "id": "rf_sjs",
+      "label": "Blistering drug reaction with mucosal sores",
+      "detection_instructions": "Does the patient report blistering or peeling skin with mouth, eye, or genital sores after a new medicine?",
+      "prompt_question_id": "q_severe_skin"
+    },
+    {
+      "id": "rf_rapid_onset",
+      "label": "Reaction beginning within minutes of a trigger",
+      "detection_instructions": "Does the patient describe a reaction that started within minutes of a food, sting, or medicine?",
+      "prompt_question_id": "q_duration"
+    },
+    {
+      "id": "rf_worsening_now",
+      "label": "Symptoms still worsening",
+      "detection_instructions": "Does the patient say the allergic symptoms are still getting worse right now?",
+      "prompt_question_id": "q_function"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_allergy",
+    "q_duration",
+    "q_trigger",
+    "q_breathing",
+    "q_angioedema",
+    "q_hives",
+    "q_known_allergies",
+    "q_epinephrine"
+  ]
+}

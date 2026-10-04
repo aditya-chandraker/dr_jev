@@ -58,6 +58,14 @@ def _question_ids(response) -> list[str]:
     return [item.question_id for item in response.suggestions]
 
 
+def _all_question_keys(client: FakeClient) -> list[str]:
+    return [key for call in client.calls for key in call["question_keys"]]
+
+
+def _score_keys(client: FakeClient) -> list[str]:
+    return [key for key in _all_question_keys(client) if key.startswith("score__")]
+
+
 @pytest.mark.asyncio
 async def test_single_domain_route_uses_one_stage_two_bank() -> None:
     answers = domain_answers(respiratory=0.9)
@@ -66,8 +74,8 @@ async def test_single_domain_route_uses_one_stage_two_bank() -> None:
 
     response = await suggest_questions(_patient("I've had a cough for three weeks and I get winded climbing stairs"), client=client)
 
-    assert len(client.calls) == 2
-    assert all(key.startswith("score__respiratory__") for key in client.calls[1]["question_keys"])
+    assert _score_keys(client)
+    assert all(key.startswith("score__respiratory__") for key in _score_keys(client))
     assert response.routing.primary == "respiratory"
     assert not response.routing.unclear
     assert {item.bank for item in response.suggestions} == {"respiratory"}
@@ -82,7 +90,7 @@ async def test_multi_domain_activates_both_banks() -> None:
 
     response = await suggest_questions(_patient("I have chest pain and I also can't pee"), client=client)
 
-    stage_two_keys = client.calls[1]["question_keys"]
+    stage_two_keys = _score_keys(client)
     assert any(key.startswith("score__cardiovascular__") for key in stage_two_keys)
     assert any(key.startswith("score__urinary__") for key in stage_two_keys)
     assert response.routing.primary == "cardiovascular"
@@ -99,7 +107,7 @@ async def test_router_max_banks_caps_active_banks(monkeypatch: pytest.MonkeyPatc
 
     await suggest_questions(_patient("I have chest pain and I also can't pee"), client=client)
 
-    stage_two_keys = client.calls[1]["question_keys"]
+    stage_two_keys = _score_keys(client)
     assert any(key.startswith("score__cardiovascular__") for key in stage_two_keys)
     assert not any(key.startswith("score__urinary__") for key in stage_two_keys)
 
@@ -110,7 +118,7 @@ async def test_unclear_route_returns_general_fallback_without_stage_two() -> Non
 
     response = await suggest_questions(_patient("I feel off"), client=client)
 
-    assert len(client.calls) == 1
+    assert not _score_keys(client)
     assert response.routing.unclear
     assert response.low_confidence
     assert response.suggestions
@@ -295,7 +303,7 @@ class Stage2FailClient(FakeClient):
             "question_keys": list(questions.keys()),
         }
         self.calls.append(call)
-        if len(self.calls) >= 2:
+        if any(key.startswith("score__") for key in call["question_keys"]):
             raise self.error
         return await super().system_one(state, questions, **kwargs)
 

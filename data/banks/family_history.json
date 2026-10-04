@@ -1,0 +1,321 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_family_history",
+      "text": "What health problem are you concerned runs in your family: heart disease, cancer, diabetes, a genetic condition, mental illness, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying which condition prompts the concern guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "family-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_which_relatives",
+      "text": "Which relatives have had it: parents, brothers or sisters, children, grandparents, aunts or uncles? Is it on your mother's side, your father's side, or both?",
+      "area": "pedigree",
+      "rationale": "First-degree relatives and clustering on one side carry the most risk.",
+      "tags": [
+        "pedigree",
+        "relatives"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_age_at_diagnosis",
+      "text": "About how old was each relative when they were diagnosed?",
+      "area": "pedigree",
+      "rationale": "Early age at diagnosis is a key marker of inherited risk.",
+      "tags": [
+        "age-at-onset",
+        "pedigree"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_parents_living",
+      "text": "Are your parents living? If not, how old were they when they died and what was the cause?",
+      "area": "pedigree",
+      "rationale": "Parental age and cause of death frame the overall family risk.",
+      "tags": [
+        "parents",
+        "cause-of-death"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sudden_death_young",
+      "text": "Has anyone in your family died suddenly or unexpectedly before age 50, such as drowning, a car crash with no clear cause, or dying in their sleep?",
+      "area": "cardiac",
+      "rationale": "Unexplained sudden death in a young relative raises concern for inherited heart rhythm or heart muscle disease.",
+      "tags": [
+        "sudden-death",
+        "cardiac",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_heart_disease",
+      "text": "Has a close relative had a heart attack, stent, or bypass, especially a man before 55 or a woman before 65?",
+      "area": "cardiac",
+      "rationale": "Premature coronary disease in a first-degree relative raises cardiovascular risk.",
+      "tags": [
+        "coronary",
+        "cardiac"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cardiomyopathy_arrhythmia",
+      "text": "Has anyone been told they have a thickened or enlarged heart, a heart rhythm problem, or needed a pacemaker or defibrillator at a young age?",
+      "area": "cardiac",
+      "rationale": "Inherited cardiomyopathy and channelopathies warrant screening of relatives.",
+      "tags": [
+        "cardiomyopathy",
+        "arrhythmia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cholesterol",
+      "text": "Does anyone in your family have very high cholesterol or need cholesterol medicine at a young age?",
+      "area": "metabolic",
+      "rationale": "Very high cholesterol in young relatives suggests familial hypercholesterolemia.",
+      "tags": [
+        "cholesterol",
+        "metabolic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_breast_ovarian_cancer",
+      "text": "Has anyone had breast cancer, especially before 50 or in a man, or ovarian, pancreatic, or prostate cancer?",
+      "area": "cancer",
+      "rationale": "These cancers cluster in BRCA and related hereditary syndromes.",
+      "tags": [
+        "brca",
+        "cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_colon_uterine_cancer",
+      "text": "Has anyone had colon, rectal, or uterine cancer, especially before 50, or many colon polyps?",
+      "area": "cancer",
+      "rationale": "Early colorectal or uterine cancer suggests Lynch syndrome or a polyposis syndrome.",
+      "tags": [
+        "lynch",
+        "colon-cancer",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_other_cancers",
+      "text": "Have any relatives had other cancers, more than one cancer, or cancer in childhood?",
+      "area": "cancer",
+      "rationale": "Multiple or unusual cancers in a family can indicate an inherited cancer syndrome.",
+      "tags": [
+        "cancer",
+        "pattern"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_genetic_testing",
+      "text": "Has anyone in your family had genetic testing, and was a gene change found?",
+      "area": "genetics",
+      "rationale": "A known familial variant allows targeted testing of the patient.",
+      "tags": [
+        "genetic-testing",
+        "variant"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diabetes",
+      "text": "Do your parents, brothers, or sisters have diabetes?",
+      "area": "metabolic",
+      "rationale": "First-degree family history raises the risk of type 2 diabetes.",
+      "tags": [
+        "diabetes",
+        "metabolic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_stroke_aneurysm",
+      "text": "Has anyone had a stroke at a young age, a brain aneurysm, or bleeding in the brain?",
+      "area": "vascular",
+      "rationale": "Two or more relatives with aneurysm can justify screening the patient.",
+      "tags": [
+        "aneurysm",
+        "stroke"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_blood_clots",
+      "text": "Has anyone had blood clots in the legs or lungs, especially without an obvious cause, or a known clotting disorder?",
+      "area": "hematologic",
+      "rationale": "Inherited thrombophilia changes risk with surgery, pregnancy, and hormones.",
+      "tags": [
+        "clotting",
+        "thrombophilia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bleeding_disorder",
+      "text": "Does anyone in your family bleed or bruise easily, or have hemophilia or another bleeding disorder?",
+      "area": "hematologic",
+      "rationale": "Inherited bleeding disorders matter before procedures or with heavy periods.",
+      "tags": [
+        "bleeding-disorder",
+        "hemophilia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_anesthesia_reaction",
+      "text": "Has anyone in your family had a serious or unexpected reaction to anesthesia, such as a very high fever during surgery?",
+      "area": "anesthesia",
+      "rationale": "Malignant hyperthermia is inherited and must be known before any anesthetic.",
+      "tags": [
+        "malignant-hyperthermia",
+        "anesthesia",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_kidney_disease",
+      "text": "Does anyone have kidney disease, kidney cysts, or need dialysis?",
+      "area": "renal",
+      "rationale": "Polycystic kidney disease and other inherited nephropathies run in families.",
+      "tags": [
+        "kidney",
+        "pkd"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mental_health",
+      "text": "Has anyone had depression, bipolar disorder, schizophrenia, addiction, or died by suicide?",
+      "area": "psychiatric",
+      "rationale": "Family psychiatric and substance history raises the patient's own risk.",
+      "tags": [
+        "psychiatric",
+        "suicide"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_dementia_neuro",
+      "text": "Has anyone had dementia before 65, Huntington's disease, Parkinson's, or seizures?",
+      "area": "neurologic",
+      "rationale": "Early-onset neurodegenerative disease may be inherited.",
+      "tags": [
+        "dementia",
+        "neurologic"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_autoimmune_thyroid",
+      "text": "Do relatives have thyroid disease, celiac disease, lupus, rheumatoid arthritis, or other autoimmune conditions?",
+      "area": "autoimmune",
+      "rationale": "Autoimmune conditions cluster in families.",
+      "tags": [
+        "autoimmune",
+        "thyroid"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_consanguinity_ancestry",
+      "text": "Are your parents related by blood, and what is your family's ancestry?",
+      "area": "genetics",
+      "rationale": "Consanguinity and certain ancestries raise the risk of recessive conditions.",
+      "tags": [
+        "consanguinity",
+        "ancestry"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_birth_defects_pregnancy_loss",
+      "text": "Has anyone had birth defects, intellectual disability, or several pregnancy losses?",
+      "area": "genetics",
+      "rationale": "These patterns suggest a chromosomal or single-gene condition.",
+      "tags": [
+        "birth-defects",
+        "pregnancy-loss"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_sudden_death_young",
+      "label": "Sudden unexplained death in a young relative",
+      "detection_instructions": "Does the patient report a relative who died suddenly or unexpectedly before age 50, or fainted and died during exercise?",
+      "prompt_question_id": "q_sudden_death_young"
+    },
+    {
+      "id": "rf_hereditary_breast_ovarian",
+      "label": "Possible hereditary breast or ovarian cancer",
+      "detection_instructions": "Does the patient report breast cancer before 50, male breast cancer, ovarian cancer, or several relatives with breast, ovarian, pancreatic, or prostate cancer?",
+      "prompt_question_id": "q_breast_ovarian_cancer"
+    },
+    {
+      "id": "rf_hereditary_colon",
+      "label": "Possible hereditary colon or uterine cancer",
+      "detection_instructions": "Does the patient report colon, rectal, or uterine cancer before 50, or several relatives with these cancers or many polyps?",
+      "prompt_question_id": "q_colon_uterine_cancer"
+    },
+    {
+      "id": "rf_malignant_hyperthermia",
+      "label": "Family history of anesthesia reaction",
+      "detection_instructions": "Does the patient report a relative who had a dangerous reaction to anesthesia, such as a very high fever or muscle rigidity during surgery?",
+      "prompt_question_id": "q_anesthesia_reaction"
+    },
+    {
+      "id": "rf_aneurysm",
+      "label": "Family history of brain aneurysm",
+      "detection_instructions": "Does the patient report one or more relatives with a brain aneurysm or bleeding in the brain?",
+      "prompt_question_id": "q_stroke_aneurysm"
+    },
+    {
+      "id": "rf_inherited_cardiac",
+      "label": "Inherited heart muscle or rhythm disease",
+      "detection_instructions": "Does the patient report relatives with cardiomyopathy, a heart rhythm disorder, or a defibrillator placed at a young age?",
+      "prompt_question_id": "q_cardiomyopathy_arrhythmia"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_family_history",
+    "q_which_relatives",
+    "q_age_at_diagnosis",
+    "q_heart_disease",
+    "q_breast_ovarian_cancer",
+    "q_colon_uterine_cancer",
+    "q_diabetes",
+    "q_sudden_death_young"
+  ]
+}

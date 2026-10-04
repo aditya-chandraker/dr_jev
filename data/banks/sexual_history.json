@@ -1,0 +1,321 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_sexual_health",
+      "text": "What sexual health concern brings you in: possible STI exposure, a new symptom, contraception, pregnancy worry, pain with sex, or something else?",
+      "area": "clarification",
+      "rationale": "Clarifying the main sexual health concern guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "sexual-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_currently_active",
+      "text": "Are you currently sexually active, and when was your last sexual contact?",
+      "area": "partners",
+      "rationale": "Recent activity sets the window for testing and post-exposure options.",
+      "tags": [
+        "activity",
+        "timing"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_partner_gender",
+      "text": "Do you have sex with men, women, or both?",
+      "area": "partners",
+      "rationale": "Partner gender guides which infections and sites to test.",
+      "tags": [
+        "partners",
+        "gender"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_number_partners",
+      "text": "How many sexual partners have you had in the past 12 months, and in the past 3 months?",
+      "area": "partners",
+      "rationale": "Partner number estimates STI risk and testing frequency.",
+      "tags": [
+        "partners",
+        "number"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_new_partner",
+      "text": "Have you had a new partner recently, or do you think your partner has other partners?",
+      "area": "partners",
+      "rationale": "New or concurrent partners raise STI risk.",
+      "tags": [
+        "new-partner",
+        "concurrency"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_practices",
+      "text": "What kinds of sex have you had: vaginal, anal, or oral?",
+      "area": "practices",
+      "rationale": "Types of sex determine which body sites need STI testing.",
+      "tags": [
+        "practices",
+        "testing-sites"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_condom_use",
+      "text": "How often do you use condoms or other barriers: always, sometimes, or never?",
+      "area": "protection",
+      "rationale": "Barrier use modifies STI and HIV risk.",
+      "tags": [
+        "condoms",
+        "protection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_recent_exposure",
+      "text": "In the past 72 hours, have you had sex without a condom with someone who has HIV or whose status you do not know, or had a condom break?",
+      "area": "exposure",
+      "rationale": "HIV post-exposure prophylaxis works best when started within 72 hours.",
+      "tags": [
+        "pep",
+        "hiv",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_partner_known_sti",
+      "text": "Has a partner told you they have an STI, HIV, or hepatitis?",
+      "area": "exposure",
+      "rationale": "A partner's diagnosis warrants testing and often presumptive treatment.",
+      "tags": [
+        "partner-notification",
+        "sti"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sti_history",
+      "text": "Have you ever been diagnosed with an STI such as chlamydia, gonorrhea, syphilis, herpes, or HIV?",
+      "area": "history",
+      "rationale": "Past STIs raise the likelihood of current infection.",
+      "tags": [
+        "sti-history",
+        "history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_last_testing",
+      "text": "When were you last tested for STIs and HIV, and what were the results?",
+      "area": "history",
+      "rationale": "Testing history sets what screening is now due.",
+      "tags": [
+        "testing",
+        "screening"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_genital_symptoms",
+      "text": "Do you have discharge, burning, itching, sores, bumps, or a rash in the genital or anal area?",
+      "area": "symptoms",
+      "rationale": "Genital symptoms guide examination and testing.",
+      "tags": [
+        "discharge",
+        "sores"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_painful_ulcer_systemic",
+      "text": "Do you have a genital sore along with fever, a body rash, swollen glands, or joint pain?",
+      "area": "symptoms",
+      "rationale": "Systemic symptoms with ulcers suggest secondary syphilis, primary HIV, or disseminated gonorrhea.",
+      "tags": [
+        "syphilis",
+        "systemic",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pelvic_pain_fever",
+      "text": "Do you have lower belly or pelvic pain, pain with sex, or fever?",
+      "area": "symptoms",
+      "rationale": "Pelvic pain with fever raises concern for pelvic inflammatory disease.",
+      "tags": [
+        "pid",
+        "pelvic-pain",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_testicular_pain",
+      "text": "Do you have pain or swelling in a testicle?",
+      "area": "symptoms",
+      "rationale": "Testicular pain can be epididymitis or torsion, which is an emergency.",
+      "tags": [
+        "testicular-pain",
+        "torsion",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_contraception",
+      "text": "Are you using any birth control now, and is it working for you?",
+      "area": "contraception",
+      "rationale": "Contraceptive use guides pregnancy risk and counseling.",
+      "tags": [
+        "contraception"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_pregnancy_possible",
+      "text": "When was your last period, and is it possible you are pregnant?",
+      "area": "pregnancy",
+      "rationale": "Possible pregnancy changes testing, treatment choices, and urgency.",
+      "tags": [
+        "pregnancy",
+        "lmp"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_prep",
+      "text": "Have you heard of or used PrEP, a daily or injectable medicine that prevents HIV?",
+      "area": "prevention",
+      "rationale": "Eligible patients benefit from HIV pre-exposure prophylaxis.",
+      "tags": [
+        "prep",
+        "hiv-prevention"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vaccines",
+      "text": "Have you been vaccinated against HPV, hepatitis B, hepatitis A, and mpox?",
+      "area": "prevention",
+      "rationale": "Vaccination prevents several sexually transmitted infections.",
+      "tags": [
+        "vaccines",
+        "prevention"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_transactional_sex",
+      "text": "Have you ever exchanged sex for money, drugs, housing, or other needs?",
+      "area": "risk-factors",
+      "rationale": "Transactional sex raises STI risk and can indicate exploitation.",
+      "tags": [
+        "transactional-sex",
+        "risk-factor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_substance_with_sex",
+      "text": "Do you use alcohol or drugs before or during sex?",
+      "area": "risk-factors",
+      "rationale": "Substance use with sex is linked to condomless sex and assault.",
+      "tags": [
+        "chemsex",
+        "substance"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sexual_assault",
+      "text": "Has anyone ever forced or pressured you into sexual contact you did not want, or did something happen recently?",
+      "area": "safety",
+      "rationale": "Recent assault needs urgent care, evidence collection options, and prophylaxis.",
+      "tags": [
+        "assault",
+        "safety",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_sexual_function",
+      "text": "Do you have any concerns with desire, arousal, erections, orgasm, or pain during sex?",
+      "area": "function",
+      "rationale": "Sexual dysfunction is common and may signal medical or medication causes.",
+      "tags": [
+        "dysfunction",
+        "function"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_sexual_assault",
+      "label": "Recent sexual assault",
+      "detection_instructions": "Does the patient describe being forced or pressured into sexual contact, especially within the last few days?",
+      "prompt_question_id": "q_sexual_assault"
+    },
+    {
+      "id": "rf_pep_window",
+      "label": "Possible HIV exposure within 72 hours",
+      "detection_instructions": "Does the patient report condomless sex, a broken condom, or needle sharing with a partner of positive or unknown HIV status within the last 72 hours?",
+      "prompt_question_id": "q_recent_exposure"
+    },
+    {
+      "id": "rf_pid",
+      "label": "Pelvic pain with fever",
+      "detection_instructions": "Does the patient report lower abdominal or pelvic pain with fever, pain during sex, or abnormal discharge?",
+      "prompt_question_id": "q_pelvic_pain_fever"
+    },
+    {
+      "id": "rf_testicular",
+      "label": "Testicular pain or swelling",
+      "detection_instructions": "Does the patient report sudden or severe testicular pain or swelling?",
+      "prompt_question_id": "q_testicular_pain"
+    },
+    {
+      "id": "rf_systemic_sti",
+      "label": "Genital sore with systemic symptoms",
+      "detection_instructions": "Does the patient report a genital sore or rash together with fever, body rash, swollen glands, or joint pain?",
+      "prompt_question_id": "q_painful_ulcer_systemic"
+    },
+    {
+      "id": "rf_pregnancy_pain",
+      "label": "Possible pregnancy with pain or bleeding",
+      "detection_instructions": "Does the patient report a missed or late period together with pelvic pain or vaginal bleeding?",
+      "prompt_question_id": "q_pregnancy_possible"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_sexual_health",
+    "q_currently_active",
+    "q_partner_gender",
+    "q_number_partners",
+    "q_condom_use",
+    "q_genital_symptoms",
+    "q_sti_history",
+    "q_pregnancy_possible"
+  ]
+}

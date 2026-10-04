@@ -1,0 +1,310 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_constitutional",
+      "text": "What is the main problem: fever, night sweats, weight loss, severe fatigue, or feeling generally unwell?",
+      "area": "clarification",
+      "rationale": "Clarifying the main constitutional complaint guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "constitutional"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_duration",
+      "text": "When did this start, and has it been getting better, worse, or staying the same?",
+      "area": "timeline",
+      "rationale": "Duration separates self-limited infection from prolonged fever or occult disease.",
+      "tags": [
+        "duration",
+        "timeline"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_pattern",
+      "text": "Have you measured a fever, how high, and does it come and go or stay through the day?",
+      "area": "fever",
+      "rationale": "Documented fever pattern helps triage infection versus other causes.",
+      "tags": [
+        "fever"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_night_sweats",
+      "text": "Do you soak the sheets with sweats at night?",
+      "area": "sweats",
+      "rationale": "Drenching night sweats raise concern for TB, lymphoma, or endocarditis.",
+      "tags": [
+        "night-sweats"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_weight_loss",
+      "text": "Have you lost weight without trying? How much, over how long?",
+      "area": "weight",
+      "rationale": "Unintended weight loss needs a systematic workup.",
+      "tags": [
+        "weight-loss",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fatigue",
+      "text": "Is the fatigue new, and does it prevent usual activities even after rest?",
+      "area": "fatigue",
+      "rationale": "Disabling fatigue with other B symptoms is more concerning than tiredness alone.",
+      "tags": [
+        "fatigue"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_appetite",
+      "text": "Has your appetite dropped, or do clothes fit looser?",
+      "area": "weight",
+      "rationale": "Anorexia with weight loss supports systemic illness.",
+      "tags": [
+        "anorexia"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_focal_infection",
+      "text": "Any cough, burning urine, diarrhea, rash, stiff neck, or localized pain with the fever?",
+      "area": "infection",
+      "rationale": "Localizing symptoms point to a source of infection.",
+      "tags": [
+        "source",
+        "infection"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_rigors",
+      "text": "Have you had shaking chills, or do you feel very ill right now?",
+      "area": "severity",
+      "rationale": "Rigors and toxic appearance raise concern for bacteremia.",
+      "tags": [
+        "rigors",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_travel_exposures",
+      "text": "Have you traveled, been around sick people, ticks, animals, or untreated water?",
+      "area": "exposures",
+      "rationale": "Travel and exposure history expands the infectious differential.",
+      "tags": [
+        "travel",
+        "ticks"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tb_risk",
+      "text": "Have you been around someone with TB, been in jail or a shelter, or had a positive TB test?",
+      "area": "exposures",
+      "rationale": "TB risk matters for prolonged fever and night sweats.",
+      "tags": [
+        "tb"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_immune_status",
+      "text": "Do you have HIV, cancer, or take steroids or other immune-suppressing medicine?",
+      "area": "history",
+      "rationale": "Immunosuppression broadens infection and cancer risk.",
+      "tags": [
+        "immunosuppression",
+        "hiv"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_nodes_masses",
+      "text": "Have you noticed swollen glands, a lump, or abdominal fullness?",
+      "area": "lymph",
+      "rationale": "Lymphadenopathy or mass with B symptoms raises concern for lymphoma.",
+      "tags": [
+        "lymph",
+        "mass"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_bleeding_bruising",
+      "text": "Any unusual bruising, bleeding, or pallor?",
+      "area": "hematologic",
+      "rationale": "These suggest a blood disorder accompanying constitutional symptoms.",
+      "tags": [
+        "bleeding",
+        "pallor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_heart_valve",
+      "text": "Do you have a heart valve problem, or have you used injection drugs?",
+      "area": "endocarditis",
+      "rationale": "These raise pretest probability of endocarditis.",
+      "tags": [
+        "endocarditis",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_joint_rash",
+      "text": "Any new rash, joint pain or swelling, or mouth ulcers?",
+      "area": "systemic",
+      "rationale": "These point toward autoimmune or reactive disease.",
+      "tags": [
+        "autoimmune",
+        "rash"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_cancer_history",
+      "text": "Have you had cancer, or a strong family history of cancer?",
+      "area": "history",
+      "rationale": "Cancer history changes the meaning of fever and weight loss.",
+      "tags": [
+        "cancer"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_medications",
+      "text": "Have you started any new medicines, including antibiotics or over-the-counter drugs?",
+      "area": "medications",
+      "rationale": "Drug fever and side effects are common in prolonged illness.",
+      "tags": [
+        "medications"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_mood_sleep",
+      "text": "How are your mood and sleep, and is the fatigue more like low mood than physical illness?",
+      "area": "psych",
+      "rationale": "Depression can present as fatigue and weight change and should be asked explicitly.",
+      "tags": [
+        "mood",
+        "sleep"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_endocrine",
+      "text": "Are you much thirstier, more sensitive to heat or cold, or have you noticed neck swelling?",
+      "area": "endocrine",
+      "rationale": "Thyroid and diabetes can present as constitutional symptoms.",
+      "tags": [
+        "thyroid",
+        "diabetes"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_substance",
+      "text": "How much alcohol or other drugs do you use?",
+      "area": "substance",
+      "rationale": "Alcohol and drugs cause fever, weight loss, and fatigue.",
+      "tags": [
+        "alcohol",
+        "substance"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_fever_weeks",
+      "text": "If this is fever, has it lasted more than three weeks without a clear cause?",
+      "area": "fever",
+      "rationale": "Prolonged unexplained fever needs a broader workup than a short viral illness.",
+      "tags": [
+        "fuo",
+        "fever"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_function",
+      "text": "Are you able to eat, drink, and get out of bed, or are you getting weaker quickly?",
+      "area": "function",
+      "rationale": "Rapid functional decline raises urgency.",
+      "tags": [
+        "function",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_toxic_fever",
+      "label": "Fever with shaking chills or looking very ill",
+      "detection_instructions": "Does the patient report high fever with shaking chills or feeling extremely ill?",
+      "prompt_question_id": "q_rigors"
+    },
+    {
+      "id": "rf_weight_loss",
+      "label": "Unintended weight loss",
+      "detection_instructions": "Does the patient report losing a substantial amount of weight without trying?",
+      "prompt_question_id": "q_weight_loss"
+    },
+    {
+      "id": "rf_night_sweats_nodes",
+      "label": "Night sweats with lumps or prolonged fever",
+      "detection_instructions": "Does the patient report drenching night sweats with swollen glands or fever lasting weeks?",
+      "prompt_question_id": "q_nodes_masses"
+    },
+    {
+      "id": "rf_endocarditis_risk",
+      "label": "Fever with valve disease or injection drug use",
+      "detection_instructions": "Does the patient report fever with a known heart valve problem or injection drug use?",
+      "prompt_question_id": "q_heart_valve"
+    },
+    {
+      "id": "rf_immunosuppressed_fever",
+      "label": "Fever with a weakened immune system",
+      "detection_instructions": "Does the patient report fever while having HIV, cancer, or taking immune-suppressing medicine?",
+      "prompt_question_id": "q_immune_status"
+    },
+    {
+      "id": "rf_rapid_decline",
+      "label": "Rapid decline in ability to function",
+      "detection_instructions": "Does the patient say they cannot eat, drink, or get out of bed, or are weakening quickly?",
+      "prompt_question_id": "q_function"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_constitutional",
+    "q_duration",
+    "q_fever_pattern",
+    "q_weight_loss",
+    "q_night_sweats",
+    "q_focal_infection",
+    "q_immune_status",
+    "q_medications"
+  ]
+}

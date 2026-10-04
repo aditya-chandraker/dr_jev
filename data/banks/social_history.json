@@ -1,0 +1,323 @@
+{
+  "drafted_by": "AI, requires clinician review before any real use.",
+  "questions": [
+    {
+      "id": "q_clarify_social",
+      "text": "What part of your life is affecting your health right now: smoking, alcohol, drugs, work, money, housing, stress, or safety at home?",
+      "area": "clarification",
+      "rationale": "Clarifying the main social concern guides the next branch of the interview.",
+      "tags": [
+        "clarification",
+        "social-history"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_living_situation",
+      "text": "Who do you live with, and is your housing stable?",
+      "area": "housing",
+      "rationale": "Living situation affects support, follow-up, and discharge planning.",
+      "tags": [
+        "housing",
+        "support"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_housing_insecurity",
+      "text": "In the past year, have you been without a steady place to sleep, or worried about losing your housing?",
+      "area": "housing",
+      "rationale": "Housing instability changes the feasibility of treatment plans.",
+      "tags": [
+        "homelessness",
+        "sdoh"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_food_insecurity",
+      "text": "In the past year, have you worried that food would run out before you had money to buy more?",
+      "area": "food",
+      "rationale": "Food insecurity affects nutrition, diabetes control, and medication timing.",
+      "tags": [
+        "food-insecurity",
+        "sdoh"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_occupation",
+      "text": "What kind of work do you do, and are you exposed to chemicals, dust, noise, heavy lifting, or long shifts?",
+      "area": "occupation",
+      "rationale": "Occupation drives exposures, injury risk, and ability to follow a treatment plan.",
+      "tags": [
+        "occupation",
+        "exposure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_tobacco",
+      "text": "Do you smoke cigarettes, cigars, or a pipe, or have you in the past? How much and for how long?",
+      "area": "tobacco",
+      "rationale": "Pack-year history drives cancer, lung, and heart disease risk.",
+      "tags": [
+        "tobacco",
+        "risk-factor"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_vaping_cannabis",
+      "text": "Do you vape or use cannabis? How often, and how do you use it?",
+      "area": "substance",
+      "rationale": "Vaping and cannabis carry lung, mood, and interaction risks.",
+      "tags": [
+        "vaping",
+        "cannabis"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_alcohol_amount",
+      "text": "How many days a week do you drink alcohol, and how many drinks do you have on a typical day?",
+      "area": "alcohol",
+      "rationale": "Quantifying intake identifies risky drinking.",
+      "tags": [
+        "alcohol",
+        "quantity"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_alcohol_binge",
+      "text": "How often do you have five or more drinks (four or more for women) on one occasion?",
+      "area": "alcohol",
+      "rationale": "Binge drinking is a validated single-item screen for unhealthy alcohol use.",
+      "tags": [
+        "alcohol",
+        "binge"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_alcohol_withdrawal",
+      "text": "Have you ever had shakes, sweats, seeing things, or seizures when you cut back on drinking, or needed a drink first thing in the morning?",
+      "area": "alcohol",
+      "rationale": "A history of withdrawal predicts dangerous withdrawal and need for monitoring.",
+      "tags": [
+        "withdrawal",
+        "alcohol",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_drug_use",
+      "text": "In the past year, have you used any street drugs or taken prescription medicines in a way not prescribed?",
+      "area": "substance",
+      "rationale": "Drug use changes diagnosis, medication safety, and harm-reduction needs.",
+      "tags": [
+        "drugs",
+        "substance"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_injection_use",
+      "text": "Have you ever injected drugs, and have you shared needles or other equipment?",
+      "area": "substance",
+      "rationale": "Injection use raises risk of HIV, hepatitis, endocarditis, and overdose.",
+      "tags": [
+        "injection",
+        "infection-risk",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_overdose_risk",
+      "text": "Have you ever overdosed, and do you use opioids alone or have naloxone available?",
+      "area": "substance",
+      "rationale": "Prior overdose and using alone are the strongest predictors of fatal overdose.",
+      "tags": [
+        "overdose",
+        "opioids",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_intimate_partner_violence",
+      "text": "Within the past year, has anyone hit, kicked, choked, threatened, or controlled you, or do you feel unsafe at home?",
+      "area": "safety",
+      "rationale": "Intimate partner violence is common, under-disclosed, and needs a safety plan.",
+      "tags": [
+        "ipv",
+        "safety",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_firearms",
+      "text": "Are there firearms in your home, and are they stored locked and unloaded?",
+      "area": "safety",
+      "rationale": "Firearm access sharply raises the lethality of suicide attempts and violence.",
+      "tags": [
+        "firearms",
+        "safety"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_caregiver_neglect",
+      "text": "Do you depend on someone for care, and has anyone neglected you, taken your money, or hurt you?",
+      "area": "safety",
+      "rationale": "Elder or dependent-adult abuse is often hidden and requires action.",
+      "tags": [
+        "elder-abuse",
+        "neglect",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_forced_work",
+      "text": "Has anyone forced you to work or do things you did not want to do, or taken your ID or pay?",
+      "area": "safety",
+      "rationale": "These are screening signs of labor or sex trafficking.",
+      "tags": [
+        "trafficking",
+        "safety",
+        "red-flag"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_support_network",
+      "text": "Who can you count on for help, such as family, friends, or a community or faith group?",
+      "area": "support",
+      "rationale": "Social support affects recovery, adherence, and mental health.",
+      "tags": [
+        "support",
+        "isolation"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_stress",
+      "text": "How much stress are you under from work, money, relationships, or caregiving?",
+      "area": "stress",
+      "rationale": "Chronic stress contributes to many physical and mental health problems.",
+      "tags": [
+        "stress",
+        "psychosocial"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_diet_exercise",
+      "text": "What does a typical day of eating look like, and how much physical activity do you get each week?",
+      "area": "lifestyle",
+      "rationale": "Diet and activity are core modifiable risk factors.",
+      "tags": [
+        "diet",
+        "exercise"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_transport_access",
+      "text": "Do you have reliable transportation to appointments and the pharmacy, and can you afford your medicines?",
+      "area": "access",
+      "rationale": "Transportation and cost barriers are leading causes of missed care.",
+      "tags": [
+        "transportation",
+        "cost"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_travel",
+      "text": "Have you traveled outside the country or to a new area recently?",
+      "area": "exposure",
+      "rationale": "Travel history widens the differential for infectious illness.",
+      "tags": [
+        "travel",
+        "exposure"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_military_incarceration",
+      "text": "Have you served in the military or spent time in jail or prison?",
+      "area": "history",
+      "rationale": "Military service and incarceration carry specific exposure, trauma, and infection risks.",
+      "tags": [
+        "military",
+        "incarceration"
+      ],
+      "status": "draft-needs-clinician-review"
+    },
+    {
+      "id": "q_patient_worried_about",
+      "text": "What is the main thing you are worried this could be?",
+      "area": "concern",
+      "rationale": "Understanding the patient's concern guides reassurance and follow-up questions.",
+      "tags": [
+        "concern",
+        "agenda"
+      ],
+      "status": "draft-needs-clinician-review"
+    }
+  ],
+  "red_flags": [
+    {
+      "id": "rf_ipv",
+      "label": "Unsafe at home or partner violence",
+      "detection_instructions": "Does the patient describe being hit, choked, threatened, or controlled by a partner, or feeling unsafe at home?",
+      "prompt_question_id": "q_intimate_partner_violence"
+    },
+    {
+      "id": "rf_alcohol_withdrawal",
+      "label": "Risk of alcohol withdrawal",
+      "detection_instructions": "Does the patient describe heavy daily drinking with past shakes, hallucinations, or seizures when cutting back, or drinking in the morning?",
+      "prompt_question_id": "q_alcohol_withdrawal"
+    },
+    {
+      "id": "rf_overdose_risk",
+      "label": "High overdose risk",
+      "detection_instructions": "Does the patient report a past overdose, using opioids alone, or using fentanyl or pills from an unknown source?",
+      "prompt_question_id": "q_overdose_risk"
+    },
+    {
+      "id": "rf_injection_use",
+      "label": "Injection drug use",
+      "detection_instructions": "Does the patient report injecting drugs or sharing needles or equipment?",
+      "prompt_question_id": "q_injection_use"
+    },
+    {
+      "id": "rf_dependent_abuse",
+      "label": "Possible elder or dependent-adult abuse",
+      "detection_instructions": "Does the patient who depends on a caregiver describe neglect, financial exploitation, or being hurt?",
+      "prompt_question_id": "q_caregiver_neglect"
+    },
+    {
+      "id": "rf_trafficking",
+      "label": "Possible labor or sex trafficking",
+      "detection_instructions": "Does the patient describe being forced to work or perform acts, having ID or pay withheld, or being unable to leave?",
+      "prompt_question_id": "q_forced_work"
+    }
+  ],
+  "fallback_checklist": [
+    "q_clarify_social",
+    "q_living_situation",
+    "q_occupation",
+    "q_tobacco",
+    "q_alcohol_amount",
+    "q_drug_use",
+    "q_intimate_partner_violence",
+    "q_support_network"
+  ]
+}
