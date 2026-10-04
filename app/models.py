@@ -15,6 +15,7 @@ class PatientInput(BaseModel):
 class TranscriptTurn(BaseModel):
     speaker: str
     text: str
+    simplified: str = ""
 
 
 class Exchange(BaseModel):

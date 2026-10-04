@@ -184,6 +184,7 @@
         const wav = await toWav(new Blob(recorder.chunks, { type: recorder.mimeType }));
         const form = new FormData();
         form.append('audio', wav, 'encounter.wav');
+        form.append('live', final ? 'false' : 'true');
         const response = await fetch('/api/transcribe', { method: 'POST', body: form });
         if (!response.ok) throw new Error(await readError(response));
         const transcript = await response.json();
@@ -229,7 +230,7 @@
         for (let index = pending[0] - 1; index >= 0 && turns[index].speaker !== 'patient'; index -= 1) {
           if (turns[index].speaker === 'physician') { question = turns[index].text; break; }
         }
-        els.statement.value = pending.map((index) => turns[index].text).join(' ');
+        els.statement.value = pending.map((index) => turns[index].simplified || turns[index].text).join(' ');
         els.statement.classList.add('autofilled');
         live.owned = true;
         live.fill = { question, patientCount: patientIndexes.length };

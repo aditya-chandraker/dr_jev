@@ -7,13 +7,37 @@ import httpx
 import pytest
 from fastapi.testclient import TestClient
 
-from app import main
+from app import main, transcribe
 from app.models import TranscriptResponse, TranscriptTurn
 from app.transcribe import TranscriptionError, build_exchanges, parse_turns, transcribe_encounter
 
 
+@pytest.fixture(autouse=True)
+def _reset_model_cooldowns():
+    transcribe.MODEL_COOLDOWNS.clear()
+    yield
+    transcribe.MODEL_COOLDOWNS.clear()
+
+
 def _gemini_payload(turns: list[dict[str, str]]) -> dict[str, object]:
     return {"candidates": [{"content": {"parts": [{"text": json.dumps({"turns": turns})}]}}]}
+
+
+def test_parse_turns_keeps_simplified_text_for_patient_turns_only() -> None:
+    turns = parse_turns(
+        _gemini_payload(
+            [
+                {"speaker": "physician", "text": "Any cough?", "simplified": "ignored"},
+                {"speaker": "patient", "text": "Um, yeah, for like two weeks, mostly at night.", "simplified": "I have had a cough for two weeks."},
+                {"speaker": "patient", "text": "No fever though.", "simplified": "I have not had a fever."},
+            ]
+        )
+    )
+
+    assert [(turn.speaker, turn.simplified) for turn in turns] == [
+        ("physician", ""),
+        ("patient", "I have had a cough for two weeks. I have not had a fever."),
+    ]
 
 
 def test_parse_turns_merges_consecutive_speakers_and_drops_blanks() -> None:
@@ -83,6 +107,8 @@ async def test_transcribe_encounter_sends_audio_and_schema_to_gemini() -> None:
     assert seen["key"] == "test-key"
     assert inline == {"mime_type": "audio/wav", "data": base64.b64encode(b"RIFFfake").decode()}
     assert body["generationConfig"]["responseMimeType"] == "application/json"
+    assert body["generationConfig"]["thinkingConfig"] == {"thinkingLevel": "low"}
+    assert "simplified" in body["generationConfig"]["responseSchema"]["properties"]["turns"]["items"]["properties"]
     assert transcript.patient_statements == ["Yes, for weeks."]
     assert [(item.question, item.answer) for item in transcript.exchanges] == [("Any cough?", "Yes, for weeks.")]
 
@@ -110,6 +136,59 @@ async def test_transcribe_encounter_retries_then_falls_back_on_overload() -> Non
 
 
 @pytest.mark.asyncio
+async def test_live_mode_tries_each_model_once_and_skips_overloaded_model_next_time() -> None:
+    models_called: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        model = request.url.path.rsplit("/", 1)[-1].split(":")[0]
+        models_called.append(model)
+        if model == "primary":
+            return httpx.Response(503, json={"error": {"message": "high demand"}})
+        return httpx.Response(200, json=_gemini_payload([{"speaker": "patient", "text": "It hurts."}]))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        for _ in range(2):
+            await transcribe_encounter(
+                b"RIFF", "audio/wav", http=http, api_key="k", model="primary", fallback_models=["backup"], live=True
+            )
+
+    assert models_called == ["primary", "backup", "backup"]
+
+
+@pytest.mark.asyncio
+async def test_live_passes_default_to_the_faster_live_model() -> None:
+    models_called: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        models_called.append(request.url.path.rsplit("/", 1)[-1].split(":")[0])
+        return httpx.Response(200, json=_gemini_payload([]))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        await transcribe_encounter(b"RIFF", "audio/wav", http=http, api_key="k", live=True)
+        await transcribe_encounter(b"RIFF", "audio/wav", http=http, api_key="k")
+
+    assert models_called == [transcribe.GEMINI_LIVE_MODEL, transcribe.GEMINI_MODEL]
+
+
+@pytest.mark.asyncio
+async def test_retries_without_thinking_config_when_model_rejects_it() -> None:
+    bodies: list[dict] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        bodies.append(body)
+        if "thinkingConfig" in body["generationConfig"]:
+            return httpx.Response(400, json={"error": {"message": "Thinking level LOW is not supported for this model."}})
+        return httpx.Response(200, json=_gemini_payload([{"speaker": "patient", "text": "Fine."}]))
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        transcript = await transcribe_encounter(b"RIFF", "audio/wav", http=http, api_key="k", fallback_models=[], live=True)
+
+    assert len(bodies) == 2
+    assert transcript.patient_statements == ["Fine."]
+
+
+@pytest.mark.asyncio
 async def test_transcribe_encounter_does_not_retry_client_errors() -> None:
     calls: list[str] = []
 
@@ -134,8 +213,8 @@ async def test_transcribe_encounter_validates_input() -> None:
 
 
 def test_transcribe_endpoint_returns_transcript(monkeypatch: pytest.MonkeyPatch) -> None:
-    async def fake_transcribe(data: bytes, content_type: str | None) -> TranscriptResponse:
-        assert data == b"RIFFfake" and content_type == "audio/wav"
+    async def fake_transcribe(data: bytes, content_type: str | None, *, live: bool) -> TranscriptResponse:
+        assert data == b"RIFFfake" and content_type == "audio/wav" and live is True
         return TranscriptResponse(
             turns=[TranscriptTurn(speaker="patient", text="My knee hurts.")],
             patient_statements=["My knee hurts."],
@@ -144,14 +223,16 @@ def test_transcribe_endpoint_returns_transcript(monkeypatch: pytest.MonkeyPatch)
 
     monkeypatch.setattr(main, "transcribe_encounter", fake_transcribe)
     with TestClient(main.app) as http:
-        response = http.post("/api/transcribe", files={"audio": ("encounter.wav", b"RIFFfake", "audio/wav")})
+        response = http.post(
+            "/api/transcribe", files={"audio": ("encounter.wav", b"RIFFfake", "audio/wav")}, data={"live": "true"}
+        )
 
     assert response.status_code == 200
     assert response.json()["patient_statements"] == ["My knee hurts."]
 
 
 def test_transcribe_endpoint_maps_errors(monkeypatch: pytest.MonkeyPatch) -> None:
-    async def failing(data: bytes, content_type: str | None) -> TranscriptResponse:
+    async def failing(data: bytes, content_type: str | None, *, live: bool) -> TranscriptResponse:
         raise TranscriptionError(415, "Unsupported audio type: video/mp4")
 
     monkeypatch.setattr(main, "transcribe_encounter", failing)

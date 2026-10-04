@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, HTTPException, Query, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
 from fastapi.responses import FileResponse
 from typesafe_sdk import AsyncTypeSafeClient
 
@@ -132,15 +132,16 @@ async def api_suggest(payload: PatientInput) -> SuggestResponse:
 
 
 @app.post("/api/transcribe", response_model=TranscriptResponse)
-async def api_transcribe(audio: UploadFile = File(...)) -> TranscriptResponse:
+async def api_transcribe(audio: UploadFile = File(...), live: bool = Form(False)) -> TranscriptResponse:
     data = await audio.read(MAX_AUDIO_BYTES + 1)
     try:
-        transcript = await transcribe_encounter(data, audio.content_type)
+        transcript = await transcribe_encounter(data, audio.content_type, live=live)
     except TranscriptionError as exc:
         raise HTTPException(status_code=exc.status or 502, detail=exc.message) from exc
     logging.info(
-        "Transcribed %d bytes into %d turns (%d patient) in %sms",
+        "Transcribed %d bytes (%s) into %d turns (%d patient) in %sms",
         len(data),
+        "live" if live else "final",
         len(transcript.turns),
         len(transcript.patient_statements),
         transcript.latency_ms,

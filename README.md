@@ -32,11 +32,12 @@ cp .env.example .env
 
 Set `GEMINI_API_KEY` in `.env`. Click "Record conversation" in the UI and run the interview as usual (recording stops on its own after 3 minutes). While recording, the browser converts the audio so far to 16 kHz mono WAV about every 4 seconds and posts it to `POST /api/transcribe`, which:
 
-1. sends the audio to Gemini (`GEMINI_MODEL`, default `gemini-3.8-flash`) and asks for a JSON transcript with each turn labeled `physician`, `patient`, or `other` by conversational role;
-2. retries briefly on overload or rate limits, then tries `GEMINI_FALLBACK_MODELS` (default `gemini-3.5-flash,gemini-flash-latest`);
-3. returns the turns, the patient's statements, and each physician question paired with the patient's answer.
+1. sends the audio to Gemini and asks for a JSON transcript with each turn labeled `physician`, `patient`, or `other` by conversational role, plus a short plain-language restatement of each patient answer (`simplified`) that keeps every clinical detail, including what the patient denies;
+2. uses `GEMINI_LIVE_MODEL` (default `gemini-3.5-flash`, about 2 to 3 seconds per pass) while recording and `GEMINI_MODEL` (default `gemini-3.8-flash`) for the final pass, with thinking set to `GEMINI_THINKING_LEVEL` (default `low`);
+3. on overload or rate limits, moves to the next model (`GEMINI_MODEL`, then `GEMINI_FALLBACK_MODELS`) and skips the overloaded model for `GEMINI_MODEL_COOLDOWN_S` seconds (default 60). Live passes do not wait between retries; the final pass retries briefly first;
+4. returns the turns, the patient's statements, and each physician question paired with the patient's answer.
 
-As soon as the patient answers, the UI fills the "Patient statement" box with that answer (highlighted) and keeps refining it on each pass. The physician reviews it and clicks "Add statement", which adds the answer to the interview, records the physician's question and the answer under "Asked", and requests new suggestions from Jev. If the physician edits the box, live updates stop overwriting it until the statement is added. Stopping the recording runs one final transcription pass; nothing is added without a click. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
+As soon as the patient answers, the UI fills the "Patient statement" box with the simplified answer (highlighted) and keeps refining it on each pass. The physician reviews it and clicks "Add statement", which adds the answer to the interview, records the physician's question and the answer under "Asked", and requests new suggestions from Jev. If the physician edits the box, live updates stop overwriting it until the statement is added. Stopping the recording runs one final transcription pass; nothing is added without a click. Transcript text is not written to the server logs. Run `python scripts/smoke_transcribe.py path/to/recording.wav` for a live check against a recording of your own.
 
 ## FinchNode synthetic patients (optional)
 
